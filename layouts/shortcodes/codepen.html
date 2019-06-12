@@ -1,0 +1,40 @@
+ {{/*
+
+    Embed a pen from codepen.io
+
+
+    The only required parameter is `id`.
+    It's the slug-hash of the pen. Get it from the url.
+    For other parameters and their default see below.
+    Overwrite them to your needs.
+
+    Examples:
+
+    - Simple:
+
+        {{% pen id="Gflmy" %}}
+
+
+    - Show pen in js tab:
+
+        {{% pen id="Gflmy" tab="js" preview="false" height="600" %}}
+
+*/}}
+
+
+{{/* DEFAULTS */}}
+{{ $user    := "wzc0x0" }}
+{{ $height  := "400" }}
+{{ $preview := "true" }}
+{{ $tab     := "html,result" }}{{/* html|css|js|result */}}
+{{ $theme   := "dark" }}{{/* create on codepen.io */}}
+
+<p class="codepen" 
+data-height="{{ or (.Get "height") $height }}" 
+data-theme-id="{{ or (.Get "theme") $theme }}" 
+data-default-tab="{{ or (.Get "tab") $tab }}" 
+data-user="{{ or (.Get "user") $user }}" 
+data-slug-hash="{{ .Get "id" }}" 
+data-preview="{{or (.Get "preview") $preview }}" 
+style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"></p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>

@@ -1,2 +1,2 @@
-# wiki
-Record some solution in real project
+# wzc0x0.github.io
+My blog power by hugo & theme for jane
