@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>html5 on Tech Blog</title>
+    <link>https://wzc0x0.github.io/categories/html5/</link>
+    <description>Recent content in html5 on Tech Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 31 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wzc0x0.github.io/categories/html5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>移动端适配</title>
+      <link>https://wzc0x0.github.io/post/web-developer/mobile-layout/</link>
+      <pubDate>Fri, 31 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wzc0x0.github.io/post/web-developer/mobile-layout/</guid>
+      <description>探究 web 移动端适配，到底是 rem 还是 px？ 这个问题也困扰笔者很多年，最开始一味地使用 rem，但是到现在觉得 rem 不再合适。 为什么有 rem 来实现适应的方案，</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://wzc0x0.github.io/sitemap.xml

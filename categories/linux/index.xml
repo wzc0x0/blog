@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Tech Blog</title>
+    <link>https://wzc0x0.github.io/categories/linux/</link>
+    <description>Recent content in Linux on Tech Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wzc0x0.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>折腾树莓派3B&#43;</title>
+      <link>https://wzc0x0.github.io/post/raspberry-pi/3bplus/</link>
+      <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wzc0x0.github.io/post/raspberry-pi/3bplus/</guid>
+      <description>Raspberry Pi 3 Model B+ is the latest product in the Raspberry Pi 3 range Broadcom BCM2837B0, Cortex-A53 (ARMv8) 64-bit SoC @ 1.4GHz 1GB LPDDR2 SDRAM 2.4GHz and 5GHz IEEE 802.11.b/g/n/ac wireless LAN, Bluetooth 4.2, BLE Gigabit Ethernet over USB 2.0 (maximum throughput 300 Mbps) see more 下载系统 官方系统 https://www.raspberrypi.org/downloads/raspbian/ 分为：桌面版、无桌面版 centos 系统</description>
+    </item>
+    
+    <item>
+      <title>树莓派3B&#43;链接蓝牙音箱</title>
+      <link>https://wzc0x0.github.io/post/raspberry-pi/python3/</link>
+      <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wzc0x0.github.io/post/raspberry-pi/python3/</guid>
+      <description>Debain 安装与卸载 1 2 3 sudo apt-get install -y xxx sudo apt-get remove xxx sudo apt-get autoremove xxx # 慎用! pip3 安装 1 2 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py sudo python3 get-pip.py pip清华镜像使用 临时使用 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package 设为默认 升级 pip 到最新的版本 (&amp;gt;=10.0.0)</description>
+    </item>
+    
+    <item>
+      <title>acme.sh 生成let&#39;s encrypt免费证书</title>
+      <link>https://wzc0x0.github.io/post/breakwall/letsencrypt/</link>
+      <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wzc0x0.github.io/post/breakwall/letsencrypt/</guid>
+      <description>acme.sh 实现了 acme 协议，默认从 let&amp;rsquo;s encrypt 生成 3 个月的免费证书， 更多请查看 acme.sh wiki 安装 acme.sh 1 2 3 curl https://get.acme.sh | sh # 设置alias 用的普通账户 alias acme.sh=~/.acme.sh/acme.sh 生成证书 dnsapi 导出 1 2 export CF_Key=&amp;#34;sdfsdfsdfljlbjkljlkjsdfoiwje&amp;#34; export CF_Email=&amp;#34;xxxx@sss.com&amp;#34;</description>
+    </item>
+    
+  </channel>
+</rss>
