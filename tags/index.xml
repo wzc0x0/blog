@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Tech Blog</title>
-    <link>https://wzc0x0.github.io/tags/</link>
+    <link>https://blog.cankiss.ml/tags/</link>
     <description>Recent content in Tags on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wzc0x0.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.cankiss.ml/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>politics</title>
-      <link>https://wzc0x0.github.io/tags/politics/</link>
+      <link>https://blog.cankiss.ml/tags/politics/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/tags/politics/</guid>
+      <guid>https://blog.cankiss.ml/tags/politics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>society</title>
-      <link>https://wzc0x0.github.io/tags/society/</link>
+      <link>https://blog.cankiss.ml/tags/society/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/tags/society/</guid>
+      <guid>https://blog.cankiss.ml/tags/society/</guid>
       <description></description>
     </item>
     
     <item>
       <title>html5</title>
-      <link>https://wzc0x0.github.io/tags/html5/</link>
+      <link>https://blog.cankiss.ml/tags/html5/</link>
       <pubDate>Fri, 31 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/tags/html5/</guid>
+      <guid>https://blog.cankiss.ml/tags/html5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://wzc0x0.github.io/tags/linux/</link>
+      <link>https://blog.cankiss.ml/tags/linux/</link>
       <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/tags/linux/</guid>
+      <guid>https://blog.cankiss.ml/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspberry-Pi</title>
-      <link>https://wzc0x0.github.io/tags/raspberry-pi/</link>
+      <link>https://blog.cankiss.ml/tags/raspberry-pi/</link>
       <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/tags/raspberry-pi/</guid>
+      <guid>https://blog.cankiss.ml/tags/raspberry-pi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>breakwall</title>
-      <link>https://wzc0x0.github.io/tags/breakwall/</link>
+      <link>https://blog.cankiss.ml/tags/breakwall/</link>
       <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/tags/breakwall/</guid>
+      <guid>https://blog.cankiss.ml/tags/breakwall/</guid>
       <description></description>
     </item>
     

@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://wzc0x0.github.io/sitemap.xml
+Sitemap: https://blog.cankiss.ml/sitemap.xml

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tech Blog</title>
-    <link>https://wzc0x0.github.io/</link>
+    <link>https://blog.cankiss.ml/</link>
     <description>Recent content on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://wzc0x0.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://blog.cankiss.ml/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About America Kill Huawei</title>
-      <link>https://wzc0x0.github.io/post/society/kill-huawei/</link>
+      <link>https://blog.cankiss.ml/post/society/kill-huawei/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/post/society/kill-huawei/</guid>
+      <guid>https://blog.cankiss.ml/post/society/kill-huawei/</guid>
       
         <description>
 
@@ -90,10 +90,10 @@
     
     <item>
       <title>移动端适配</title>
-      <link>https://wzc0x0.github.io/post/web-developer/mobile-layout/</link>
+      <link>https://blog.cankiss.ml/post/web-developer/mobile-layout/</link>
       <pubDate>Fri, 31 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/post/web-developer/mobile-layout/</guid>
+      <guid>https://blog.cankiss.ml/post/web-developer/mobile-layout/</guid>
       
         <description>
 
@@ -313,9 +313,9 @@ px 布局总结几点：&lt;/p&gt;
 &lt;figure  itemprop=&#34;associatedMedia&#34;
   itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
     &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;/images/px-preview.png&#39;);&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://wzc0x0.github.io/images/px-preview.png&#34; /&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.cankiss.ml/images/px-preview.png&#34; /&gt;
     &lt;/div&gt;
-    &lt;a href=&#34;https://wzc0x0.github.io/images/px-preview.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+    &lt;a href=&#34;https://blog.cankiss.ml/images/px-preview.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
       &lt;figcaption&gt;&lt;h4&gt;px 布局在iPhone6p下的截图&lt;/h4&gt;
       &lt;/figcaption&gt;
   &lt;/figure&gt;
@@ -327,9 +327,9 @@ px 布局总结几点：&lt;/p&gt;
 &lt;figure  itemprop=&#34;associatedMedia&#34;
   itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
     &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;/images/rem-preview.png&#39;);&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://wzc0x0.github.io/images/rem-preview.png&#34; /&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.cankiss.ml/images/rem-preview.png&#34; /&gt;
     &lt;/div&gt;
-    &lt;a href=&#34;https://wzc0x0.github.io/images/rem-preview.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+    &lt;a href=&#34;https://blog.cankiss.ml/images/rem-preview.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
       &lt;figcaption&gt;&lt;h4&gt;rem 布局在iPhone6p下的截图&lt;/h4&gt;
       &lt;/figcaption&gt;
   &lt;/figure&gt;
@@ -587,10 +587,10 @@ style=&#34;box-sizing: border-box; display: flex; align-items: center; justify-c
     
     <item>
       <title>折腾树莓派3B&#43;</title>
-      <link>https://wzc0x0.github.io/post/raspberry-pi/3bplus/</link>
+      <link>https://blog.cankiss.ml/post/raspberry-pi/3bplus/</link>
       <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/post/raspberry-pi/3bplus/</guid>
+      <guid>https://blog.cankiss.ml/post/raspberry-pi/3bplus/</guid>
       
         <description>
 
@@ -924,10 +924,10 @@ screen -S 终端名&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
     
     <item>
       <title>树莓派3B&#43;链接蓝牙音箱</title>
-      <link>https://wzc0x0.github.io/post/raspberry-pi/python3/</link>
+      <link>https://blog.cankiss.ml/post/raspberry-pi/python3/</link>
       <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/post/raspberry-pi/python3/</guid>
+      <guid>https://blog.cankiss.ml/post/raspberry-pi/python3/</guid>
       
         <description>
 
@@ -1098,10 +1098,10 @@ paplay h2g2.ogg&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
     
     <item>
       <title>v2ray recommend server config</title>
-      <link>https://wzc0x0.github.io/post/breakwall/v2ray/</link>
+      <link>https://blog.cankiss.ml/post/breakwall/v2ray/</link>
       <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/post/breakwall/v2ray/</guid>
+      <guid>https://blog.cankiss.ml/post/breakwall/v2ray/</guid>
       
         <description>
 
@@ -1310,10 +1310,10 @@ paplay h2g2.ogg&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
     
     <item>
       <title>acme.sh 生成let&#39;s encrypt免费证书</title>
-      <link>https://wzc0x0.github.io/post/breakwall/letsencrypt/</link>
+      <link>https://blog.cankiss.ml/post/breakwall/letsencrypt/</link>
       <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://wzc0x0.github.io/post/breakwall/letsencrypt/</guid>
+      <guid>https://blog.cankiss.ml/post/breakwall/letsencrypt/</guid>
       
         <description>
 
