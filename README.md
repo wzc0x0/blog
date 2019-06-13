@@ -1,2 +1,3 @@
-# wzc0x0.github.io
+# https://blog.cankiss.ml
+
 My blog power by hugo & theme for jane
