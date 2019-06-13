@@ -6,10 +6,28 @@
     <description>Recent content in Categories on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 31 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wzc0x0.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>politics</title>
+      <link>https://wzc0x0.github.io/categories/politics/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wzc0x0.github.io/categories/politics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>society</title>
+      <link>https://wzc0x0.github.io/categories/society/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://wzc0x0.github.io/categories/society/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>html5</title>

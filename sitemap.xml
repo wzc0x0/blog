@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wzc0x0.github.io/post/society/kill-huawei/</loc>
+    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://wzc0x0.github.io/categories/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -21,6 +28,30 @@
   
   <url>
     <loc>https://wzc0x0.github.io/</loc>
+    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wzc0x0.github.io/categories/politics/</loc>
+    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wzc0x0.github.io/tags/politics/</loc>
+    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wzc0x0.github.io/categories/society/</loc>
+    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wzc0x0.github.io/tags/society/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
