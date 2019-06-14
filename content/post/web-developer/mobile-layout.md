@@ -55,6 +55,7 @@ px 布局总结几点：
 - banner 图这些的，用 vw 做缩放，在不同机型上合理展示。
 - 多用 flex 布局，加上浏览器厂商前缀兼容性已经近乎 100%。
 - 多用 padding 布局，居中、间隙都可以使用 padding。
+- 多用高度，少设置宽度。
 
 {{< gallery caption-effect="none">}}
 {{< figure src="/images/px-preview.png" title="px 布局在iPhone6p下的截图">}}
