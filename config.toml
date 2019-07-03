@@ -74,7 +74,7 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   moreMeta = true
 
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
-  dateFormatToUse = "2006年01月02日"
+  dateFormatToUse = "2006-01-02"
 
   showAuthorInfo = true # show author info below the article
 

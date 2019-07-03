@@ -1,0 +1,15 @@
+{{/*
+
+	https://caniuse.bitsofco.de/
+
+	Embed caniuse from caniuse.com Examples: 
+		
+	{{ < caniuse feature="fetch">}} 
+	
+*/}}
+
+<p class="ciu_embed" 
+data-feature="{{ .Get "feature" }}" 
+data-periods="future_3,future_1,current,past_1,past_2" 
+data-accessible-colours="false"></p>
+<script async src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js"></script>
