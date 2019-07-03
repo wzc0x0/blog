@@ -6,10 +6,55 @@
     <description>Recent content in Posts on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.cankiss.ml/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>利用html伪类设置表单效验样式</title>
+      <link>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</guid>
+      <description>兼容性 效果展示 参考文章 表单数据校验 使用 HTML 和 CSS 技巧对表单进行约束验证</description>
+    </item>
+    
+    <item>
+      <title>go mod使用</title>
+      <link>https://blog.cankiss.ml/post/golang/gomod/</link>
+      <pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/golang/gomod/</guid>
+      <description>golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的node_mod</description>
+    </item>
+    
+    <item>
+      <title>macOS下mysql使用</title>
+      <link>https://blog.cankiss.ml/post/mysql/macos/</link>
+      <pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/mysql/macos/</guid>
+      <description>不要使用 brew 安装 mysql，至少笔者是没有成功过的，系统是最新的 10.14.5。 直接去官方地址下载，可以需要注册 Oracle 帐号 客户端推荐使用：Navi</description>
+    </item>
+    
+    <item>
+      <title>html5中的httpClient</title>
+      <link>https://blog.cankiss.ml/post/web-developer/httpclient/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/httpclient/</guid>
+      <description>html5 中的 httpClient 目前只有两种：ajax、fetch。兼容性如下： ajax AJAX 即“Asynchronous JavaScript and XML”（异步的 JavaScript 与 XML 技术），指的是一套综合了多</description>
+    </item>
+    
+    <item>
+      <title>谈谈JavaScript中的Number</title>
+      <link>https://blog.cankiss.ml/post/web-developer/numberinjs/</link>
+      <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/numberinjs/</guid>
+      <description>在 JavaScript 中, Number 是一种 定义为 64 位双精度浮点型（double-precision 64-bit floating point format） (IEEE 754)的数字数据类型。 developer.mozilla.org/zh-CN/... 64 位存储数值，其中 0</description>
+    </item>
     
     <item>
       <title>About America Kill Huawei</title>

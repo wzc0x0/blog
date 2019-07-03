@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSS3 on Tech Blog</title>
+    <link>https://blog.cankiss.ml/tags/css3/</link>
+    <description>Recent content in CSS3 on Tech Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 28 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.cankiss.ml/tags/css3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>利用html伪类设置表单效验样式</title>
+      <link>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</guid>
+      <description>兼容性 效果展示 参考文章 表单数据校验 使用 HTML 和 CSS 技巧对表单进行约束验证</description>
+    </item>
+    
+  </channel>
+</rss>

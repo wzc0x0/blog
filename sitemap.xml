@@ -2,34 +2,129 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.cankiss.ml/post/society/kill-huawei/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://blog.cankiss.ml/categories/css3/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/css3/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/categories/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/post/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/html5/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/html5/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/golang/gomod/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/golang/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/golang/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/mysql/macos/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/mysql/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/mysql/</loc>
+    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/javascript/</loc>
+    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/javascript/</loc>
+    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/web-developer/httpclient/</loc>
+    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/web-developer/numberinjs/</loc>
+    <lastmod>2019-06-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/society/kill-huawei/</loc>
+    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -53,18 +148,6 @@
   <url>
     <loc>https://blog.cankiss.ml/tags/society/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/categories/html5/</loc>
-    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/tags/html5/</loc>
-    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
