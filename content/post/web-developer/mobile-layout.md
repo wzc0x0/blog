@@ -88,6 +88,10 @@ px 布局总结几点：
 @media (max-width: 414px) {
   /* iPhone6p、iPhone7p */
 }
+
+@media (min-device-width: 768px) {
+  /* iPad */
+}
 ```
 
 ## 1px 问题
