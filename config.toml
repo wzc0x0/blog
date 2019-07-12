@@ -92,3 +92,7 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   [params.social]                                         # 社交链接
     a-email = "mailto:wzc0x0@gmail.com"
     g-github = "https://github.com/wzc0x0"
+
+  [params.search.google]    # google custom search, see https://cse.google.com
+    enable = true
+    id = "012390943522988542469:vqqsszi-ltu"
