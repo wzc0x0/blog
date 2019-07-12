@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.ec807d8b802a40889537c26e014f733206312ea440d42e1f0dabed80918de1ac.css" integrity="sha256-7IB9i4AqQIiVN8JuAU9zMgYxLqRA1C4fDavtgJGN4aw=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.57ebe9c198f36b136ba71149c7220932b765de3524fd1fa898395521ed819be1.css" integrity="sha256-V&#43;vpwZjzaxNrpxFJxyIJMrdl3jUk/R&#43;omDlVIe2Bm&#43;E=" media="screen" crossorigin="anonymous">
 
 
 
@@ -62,7 +62,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.cankiss.ml/" />
 
-<meta property="og:updated_time" content="2019-06-28T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2019-07-11T00:00:00&#43;00:00"/>
 
 <meta itemprop="name" content="Tech Blog">
 <meta itemprop="description" content="A Tech Blog">
@@ -125,6 +125,22 @@
             <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
           
         
+      </li>
+    
+
+    
+      <li class="mobile-menu-item">
+        <a id="openSearch" class="mobile-menu-item-link menu-item-search" href="#">
+          <i class="iconfont">
+            <svg version="1.1" viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M973.81454219 973.81454219a91.78207815 91.78207815 0 0 1-129.80999631 0l-161.97482118-161.97482118a425.48527711 425.48527711 0 0 1-230.35931791 68.16531768 428.3346319 428.3346319 0 1 1 428.3346319-428.3346319 425.48527711 425.48527711 0 0 1-68.16531768 230.35931791l162.02961656 161.97482118a91.83687354 91.83687354 0 0 1-0.05479538 129.80999631zM451.67040679 145.69361559a305.97679241 305.97679241 0 1 0 0 611.95358361 305.97679241 305.97679241 0 0 0 0-611.95358361z">
+  </path>
+</svg>
+
+          </i>
+        </a>
       </li>
     
   </ul>
@@ -192,6 +208,36 @@
   
 
   
+    
+<div class="modal-dialog">
+    
+    <div class="modal-content">
+      <div id="closeSearch" title="Close" class="close">X</div>
+      <div class="modal-header">
+        <div class="modal-title">Search Cambia Research</div>
+      </div>
+      <div class="modal-body">
+          <script>
+            (function() {
+              var cx = '012390943522988542469:vqqsszi-ltu';
+              var gcse = document.createElement('script');
+              gcse.type = 'text/javascript';
+              gcse.async = true;
+              gcse.src = (document.location.protocol == 'https:' ? 'https:' :
+                  'http:') +
+                '//cse.google.com/cse.js?cx=' + cx;
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(gcse, s);
+            })();
+          </script>
+          <gcse:search></gcse:search>
+      </div>
+    </div>
+</div>
+
+  
+
+  
 
   <header id="header" class="header container">
     <div class="logo-wrapper">
@@ -250,6 +296,24 @@
 
       </li>
     
+
+    
+    
+
+    
+      <li class="menu-item">
+        <a id="openSearch" class="menu-item-link menu-item-search" href="#">
+          <i class="iconfont">
+            <svg version="1.1" viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M973.81454219 973.81454219a91.78207815 91.78207815 0 0 1-129.80999631 0l-161.97482118-161.97482118a425.48527711 425.48527711 0 0 1-230.35931791 68.16531768 428.3346319 428.3346319 0 1 1 428.3346319-428.3346319 425.48527711 425.48527711 0 0 1-68.16531768 230.35931791l162.02961656 161.97482118a91.83687354 91.83687354 0 0 1-0.05479538 129.80999631zM451.67040679 145.69361559a305.97679241 305.97679241 0 1 0 0 611.95358361 305.97679241 305.97679241 0 0 0 0-611.95358361z">
+  </path>
+</svg>
+
+          </i>
+        </a>
+      </li>
     
   </ul>
 </nav>
@@ -264,6 +328,78 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/golang/gomod/">go mod使用</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-06-20" class="post-time">
+        2019-06-20
+      </time>
+      <div class="post-category">
+          <a href="https://blog.cankiss.ml/categories/golang/"> golang </a>
+          
+        </div>
+      <span class="more-meta"> 约 414 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的node_mod
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/gomod/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+    
+      <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/mysql/macos/">macOS下mysql使用</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2019-06-20" class="post-time">
+        2019-06-20
+      </time>
+      <div class="post-category">
+          <a href="https://blog.cankiss.ml/categories/mysql/"> mysql </a>
+          
+        </div>
+      <span class="more-meta"> 约 94 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      不要使用 brew 安装 mysql，至少笔者是没有成功过的，系统是最新的 10.14.5。 直接去官方地址下载，可以需要注册 Oracle 帐号 客户端推荐使用：Navi
+    </div>
+    <div class="read-more">
+      <a href="/post/mysql/macos/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
     
       <article class="post bg-white">
   <header class="post-header">
@@ -296,79 +432,6 @@
     </div>
     <div class="read-more">
       <a href="/post/web-developer/httpclient/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/web-developer/numberinjs/">谈谈JavaScript中的Number</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-06-17" class="post-time">
-        2019-06-17
-      </time>
-      <div class="post-category">
-          <a href="https://blog.cankiss.ml/categories/javascript/"> JavaScript </a>
-          
-        </div>
-      <span class="more-meta"> 约 698 字 </span>
-      <span class="more-meta"> 预计阅读 2 分钟 </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      在 JavaScript 中, Number 是一种 定义为 64 位双精度浮点型（double-precision 64-bit floating point format） (IEEE 754)的数字数据类型。 developer.mozilla.org/zh-CN/... 64 位存储数值，其中 0
-    </div>
-    <div class="read-more">
-      <a href="/post/web-developer/numberinjs/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-    
-      <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/society/kill-huawei/">About America Kill Huawei</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2019-06-12" class="post-time">
-        2019-06-12
-      </time>
-      <div class="post-category">
-          <a href="https://blog.cankiss.ml/categories/society/"> society </a>
-          <a href="https://blog.cankiss.ml/categories/politics/"> politics </a>
-          
-        </div>
-      <span class="more-meta"> 约 718 字 </span>
-      <span class="more-meta"> 预计阅读 2 分钟 </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      备胎是准备了，但这备胎能不能用，好不好用，就要另说了。现在硬软件都是一个复杂系统，开发不是闷在黑屋，闭门造车就能折腾出来的。产品开发要经过长
-    </div>
-    <div class="read-more">
-      <a href="/post/society/kill-huawei/" class="read-more-link">阅读全文</a>
     </div>
     
   </div>
@@ -414,6 +477,10 @@
       
       <li >
         <a href="/page/4/">4</a>
+      </li>
+      
+      <li >
+        <a href="/page/5/">5</a>
       </li>
       
     </ul>
@@ -543,6 +610,25 @@
 
 
 
+
+
+
+  <script>
+    $("#openSearch").click(function(){
+      $(".modal-dialog").addClass("visible");
+    });
+
+    $("#closeSearch").click(function(){
+      $(".modal-dialog").removeClass("visible");
+    });
+
+    $(document).click(function(event) {
+    
+      if (!$(event.target).closest(".modal-content, #openSearch").length) {
+        $("body").find(".modal-dialog").removeClass("visible");
+      }
+    });
+  </script>
 
 
 

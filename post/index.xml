@@ -6,10 +6,28 @@
     <description>Recent content in Posts on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 28 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.cankiss.ml/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>你所不知的CSS</title>
+      <link>https://blog.cankiss.ml/post/web-developer/unknown-css/</link>
+      <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/unknown-css/</guid>
+      <description>前言 收录一下 CSS 技巧吧 单行多行截取文本 1 2 3 4 5 6 /* 单行截取 */ { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } 1 2 3 4 5 6 7 8 /* 多行移动端适用 */ { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; //属性规定</description>
+    </item>
+    
+    <item>
+      <title>CSS布局</title>
+      <link>https://blog.cankiss.ml/post/web-developer/css-layout/</link>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/css-layout/</guid>
+      <description>盒模型 &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document</description>
+    </item>
     
     <item>
       <title>利用html伪类设置表单效验样式</title>

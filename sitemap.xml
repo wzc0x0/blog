@@ -3,50 +3,64 @@
   
   <url>
     <loc>https://blog.cankiss.ml/categories/css3/</loc>
-    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/css3/</loc>
-    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/categories/</loc>
-    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/post/</loc>
-    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/</loc>
-    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/</loc>
-    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/categories/html5/</loc>
-    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/html5/</loc>
-    <lastmod>2019-06-28T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/web-developer/unknown-css/</loc>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/web-developer/css-layout/</loc>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
