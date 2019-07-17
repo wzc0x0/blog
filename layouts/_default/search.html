@@ -1,0 +1,113 @@
+{{ define "content" }}
+<article class="post bg-white">
+    <div class="my-auto">
+        <form action="{{ "search" | absURL }}" onkeyup="executeInlineSearch()">
+            <input id="search-query" name="s" placeholder="搜索一下！" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" autofocus/>
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 40 40">
+                <path fill-rule="evenodd" d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"/>
+            </svg>
+        </form>
+        <div id="search-results">
+            <p class="powered-by"><span class="left"></span><span class="right">Powered by <a class="hexo-link" href="https://fusejs.io/">fusejs</a>
+                <a class="hexo-link" href="https://markjs.io/">markjs</a></span></p>
+            <svg class="loading-skeleton" viewBox="0 0 400 130" preserveAspectRatio="none">
+                <rect x="0" y="0" width="400" height="130" clip-path="url(#w9hbib7wdxm)" style="fill: url(&quot;#xkv1tkg8kd&quot;);"></rect>
+                <defs>
+                    <clipPath id="w9hbib7wdxm">
+                        <rect x="0" y="0" rx="3" ry="3" width="70" height="10"></rect>
+                        <rect x="80" y="0" rx="3" ry="3" width="100" height="10"></rect>
+                        <rect x="190" y="0" rx="3" ry="3" width="10" height="10"></rect>
+                        <rect x="15" y="20" rx="3" ry="3" width="130" height="10"></rect>
+                        <rect x="155" y="20" rx="3" ry="3" width="130" height="10"></rect>
+                        <rect x="15" y="40" rx="3" ry="3" width="90" height="10"></rect>
+                        <rect x="115" y="40" rx="3" ry="3" width="60" height="10"></rect>
+                        <rect x="185" y="40" rx="3" ry="3" width="60" height="10"></rect>
+                        <rect x="0" y="60" rx="3" ry="3" width="30" height="10"></rect>
+                    </clipPath>
+                    <linearGradient id="xkv1tkg8kd">
+                        <stop offset="-2" stop-color="#f0f0f0" stop-opacity="1">
+                            <animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+                        </stop>
+                        <stop offset="-1" stop-color="#e0e0e0" stop-opacity="1">
+                            <animate attributeName="offset" values="-1; -1; 2" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+                        </stop>
+                        <stop offset="0" stop-color="#f0f0f0" stop-opacity="1">
+                            <animate attributeName="offset" values="0; 0; 3" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite"></animate>
+                        </stop>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+</article>
+<style>
+    .my-auto > form {
+        width: 100%;
+        position: relative;
+    }
+    .my-auto .loading-skeleton {
+        display: none;
+    }
+    .my-auto > form > input {
+        width: calc(100% - 30px);
+        height: 1.8em;
+        padding-left: 30px;
+        outline: none;
+        border: 1px solid #d4d8e3;
+        box-shadow: 0 1px 1px 0 rgba(85,95,110,.2);           
+    }
+    .my-auto > form > input:focus {
+        border: 1px solid #c05b4d;
+        box-shadow:none;
+    }
+    .my-auto > form > input:focus + .search-icon {
+        fill:#c05b4d;
+    }
+    .my-auto > form > .search-icon {
+        height: 18px;
+        width: 18px;
+        position: absolute;
+        top: 9px;
+        left: 5px;
+        fill:#d4d8e3;
+    }
+    #search-results > .powered-by {
+        overflow: hidden;
+        color: #8a8a8a;
+        font-size: 12px;
+    }
+    #search-results > .powered-by .left {
+        float: left;
+    }
+    #search-results > .powered-by .right {
+        font-style: oblique;
+        float: right;
+    }
+    #search-results > .powered-by .hexo-link {
+        color: #c05b4d;
+    }
+    .search-results-summary > h2 {
+        overflow: hidden;
+    }
+    .search-results-summary > h2 > a:nth-child(1) {
+        float: left;
+    }
+    .search-results-summary > h2 > a:nth-child(1):hover {
+        color: #c05b4d;
+    }
+    .search-results-summary > h2 > a:nth-child(2) {
+        float: right;
+        font-size: 20px;
+        font-weight: normal;
+    }
+</style>
+<!-- this template is sucked in by search.js and appended to the search-results div above. So editing here will adjust style -->
+<script id="search-result-template" type="text/x-js-template">
+    <div class="search-results-summary" id="summary-${key}"> 
+      <h2><a href="${link}">${title}</a><a>${date}</a></h2>
+      <p>${snippet}</p>
+      ${ isset tags }<p>标签: ${tags}</p>${ end }
+      ${ isset categories }<p>分类: ${categories}</p>${ end }
+    </div>
+</script>
+{{ end }}

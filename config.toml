@@ -53,9 +53,9 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   identifier = "categories"
   url = "/categories/"
 # [[menu.main]]
-#   name = "external-link"
+#   name = "搜索"
 #   weight = 50
-#   url = "https://gohugo.io"
+#   url = "/search/"
 
 [params]
   since = "2019"            # Site creation time          # 站点建立时间
@@ -87,12 +87,11 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   # Link custom CSS and JS assets
   #   (relative to /static/css and /static/js respectively)
   customCSS = []            # if ['custom.css'], load '/static/css/custom.css' file
-  customJS = []             # if ['custom.js'], load '/static/js/custom.js' file
+  customJS = ['fuse.min.js','jquery.mark.min.js','search.js']             # if ['custom.js'], load '/static/js/custom.js' file
 
   [params.social]                                         # 社交链接
     a-email = "mailto:wzc0x0@gmail.com"
     g-github = "https://github.com/wzc0x0"
 
-  [params.search.google]    # google custom search, see https://cse.google.com
-    enable = true
-    id = "012390943522988542469:vqqsszi-ltu"
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

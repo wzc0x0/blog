@@ -7,7 +7,7 @@ tags: ["html5", "CSS3"]
 categories: ["html5", "CSS3"]
 ---
 
-<img style="margin:auto" src="/images/3d-box-model.png">
+<img src="/images/3d-box-model.png">
 
 # 盒模型
 
