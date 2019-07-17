@@ -123,7 +123,7 @@
       
         <description>
 
-&lt;p&gt;&lt;img style=&#34;margin:auto&#34; src=&#34;https://blog.cankiss.ml/images/3d-box-model.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.cankiss.ml/images/3d-box-model.png&#34;&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;盒模型&#34;&gt;盒模型&lt;/h1&gt;
 
@@ -2803,6 +2803,63 @@ sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem &lt;span class=&#34;m&#34;&
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;acme.sh  --upgrade  --auto-upgrade &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>搜索</title>
+      <link>https://blog.cankiss.ml/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/search/</guid>
+      
+        <description>
+
+&lt;p&gt;This file exists solely to respond to /search URL with the related &lt;code&gt;search&lt;/code&gt; layout template.&lt;/p&gt;
+
+&lt;p&gt;No content shown here is rendered, all content is based in the template layouts/page/search.html&lt;/p&gt;
+
+&lt;p&gt;Setting a very low sitemap priority will tell search engines this is not important content.&lt;/p&gt;
+
+&lt;p&gt;This implementation uses Fusejs, jquery and mark.js&lt;/p&gt;
+
+&lt;h2 id=&#34;initial-setup&#34;&gt;Initial setup&lt;/h2&gt;
+
+&lt;p&gt;Search depends on additional output content type of JSON in config.toml
+`&lt;code&gt;
+[outputs]
+home = [&amp;quot;HTML&amp;quot;, &amp;quot;JSON&amp;quot;]
+\&lt;/code&gt;`&lt;/p&gt;
+
+&lt;h2 id=&#34;searching-additional-fileds&#34;&gt;Searching additional fileds&lt;/h2&gt;
+
+&lt;p&gt;To search additional fields defined in front matter, you must add it in 2 places.&lt;/p&gt;
+
+&lt;h3 id=&#34;edit-layouts-default-index-json&#34;&gt;Edit layouts/_default/index.JSON&lt;/h3&gt;
+
+&lt;p&gt;This exposes the values in /index.json
+i.e. add &lt;code&gt;category&lt;/code&gt;
+`&lt;code&gt;
+...
+&amp;quot;contents&amp;quot;:{{ .Content | plainify | jsonify }}
+{{ if .Params.tags }},
+&amp;quot;tags&amp;quot;:{{ .Params.tags | jsonify }}{{end}},
+&amp;quot;categories&amp;quot; : {{ .Params.categories | jsonify }},
+...
+\&lt;/code&gt;`&lt;/p&gt;
+
+&lt;h3 id=&#34;edit-fuse-js-options-to-search&#34;&gt;Edit fuse.js options to Search&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;static/js/search.js&lt;/code&gt;
+`&lt;code&gt;
+keys: [
+&amp;quot;title&amp;quot;,
+&amp;quot;contents&amp;quot;,
+&amp;quot;tags&amp;quot;,
+&amp;quot;categories&amp;quot;
+]
+\&lt;/code&gt;`&lt;/p&gt;
+</description>
       
     </item>
     
