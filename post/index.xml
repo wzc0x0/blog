@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 11 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.cankiss.ml/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>面向现代浏览器部署代码</title>
+      <link>https://blog.cankiss.ml/post/web-developer/deploying-modern-code/</link>
+      <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/deploying-modern-code/</guid>
+      <description>前言 笔者最早在vue-cli3（vue 的工具链）中看到的这种前端代码的部署方式，并在生产环境做了部署，但是各种原因并没有发现什么优势。不过这</description>
+    </item>
     
     <item>
       <title>你所不知的CSS</title>
