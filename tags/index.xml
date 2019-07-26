@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.cankiss.ml/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>html5</title>
+      <link>https://blog.cankiss.ml/tags/html5/</link>
+      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/tags/html5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iOS</title>
+      <link>https://blog.cankiss.ml/tags/ios/</link>
+      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/tags/ios/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>JavaScript</title>
@@ -35,15 +53,6 @@
       <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.cankiss.ml/tags/css3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>html5</title>
-      <link>https://blog.cankiss.ml/tags/html5/</link>
-      <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.cankiss.ml/tags/html5/</guid>
       <description></description>
     </item>
     

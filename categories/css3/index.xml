@@ -21,11 +21,11 @@
     </item>
     
     <item>
-      <title>CSS布局</title>
-      <link>https://blog.cankiss.ml/post/web-developer/css-layout/</link>
+      <title>什么是BFC</title>
+      <link>https://blog.cankiss.ml/post/web-developer/bfc-layout/</link>
       <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/css-layout/</guid>
+      <guid>https://blog.cankiss.ml/post/web-developer/bfc-layout/</guid>
       <description>盒模型 &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document</description>
     </item>
     

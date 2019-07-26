@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CSS布局 - Tech Blog</title>
+  <title>h5页面嵌套iOS中的坑点 - Tech Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Mr.Wang" />
-  <meta name="description" content="盒模型 &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document" />
+  <meta name="description" content="原生 iOS 键盘收起对 h5 页面的影响 问题描述 iOS 开启 WebView 或者浏览器中嵌入 h5 如果当前 h5 页面底部有position:fixed，当 iOS 键盘弹出再落回的时候会造" />
 
   <meta name="keywords" content="html5, linux, golang, society, hugo, jane" />
 
@@ -35,7 +35,7 @@
 <meta name="generator" content="Hugo 0.55.6" />
 
 
-<link rel="canonical" href="https://blog.cankiss.ml/post/web-developer/css-layout/" />
+<link rel="canonical" href="https://blog.cankiss.ml/post/web-developer/ios-webview-bug/" />
 
 
 
@@ -57,27 +57,27 @@
 
 
 
-<meta property="og:title" content="CSS布局" />
-<meta property="og:description" content="盒模型 &lt;div&gt;&lt;/div&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document" />
+<meta property="og:title" content="h5页面嵌套iOS中的坑点" />
+<meta property="og:description" content="原生 iOS 键盘收起对 h5 页面的影响 问题描述 iOS 开启 WebView 或者浏览器中嵌入 h5 如果当前 h5 页面底部有position:fixed，当 iOS 键盘弹出再落回的时候会造" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.cankiss.ml/post/web-developer/css-layout/" />
-<meta property="article:published_time" content="2019-07-10T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-07-11T00:00:00&#43;00:00"/>
+<meta property="og:url" content="https://blog.cankiss.ml/post/web-developer/ios-webview-bug/" />
+<meta property="article:published_time" content="2019-07-26T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-26T00:00:00&#43;00:00"/>
 
-<meta itemprop="name" content="CSS布局">
-<meta itemprop="description" content="盒模型 &lt;div&gt;&lt;/div&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document">
-
-
-<meta itemprop="datePublished" content="2019-07-10T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-07-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1208">
+<meta itemprop="name" content="h5页面嵌套iOS中的坑点">
+<meta itemprop="description" content="原生 iOS 键盘收起对 h5 页面的影响 问题描述 iOS 开启 WebView 或者浏览器中嵌入 h5 如果当前 h5 页面底部有position:fixed，当 iOS 键盘弹出再落回的时候会造">
 
 
+<meta itemprop="datePublished" content="2019-07-26T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-26T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="548">
 
-<meta itemprop="keywords" content="html5,CSS3," />
+
+
+<meta itemprop="keywords" content="html5,iOS," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="CSS布局"/>
-<meta name="twitter:description" content="盒模型 &lt;div&gt;&lt;/div&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document"/>
+<meta name="twitter:title" content="h5页面嵌套iOS中的坑点"/>
+<meta name="twitter:description" content="原生 iOS 键盘收起对 h5 页面的影响 问题描述 iOS 开启 WebView 或者浏览器中嵌入 h5 如果当前 h5 页面底部有position:fixed，当 iOS 键盘弹出再落回的时候会造"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -297,19 +297,19 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">CSS布局</h1>
+      <h1 class="post-title">h5页面嵌套iOS中的坑点</h1>
       
       <div class="post-meta">
-        <time datetime="2019-07-10" class="post-time">
-          2019-07-10
+        <time datetime="2019-07-26" class="post-time">
+          2019-07-26
         </time>
         <div class="post-category">
             <a href="https://blog.cankiss.ml/categories/html5/"> html5 </a>
-            <a href="https://blog.cankiss.ml/categories/css3/"> CSS3 </a>
+            <a href="https://blog.cankiss.ml/categories/ios/"> iOS </a>
             
           </div>
-        <span class="more-meta"> 约 1208 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 548 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
         
@@ -326,28 +326,21 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#盒模型">盒模型</a>
+<li><a href="#原生-ios-键盘收起对-h5-页面的影响">原生 iOS 键盘收起对 h5 页面的影响</a>
 <ul>
-<li><a href="#ie-盒模型-怪异盒模型">IE 盒模型（怪异盒模型）</a></li>
-<li><a href="#标准盒模型">标准盒模型</a></li>
+<li><a href="#问题描述">问题描述</a></li>
+<li><a href="#解决方案">解决方案</a></li>
 </ul></li>
-<li><a href="#bfc">BFC</a>
+<li><a href="#fastclick-对-textarea-等元素-focus-影响">FastClick 对 textarea 等元素 focus 影响</a>
 <ul>
-<li><a href="#触发-bfc">触发 BFC</a></li>
-<li><a href="#应用">应用</a>
+<li><a href="#问题描述-1">问题描述</a></li>
+<li><a href="#解决方案-1">解决方案</a></li>
+</ul></li>
+<li><a href="#ios-键盘拼音问题">iOS 键盘拼音问题</a>
 <ul>
-<li><a href="#双-div-外边距发生折叠">双 div 外边距发生折叠</a></li>
-<li><a href="#清除浮动">清除浮动</a></li>
-<li><a href="#两列自适应布局">两列自适应布局</a></li>
-<li><a href="#行内元素">行内元素</a></li>
+<li><a href="#问题描述-2">问题描述</a></li>
+<li><a href="#解决方案-2">解决方案</a></li>
 </ul></li>
-<li><a href="#应用-1">应用</a>
-<ul>
-<li><a href="#水平居中">水平居中</a></li>
-<li><a href="#垂直居中">垂直居中</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#参考文档">参考文档</a></li>
 </ul>
 </nav>
   </div>
@@ -357,302 +350,135 @@
     <div class="post-content">
       
 
-<p><img src="/images/3d-box-model.png"></p>
+<h1 id="原生-ios-键盘收起对-h5-页面的影响">原生 iOS 键盘收起对 h5 页面的影响</h1>
 
-<h1 id="盒模型">盒模型</h1>
+<h2 id="问题描述">问题描述</h2>
 
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-      
-      
-      
-    
-     
-      
-    
-    
-
-    
-    
-         
-         
-         
-
-         
-        
-        
-        
-        
-        
-        
-      
-      
-    
-  
-
-
-<blockquote>
-  <p><code>&lt;div&gt;&lt;/div&gt;</code>标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document tree 生成的 render tree，而盒子模型就是 render tree 的节点。</p>
+<p>iOS 开启 WebView 或者浏览器中嵌入 h5</p>
 
 <ul>
-<li>注意:</li>
-<li>1. CSS 作用的是盒子(Box), 而不是元素(Element);</li>
-<li>2. JS 无法直接操作盒子。</li>
-</ul></p>
-  <footer>
-    <strong></strong>
-    
-      
-        <cite>
-          <a href="https://www.cnblogs.com/fsjohnhuang/p/5259121.html" title="https://www.cnblogs.com/fsjohnhuang/p/5259121.html">cnblogs.com/fsjohnhuang/p/...</a> 
-        </cite>
-      
-    
-  </footer>
-</blockquote>
-
-
-<h2 id="ie-盒模型-怪异盒模型">IE 盒模型（怪异盒模型）</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">width = content-width + padding-width + border-width
-height = content-height + padding-height + border-height</pre></td></tr></table>
-</div>
-</div>
-<h2 id="标准盒模型">标准盒模型</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">width = content-width
-height = content-height</pre></td></tr></table>
-</div>
-</div>
-<div class="shortcode-notice note">
-  <div class="shortcode-notice-title note">
-    
-      注意
-    
-  </div>
-  
-
-<p>默认大多数浏览器盒模型处理方式是标准盒模型。但是为了符合人们大多数的布局习惯，可以通过设置<code>box-sizing:border-box</code>，转换成 IE 盒模型，这也是大多数布局样式的首选方式。</p>
-
-<p></div></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-css" data-lang="css"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-css" data-lang="css"><span class="o">*,</span>
-<span class="o">*</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span>
-<span class="o">*</span><span class="p">:</span><span class="nd">after</span> <span class="p">{</span>
-  <span class="k">box-sizing</span><span class="p">:</span> <span class="kc">border-box</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c">/* or  */</span>
-<span class="c">/* Vendor Prefixes &amp; inherit  */</span>
-<span class="nt">html</span> <span class="p">{</span>
-  <span class="kp">-webkit-</span><span class="k">box-sizing</span><span class="p">:</span> <span class="kc">border-box</span><span class="p">;</span>
-  <span class="kp">-moz-</span><span class="k">box-sizing</span><span class="p">:</span> <span class="kc">border-box</span><span class="p">;</span>
-  <span class="k">box-sizing</span><span class="p">:</span> <span class="kc">border-box</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">*,</span>
-<span class="o">*</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span>
-<span class="o">*</span><span class="p">:</span><span class="nd">after</span> <span class="p">{</span>
-  <span class="kp">-webkit-</span><span class="k">box-sizing</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
-  <span class="kp">-moz-</span><span class="k">box-sizing</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
-  <span class="k">box-sizing</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="bfc">BFC</h1>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-  
-
-
-<blockquote>
-  <p><p>那么 BFC 是什么呢？</p>
-
-<p>BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述定位方案的普通流。</p>
-
-<p>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</p>
-
-<p>通俗一点来讲，可以把 BFC 理解为一个封闭的大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。</p>
-</p>
-  <footer>
-    <strong></strong>
-    
-      
-        <cite>
-          <a href="https://zhuanlan.zhihu.com/p/25321647" title="https://zhuanlan.zhihu.com/p/25321647">10 分钟理解 BFC 原理</a> 
-        </cite>
-      
-    
-  </footer>
-</blockquote>
-
-
-<h2 id="触发-bfc">触发 BFC</h2>
-
-<ul>
-<li>根元素(html)</li>
-<li>浮动元素（元素的 float 不是 none）</li>
-<li>绝对定位元素（元素的 position 为 absolute 或 fixed）</li>
-<li>行内块元素（元素的 display 为 inline-block）</li>
-<li>表格单元格（元素的 display 为 table-cell，HTML 表格单元格默认为该值）</li>
-<li>表格标题（元素的 display 为 table-caption，HTML 表格标题默认为该值）</li>
-<li>overflow 值不为 visible 的块元素</li>
-<li>弹性元素（display 为 flex 或 inline-flex 元素的直接子元素）</li>
-<li>网格元素（display 为 grid 或 inline-grid 元素的直接子元素）</li>
+<li>如果当前 h5 页面底部有<code>position:fixed</code>，当 iOS 键盘弹出再落回的时候会造成页面底部大量留白。</li>
+<li>如果是<code>position:fixed</code>弹窗，则当键盘收起时，弹窗位置会发生轻微偏移，造成弹窗上的点击失效。</li>
+<li>甚至正常页面的点击也有这样的问题。</li>
 </ul>
 
-<p><em>以上内容来自<sup class="footnote-ref" id="fnref:footnote1"><a href="#fn:footnote1">1</a></sup></em></p>
+<h2 id="解决方案">解决方案</h2>
 
-<h2 id="应用">应用</h2>
+<p>归根结底，是 iOS 原生键盘收起时，页面整体没有正常回落，导致你看到的页面和实际的有稍许差距。这是 iOS11 以来的经典 bug。</p>
 
-<h3 id="双-div-外边距发生折叠">双 div 外边距发生折叠</h3>
+<p>当键盘收起时做以下操作（一般是 input 框 blur 时候）：</p>
 
-<p>通过设置<code>overflow: hidden</code>触发 BFC，即可变成正常<code>margin</code>边距</p>
+<ul>
+<li>scrollIntoViewIfNeeded 在移动端兼容性非常好</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;.btn&#34;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;.chunk&#34;</span><span class="p">);</span>
+<span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">.</span><span class="nx">scrollIntoViewIfNeeded</span><span class="p">();</span>
+  <span class="c1">// 控制页面滚动到当前dom可视的居中位置
+</span><span class="c1"></span><span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>采用 window.scroll 强制滚动到头部</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">scroll</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="fastclick-对-textarea-等元素-focus-影响">FastClick 对 textarea 等元素 focus 影响</h1>
 
-<h3 id="清除浮动">清除浮动</h3>
+<h2 id="问题描述-1">问题描述</h2>
 
-<p>内部元素设置浮动脱离普通文档流造成高度坍陷，父元素设置<code>overflow: hidden</code>，即可正常包裹内部元素。</p>
-
-<h3 id="两列自适应布局">两列自适应布局</h3>
+<p>FastClick 是对老的手机系统版本 js click 事件延迟 300ms 执行问题做处理的 js 库。如今在 iOS 9.3<sup class="footnote-ref" id="fnref:footnote"><a href="#fn:footnote">1</a></sup> 以上版本，可以通过简单的 meta 标签来回避这个问题。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width&#34;</span> <span class="p">/&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>然而为了适配老的机型，在项目中存在有时候就是累赘，比如会造成表单元素聚焦<strong>非常迟钝</strong>。</p>
+
+<h2 id="解决方案-1">解决方案</h2>
+
+<ul>
+<li><code>needsclick</code> className 忽略</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item needsclick&#34;</span><span class="p">&gt;</span>My El<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="c">&lt;!-- className of needsclick will ignored by fastclick --&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>一种 hack 写法</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-vue" data-lang="vue"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;height: 100px;width: 100px;float: left;background: lightblue&#34;</span><span class="p">&gt;</span>
-  我是一个左浮动的元素
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 200px; height: 200px;background: #eee&#34;</span><span class="p">&gt;</span>
-  我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px;
-  background: #eee;
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-vue" data-lang="vue">&lt;textarea
+  autocomplete=&#34;off&#34;
+  spellcheck=&#34;false&#34;
+  autocapitalize=&#34;off&#34;
+  autocorrect=&#34;off&#34;
+  v-model.trim=&#34;test&#34;
+  @blur=&#34;e =&gt; e.target.scrollIntoViewIfNeeded()&#34;
+  @click=&#34;e =&gt; e.target.focus()&#34;
+&gt;&lt;/textarea&gt;</code></pre></td></tr></table>
 </div>
 </div>
-<p>此时左边元素会覆盖右边元素，通过设置右边元素<code>overflow: hidden</code>，就会正常两列排版。</p>
+<h1 id="ios-键盘拼音问题">iOS 键盘拼音问题</h1>
 
-<h3 id="行内元素">行内元素</h3>
+<h2 id="问题描述-2">问题描述</h2>
 
-<p>常见的 <code>span,img,button,input,label</code> 等。更多行内元素请查看<sup class="footnote-ref" id="fnref:footnote2"><a href="#fn:footnote2">2</a></sup>
-<br></p>
+<p>iOS 键盘在打拼音的时候，默认 input 事件是不执行的，所以 vue 当中的<code>v-model</code>也是没有值的。</p>
 
-<div class="shortcode-notice note">
-  <div class="shortcode-notice-title note">
-    
-      注意
-    
-  </div>
-  
+<h2 id="解决方案-2">解决方案</h2>
 
-<p>行内元素除了 img 外均<strong>忽略宽高</strong><br />
-高度依靠<code>font-size line-height</code><br />
-padding,margin 只在水平方向实现，垂直方向无效
-line,line-block 会有空白间隙，通过设置父元素<code>font-size:0</code>解决</p>
-
-<p></div></p>
-
-<h2 id="应用-1">应用</h2>
-
-<h3 id="水平居中">水平居中</h3>
-
-<p>当前元素设置<code>inline-block</code>，通过设置父容器 <code>text-align:center</code> 则可以使其水平居中。</p>
-
-<h3 id="垂直居中">垂直居中</h3>
-
-<p>当前元素设置<code>inline-block</code>，元素撑开父元素高度，然后设置其 vertical-align:middle，其他行内元素则可以在此父元素下垂直居中。<br />
-常见的图标和字体上下对齐，设置 img <code>vertical-align:middle</code></p>
-
-<h1 id="参考文档">参考文档</h1>
-
-<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context">块格式化上下文</a></li>
-<li><a href="https://juejin.im/entry/5938daf7a0bb9f006b2295db">小科普：到底什么是 BFC、IFC、GFC 和 FFC</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/25321647">10 分钟理解 BFC 原理</a></li>
-<li><a href="https://www.liayal.com/article/5a4b645276b2f863f44722cf">IFC、BFC、GFC 与 FFC 知多少</a></li>
-</ul>
+<p>换成<code>keyup</code>事件</p>
 <div class="footnotes">
 
 <hr />
 
 <ol>
-<li id="fn:footnote1"><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</a>
- <a class="footnote-return" href="#fnref:footnote1"><sup>[return]</sup></a></li>
-<li id="fn:footnote2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements</a>
- <a class="footnote-return" href="#fnref:footnote2"><sup>[return]</sup></a></li>
+<li id="fn:footnote"><a href="https://juejin.im/post/5ce764a2f265da1b8c19645a">2019 再聊移动端 300ms 延迟及 fastClick 原理解析</a>
+ <a class="footnote-return" href="#fnref:footnote"><sup>[return]</sup></a></li>
 </ol>
 </div>
 
@@ -668,7 +494,7 @@ line,line-block 会有空白间隙，通过设置父元素<code>font-size:0</cod
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2019-07-11
+      2019-07-26
       
     </span>
   </p>
@@ -686,29 +512,16 @@ line,line-block 会有空白间隙，通过设置父元素<code>font-size:0</cod
     <footer class="post-footer">
       <div class="post-tags">
           <a href="https://blog.cankiss.ml/tags/html5/">html5</a>
-          <a href="https://blog.cankiss.ml/tags/css3/">CSS3</a>
+          <a href="https://blog.cankiss.ml/tags/ios/">iOS</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/web-developer/unknown-css/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">你所不知的CSS</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/web-developer/input-css-vaild/">
-            <span class="next-text nav-default">利用html伪类设置表单效验样式</span>
+          <a class="next" href="/post/web-developer/deploying-modern-code/">
+            <span class="next-text nav-default">面向现代浏览器部署代码</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">

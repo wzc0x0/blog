@@ -3,7 +3,56 @@
   
   <url>
     <loc>https://blog.cankiss.ml/categories/</loc>
-    <lastmod>2019-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/web-developer/ios-webview-bug/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/html5/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/html5/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/ios/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/ios/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -15,24 +64,6 @@
   
   <url>
     <loc>https://blog.cankiss.ml/tags/javascript/</loc>
-    <lastmod>2019-07-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/post/</loc>
-    <lastmod>2019-07-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/tags/</loc>
-    <lastmod>2019-07-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/</loc>
     <lastmod>2019-07-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -63,18 +94,6 @@
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/categories/html5/</loc>
-    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/tags/html5/</loc>
-    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.cankiss.ml/post/web-developer/unknown-css/</loc>
     <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -82,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/post/web-developer/css-layout/</loc>
+    <loc>https://blog.cankiss.ml/post/web-developer/bfc-layout/</loc>
     <lastmod>2019-07-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
