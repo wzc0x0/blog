@@ -1,7 +1,7 @@
 ---
 date: 2019-07-10
 lastmod: 2019-07-11
-title: "CSS布局"
+title: "什么是BFC"
 draft: false
 tags: ["html5", "CSS3"]
 categories: ["html5", "CSS3"]
@@ -36,7 +36,7 @@ height = content-height
 ```
 
 {{% notice note 注意 %}}
-默认大多数浏览器盒模型处理方式是标准盒模型。但是为了符合人们大多数的布局习惯，可以通过设置`box-sizing:border-box`，转换成 IE 盒模型，这也是大多数布局样式的首选方式。
+默认大多数浏览器盒模型处理方式是**标准盒模型**。但是为了符合人们大多数的布局习惯，可以通过设置`box-sizing:border-box`转换成 IE 盒模型，这也是大多数 UI 框架样式的首选方式。
 {{% /notice %}}
 
 ```css
@@ -121,10 +121,9 @@ _以上内容来自[^footnote1]_
 <br>
 
 {{% notice note 注意 %}}
-行内元素除了 img 外均**忽略宽高**  
-高度依靠`font-size line-height`  
-padding,margin 只在水平方向实现，垂直方向无效
-line,line-block 会有空白间隙，通过设置父元素`font-size:0`解决
+1、行内元素除了 img 外均**忽略宽高**  
+2、高度依靠`font-size line-height`, `padding margin` 只在水平方向实现，垂直方向无效  
+3、`display:line,line-block` 会有空白间隙，通过设置父元素`font-size:0`解决
 {{% /notice %}}
 
 ## 应用
@@ -135,7 +134,7 @@ line,line-block 会有空白间隙，通过设置父元素`font-size:0`解决
 
 ### 垂直居中
 
-当前元素设置`inline-block`，元素撑开父元素高度，然后设置其 vertical-align:middle，其他行内元素则可以在此父元素下垂直居中。  
+当前元素设置`inline-block`，其中一个子元素撑开父元素高度，然后设置其 `vertical-align:middle`，则其他行内元素在此父元素下垂直居中。  
 常见的图标和字体上下对齐，设置 img `vertical-align:middle`
 
 # 参考文档
