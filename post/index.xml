@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.cankiss.ml/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>H5唤起native app</title>
+      <link>https://blog.cankiss.ml/post/web-developer/call-app/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/call-app/</guid>
+      <description>前言 这是一个大坑做好准备，因为各端差异性，没有一个统一方案，需要各端兼容。 URLScheme 协议打开 APP URLScheme 协议： 1 newsapp:// iOS 端还支持smart app banner打开 ap</description>
+    </item>
     
     <item>
       <title>git 常用命令行操作总结</title>
