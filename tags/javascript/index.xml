@@ -6,10 +6,19 @@
     <description>Recent content in JavaScript on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.cankiss.ml/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JS中的节流与防抖函数</title>
+      <link>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</guid>
+      <description>前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce</description>
+    </item>
     
     <item>
       <title>面向现代浏览器部署代码</title>

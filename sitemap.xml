@@ -3,7 +3,44 @@
   
   <url>
     <loc>https://blog.cankiss.ml/categories/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/javascript/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/javascript/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -12,24 +49,6 @@
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/post/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/tags/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -79,18 +98,6 @@
   <url>
     <loc>https://blog.cankiss.ml/tags/ios/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/categories/javascript/</loc>
-    <lastmod>2019-07-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/tags/javascript/</loc>
-    <lastmod>2019-07-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,150 @@
     <description>Recent content on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://blog.cankiss.ml/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JS中的节流与防抖函数</title>
+      <link>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 &lt;code&gt;keyup&lt;/code&gt; 事件等。&lt;/p&gt;
+
+&lt;h1 id=&#34;debounce&#34;&gt;debounce&lt;/h1&gt;
+
+&lt;h2 id=&#34;一个简单可用的实现代码&#34;&gt;一个简单可用的实现代码&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Returns a function, that, as long as it continues to be invoked, will not
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// be triggered. The function will be called after it stops being called for
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// N milliseconds. If `immediate` is passed, trigger the function on the
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// leading edge, instead of the trailing.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;debounce&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;immediate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;timeout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;context&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;nx&#34;&gt;args&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;arguments&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;later&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nx&#34;&gt;timeout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;immediate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;apply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;callNow&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;immediate&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;timeout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;clearTimeout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;timeout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;timeout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setTimeout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;later&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;wait&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;callNow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;apply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;debounce-codepen-在线体验&#34;&gt;debounce codepen 在线体验&lt;/h2&gt;
+
+ 
+
+
+
+
+
+
+
+
+
+&lt;p class=&#34;codepen&#34; 
+data-height=&#34;400&#34; 
+data-theme-id=&#34;dark&#34; 
+data-default-tab=&#34;result&#34; 
+data-user=&#34;wzc0x0&#34; 
+data-slug-hash=&#34;YwNwgy&#34; 
+data-preview=&#34;true&#34; 
+style=&#34;box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;&#34;&gt;&lt;/p&gt;
+&lt;script async src=&#34;https://static.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;Debounce（防抖）技术把多次顺序调用合成一次。在你指定的时间内，无论函数被调用多少次，都算做一次调用。也就是说&lt;strong&gt;相邻两次函数执行间隔必须大于等于指定的时间&lt;/strong&gt;。适合于键盘事件，缓冲事件回调。&lt;/p&gt;
+
+&lt;div class=&#34;shortcode-notice tip&#34;&gt;
+  &lt;div class=&#34;shortcode-notice-title tip&#34;&gt;
+    
+      lodash中的实现
+    
+  &lt;/div&gt;
+  
+
+&lt;p&gt;&lt;a href=&#34;https://lodash.com/docs/4.17.15#debounce&#34;&gt;_.debounce&lt;/a&gt;中的第三个参数，&lt;code&gt;{leading: true,trailing:false}&lt;/code&gt;，指定当前函数首次触发时执行。&lt;/p&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;throttle&#34;&gt;throttle&lt;/h1&gt;
+
+&lt;p&gt;在 lodash 中的，throttle 就是设置第三个参数 &lt;code&gt;maxWait&lt;/code&gt; 的 debounce 函数。这样节流函数保证在指定的时间内执行一次函数。适合于滚动条事件，将多次事件按时间分割开延迟执行。&lt;br /&gt;
+&lt;strong&gt;不同与 debounce 的是：debounce 的时间间隔结束后才会去执行函数，throttle 则是在时间间隔内检查函数。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;requestanimationframe&#34;&gt;requestAnimationFrame&lt;/h1&gt;
+
+
+
+&lt;p class=&#34;ciu_embed&#34; 
+data-feature=&#34;requestanimationframe&#34; 
+data-periods=&#34;future_3,future_1,current,past_1,past_2&#34; 
+data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
+&lt;script async src=&#34;https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js&#34;&gt;&lt;/script&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;requestAnimationFrame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;callback&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 下一次重绘之前更新动画帧所调用的函数(即上面所说的回调函数)
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 动画保持 60fps（每一帧 16 ms），浏览器内部决定渲染的最佳时机
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 一般在js dom动画中使用，更加精确细腻操作
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;类似&lt;code&gt;_.throttle(callback,16)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;参考文章&#34;&gt;参考文章&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://jinlong.github.io/2016/04/24/Debouncing-and-Throttling-Explained-Through-Examples/&#34;&gt;实例解析防抖动（Debouncing）和节流阀（Throttling）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame&#34;&gt;window.requestAnimationFrame&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>H5唤起native app</title>
@@ -749,16 +889,16 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
 &lt;h1 id=&#34;尝试-diy-现代打包工具-目前还没成熟的项目&#34;&gt;尝试 diy 现代打包工具（目前还没成熟的项目）&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;(babel-esm-plugin)[&lt;a href=&#34;https://github.com/prateekbh/babel-esm-plugin&#34;&gt;https://github.com/prateekbh/babel-esm-plugin&lt;/a&gt;]&lt;br /&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/prateekbh/babel-esm-plugin&#34;&gt;babel-esm-plugin&lt;/a&gt;&lt;br /&gt;
 可以操作 babel 输出两种 js 代码&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;(webpack-babel-multi-target-plugin)[&lt;a href=&#34;https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin&#34;&gt;https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin&lt;/a&gt;]&lt;br /&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin&#34;&gt;webpack-babel-multi-target-plugin&lt;/a&gt;&lt;br /&gt;
 比较全面的实现方式，但是笔者在 vue 项目里打包 vendor 包巨大。不支持按需方式打包。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
 
-&lt;p&gt;(Serve modern code to modern browsers for faster page loads)[&lt;a href=&#34;https://web.dev/serve-modern-code-to-modern-browsers&#34;&gt;https://web.dev/serve-modern-code-to-modern-browsers&lt;/a&gt;]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://web.dev/serve-modern-code-to-modern-browsers&#34;&gt;Serve modern code to modern browsers for faster page loads&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>

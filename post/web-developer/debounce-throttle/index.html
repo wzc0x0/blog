@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>归档 - Tech Blog</title>
+  <title>JS中的节流与防抖函数 - Tech Blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Mr.Wang" />
-  <meta name="description" content="A Tech Blog" />
+  <meta name="description" content="前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce" />
+
   <meta name="keywords" content="html5, linux, golang, society, hugo, jane" />
 
 
@@ -34,8 +35,7 @@
 <meta name="generator" content="Hugo 0.55.6" />
 
 
-<link rel="canonical" href="https://blog.cankiss.ml/post/" />
-<link href="%7balternate%20%7bRSS%20application/rss&#43;xml%20%20index%20alternate%20%20false%20false%20true%20false%20false%200%7d%20/post/index.xml%20https://blog.cankiss.ml/post/index.xml%7d" rel="alternate" type="application/rss+xml" title="Tech Blog" />
+<link rel="canonical" href="https://blog.cankiss.ml/post/web-developer/debounce-throttle/" />
 
 
 
@@ -57,19 +57,27 @@
 
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="A Tech Blog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.cankiss.ml/post/" />
+<meta property="og:title" content="JS中的节流与防抖函数" />
+<meta property="og:description" content="前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.cankiss.ml/post/web-developer/debounce-throttle/" />
+<meta property="article:published_time" content="2019-08-12T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-08-12T00:00:00&#43;00:00"/>
 
-<meta property="og:updated_time" content="2019-08-12T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="JS中的节流与防抖函数">
+<meta itemprop="description" content="前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce">
 
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="A Tech Blog">
 
+<meta itemprop="datePublished" content="2019-08-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-12T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="656">
+
+
+
+<meta itemprop="keywords" content="JavaScript," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="A Tech Blog"/>
+<meta name="twitter:title" content="JS中的节流与防抖函数"/>
+<meta name="twitter:description" content="前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -228,7 +236,7 @@
 
       </li>
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -286,120 +294,258 @@
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-<section id="archive" class="archive">
+          <article class="post bg-white">
     
-      <div class="collection-title">
-        <h2 class="archive-year">2019</h2>
+    <header class="post-header">
+      <h1 class="post-title">JS中的节流与防抖函数</h1>
+      
+      <div class="post-meta">
+        <time datetime="2019-08-12" class="post-time">
+          2019-08-12
+        </time>
+        <div class="post-category">
+            <a href="https://blog.cankiss.ml/categories/javascript/"> JavaScript </a>
+            
+          </div>
+        <span class="more-meta"> 约 656 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+
+        
+        
+
+        
+        
       </div>
+    </header>
 
-    <div class="archive-post">
-      <time datetime="2019-06-19" class="archive-post-time">
-        2019-06-19
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/web-developer/httpclient/" class="archive-post-link">
-          html5中的httpClient
-        </a>
-      </span>
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#debounce">debounce</a>
+<ul>
+<li><a href="#一个简单可用的实现代码">一个简单可用的实现代码</a></li>
+<li><a href="#debounce-codepen-在线体验">debounce codepen 在线体验</a></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+<li><a href="#throttle">throttle</a></li>
+<li><a href="#requestanimationframe">requestAnimationFrame</a></li>
+<li><a href="#参考文章">参考文章</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="前言">前言</h1>
+
+<p>抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 <code>keyup</code> 事件等。</p>
+
+<h1 id="debounce">debounce</h1>
+
+<h2 id="一个简单可用的实现代码">一个简单可用的实现代码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Returns a function, that, as long as it continues to be invoked, will not
+</span><span class="c1">// be triggered. The function will be called after it stops being called for
+</span><span class="c1">// N milliseconds. If `immediate` is passed, trigger the function on the
+</span><span class="c1">// leading edge, instead of the trailing.
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">debounce</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">wait</span><span class="p">,</span> <span class="nx">immediate</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">timeout</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
+      <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">later</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">timeout</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">immediate</span><span class="p">)</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">callNow</span> <span class="o">=</span> <span class="nx">immediate</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">timeout</span><span class="p">;</span>
+    <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">);</span>
+    <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">later</span><span class="p">,</span> <span class="nx">wait</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">callNow</span><span class="p">)</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="debounce-codepen-在线体验">debounce codepen 在线体验</h2>
+
+ 
+
+
+
+
+
+
+
+
+
+<p class="codepen" 
+data-height="400" 
+data-theme-id="dark" 
+data-default-tab="result" 
+data-user="wzc0x0" 
+data-slug-hash="YwNwgy" 
+data-preview="true" 
+style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"></p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="总结">总结</h2>
+
+<p>Debounce（防抖）技术把多次顺序调用合成一次。在你指定的时间内，无论函数被调用多少次，都算做一次调用。也就是说<strong>相邻两次函数执行间隔必须大于等于指定的时间</strong>。适合于键盘事件，缓冲事件回调。</p>
+
+<div class="shortcode-notice tip">
+  <div class="shortcode-notice-title tip">
+    
+      lodash中的实现
+    
+  </div>
+  
+
+<p><a href="https://lodash.com/docs/4.17.15#debounce">_.debounce</a>中的第三个参数，<code>{leading: true,trailing:false}</code>，指定当前函数首次触发时执行。</p>
+
+<p></div></p>
+
+<h1 id="throttle">throttle</h1>
+
+<p>在 lodash 中的，throttle 就是设置第三个参数 <code>maxWait</code> 的 debounce 函数。这样节流函数保证在指定的时间内执行一次函数。适合于滚动条事件，将多次事件按时间分割开延迟执行。<br />
+<strong>不同与 debounce 的是：debounce 的时间间隔结束后才会去执行函数，throttle 则是在时间间隔内检查函数。</strong></p>
+
+<h1 id="requestanimationframe">requestAnimationFrame</h1>
+
+
+
+<p class="ciu_embed" 
+data-feature="requestanimationframe" 
+data-periods="future_3,future_1,current,past_1,past_2" 
+data-accessible-colours="false"></p>
+<script async src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js"></script>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">window</span><span class="p">.</span><span class="nx">requestAnimationFrame</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+<span class="c1">// 下一次重绘之前更新动画帧所调用的函数(即上面所说的回调函数)
+</span><span class="c1">// 动画保持 60fps（每一帧 16 ms），浏览器内部决定渲染的最佳时机
+</span><span class="c1">// 一般在js dom动画中使用，更加精确细腻操作
+</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>类似<code>_.throttle(callback,16)</code></p>
+
+<h1 id="参考文章">参考文章</h1>
+
+<ul>
+<li><a href="https://jinlong.github.io/2016/04/24/Debouncing-and-Throttling-Explained-Through-Examples/">实例解析防抖动（Debouncing）和节流阀（Throttling）</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame">window.requestAnimationFrame</a></li>
+</ul>
+
     </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Mr.Wang</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2019-08-12
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
     
 
-    <div class="archive-post">
-      <time datetime="2019-06-17" class="archive-post-time">
-        2019-06-17
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/web-developer/numberinjs/" class="archive-post-link">
-          谈谈JavaScript中的Number
-        </a>
-      </span>
-    </div>
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://blog.cankiss.ml/tags/javascript/">JavaScript</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/web-developer/call-app/">
+            <span class="next-text nav-default">H5唤起native app</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
     
-
-    <div class="archive-post">
-      <time datetime="2019-06-12" class="archive-post-time">
-        2019-06-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/society/kill-huawei/" class="archive-post-link">
-          About America Kill Huawei
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2019-05-31" class="archive-post-time">
-        2019-05-31
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/web-developer/mobile-layout/" class="archive-post-link">
-          移动端适配
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2019-05-17" class="archive-post-time">
-        2019-05-17
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/raspberry-pi/python3/" class="archive-post-link">
-          树莓派3B&#43;链接蓝牙音箱
-        </a>
-      </span>
-    </div></section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/post/">1</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/2/">2</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/post/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/4/">4</a>
-      </li>
-      
-    </ul>
-  </nav>
-
-  
-  
-
-
-
-
 
         </div>
       </div>
