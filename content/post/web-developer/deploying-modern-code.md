@@ -55,12 +55,12 @@ vue-cli-service build --modern
 
 # 尝试 diy 现代打包工具（目前还没成熟的项目）
 
-- (babel-esm-plugin)[https://github.com/prateekbh/babel-esm-plugin]  
+- [babel-esm-plugin](https://github.com/prateekbh/babel-esm-plugin)  
   可以操作 babel 输出两种 js 代码
 
-- (webpack-babel-multi-target-plugin)[https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin]  
+- [webpack-babel-multi-target-plugin](https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin)  
   比较全面的实现方式，但是笔者在 vue 项目里打包 vendor 包巨大。不支持按需方式打包。
 
 ## 参考文档
 
-(Serve modern code to modern browsers for faster page loads)[https://web.dev/serve-modern-code-to-modern-browsers]
+[Serve modern code to modern browsers for faster page loads](https://web.dev/serve-modern-code-to-modern-browsers)
