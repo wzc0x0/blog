@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on Tech Blog</title>
+    <link>https://blog.cankiss.ml/tags/web/</link>
+    <description>Recent content in web on Tech Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.cankiss.ml/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Charles常用抓包方法</title>
+      <link>https://blog.cankiss.ml/post/web-developer/debugging-proxy/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://blog.cankiss.ml/post/web-developer/debugging-proxy/</guid>
+      <description>前言 前端 web 页面、app 页面抓包备忘。笔者采用charles抓包工具，在 MacOS 环境下使用。抓取 https，重定向域名，修改 request、resp</description>
+    </item>
+    
+  </channel>
+</rss>

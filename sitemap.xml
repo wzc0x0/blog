@@ -3,12 +3,69 @@
   
   <url>
     <loc>https://blog.cankiss.ml/categories/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</loc>
+    <loc>https://blog.cankiss.ml/post/web-developer/debugging-proxy/</loc>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/post/</loc>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/proxy/</loc>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/proxy/</loc>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/</loc>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/</loc>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/web/</loc>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/web/</loc>
+    <lastmod>2019-12-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/tags/javascript/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -17,31 +74,15 @@
   <url>
     <loc>https://blog.cankiss.ml/categories/javascript/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/tags/javascript/</loc>
+    <loc>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/post/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/tags/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/</loc>
-    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -54,25 +95,29 @@
   <url>
     <loc>https://blog.cankiss.ml/categories/html5/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/html5/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.cankiss.ml/categories/git/</loc>
-    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/git/</loc>
     <lastmod>2019-08-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/git/</loc>
+    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -90,21 +135,24 @@
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/categories/ios/</loc>
+    <loc>https://blog.cankiss.ml/tags/ios/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/tags/ios/</loc>
+    <loc>https://blog.cankiss.ml/categories/ios/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/webpack/</loc>
     <lastmod>2019-07-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -115,15 +163,17 @@
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/categories/css3/</loc>
+    <loc>https://blog.cankiss.ml/tags/css3/</loc>
     <lastmod>2019-07-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/tags/css3/</loc>
+    <loc>https://blog.cankiss.ml/categories/css3/</loc>
     <lastmod>2019-07-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -157,13 +207,15 @@
   <url>
     <loc>https://blog.cankiss.ml/categories/golang/</loc>
     <lastmod>2019-06-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/golang/</loc>
     <lastmod>2019-06-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -174,15 +226,17 @@
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/categories/mysql/</loc>
+    <loc>https://blog.cankiss.ml/tags/mysql/</loc>
     <lastmod>2019-06-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/tags/mysql/</loc>
+    <loc>https://blog.cankiss.ml/categories/mysql/</loc>
     <lastmod>2019-06-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -207,27 +261,31 @@
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/categories/politics/</loc>
-    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.cankiss.ml/tags/politics/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/categories/society/</loc>
+    <loc>https://blog.cankiss.ml/categories/politics/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/society/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.cankiss.ml/categories/society/</loc>
+    <lastmod>2019-06-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -238,27 +296,31 @@
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/categories/linux/</loc>
+    <loc>https://blog.cankiss.ml/tags/linux/</loc>
     <lastmod>2019-05-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/tags/linux/</loc>
+    <loc>https://blog.cankiss.ml/categories/linux/</loc>
     <lastmod>2019-05-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/categories/raspberry-pi/</loc>
     <lastmod>2019-05-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.cankiss.ml/tags/raspberry-pi/</loc>
     <lastmod>2019-05-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -276,15 +338,17 @@
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/categories/breakwall/</loc>
+    <loc>https://blog.cankiss.ml/tags/breakwall/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.cankiss.ml/tags/breakwall/</loc>
+    <loc>https://blog.cankiss.ml/categories/breakwall/</loc>
     <lastmod>2019-06-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
