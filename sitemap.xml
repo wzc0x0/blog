@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.19921024.xyz/my-v2ray-config/</loc>
+    <lastmod>2021-04-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.19921024.xyz/tags/antd-pro/</loc>
     <lastmod>2021-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
