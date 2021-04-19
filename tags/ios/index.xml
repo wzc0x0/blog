@@ -2,21 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>iOS on Tech Blog</title>
-    <link>https://blog.cankiss.ml/tags/ios/</link>
+    <link>https://blog.19921024.xyz/tags/ios/</link>
     <description>Recent content in iOS on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.cankiss.ml/tags/ios/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>h5页面嵌套iOS中的坑点</title>
-      <link>https://blog.cankiss.ml/post/web-developer/ios-webview-bug/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/ios-webview-bug/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/ios-webview-bug/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/ios-webview-bug/</guid>
       <description>原生 iOS 键盘收起对 h5 页面的影响 问题描述 iOS 开启 WebView 或者浏览器中嵌入 h5 如果当前 h5 页面底部有position:fixed，当 iOS 键盘弹出再落回的时候会造</description>
     </item>
     

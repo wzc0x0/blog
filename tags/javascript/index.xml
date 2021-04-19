@@ -2,57 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JavaScript on Tech Blog</title>
-    <link>https://blog.cankiss.ml/tags/javascript/</link>
+    <link>https://blog.19921024.xyz/tags/javascript/</link>
     <description>Recent content in JavaScript on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.cankiss.ml/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JS中的节流与防抖函数</title>
-      <link>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/debounce-throttle/</link>
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/debounce-throttle/</guid>
       <description>前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce</description>
     </item>
     
     <item>
       <title>面向现代浏览器部署代码</title>
-      <link>https://blog.cankiss.ml/post/web-developer/deploying-modern-code/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/deploying-modern-code/</link>
       <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/deploying-modern-code/</guid>
-      <description>前言 笔者最早在vue-cli3（vue 的工具链）中看到的这种前端代码的部署方式，并在生产环境做了部署，但是各种原因并没有发现什么优势。不过这</description>
-    </item>
-    
-    <item>
-      <title>面向现代浏览器部署代码</title>
-      <link>https://blog.cankiss.ml/post/web-developer/deploying-modern-code/</link>
-      <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.cankiss.ml/post/web-developer/deploying-modern-code/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/deploying-modern-code/</guid>
       <description>前言 笔者最早在vue-cli3（vue 的工具链）中看到的这种前端代码的部署方式，并在生产环境做了部署，但是各种原因并没有发现什么优势。不过这</description>
     </item>
     
     <item>
       <title>html5中的httpClient</title>
-      <link>https://blog.cankiss.ml/post/web-developer/httpclient/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/httpclient/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/httpclient/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/httpclient/</guid>
       <description>html5 中的 httpClient 目前只有两种：ajax、fetch。兼容性如下： ajax AJAX 即“Asynchronous JavaScript and XML”（异步的 JavaScript 与 XML 技术），指的是一套综合了多</description>
     </item>
     
     <item>
       <title>谈谈JavaScript中的Number</title>
-      <link>https://blog.cankiss.ml/post/web-developer/numberinjs/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/numberinjs/</link>
       <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/numberinjs/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/numberinjs/</guid>
       <description>在 JavaScript 中, Number 是一种 定义为 64 位双精度浮点型（double-precision 64-bit floating point format） (IEEE 754)的数字数据类型。 developer.mozilla.org/zh-CN/... 64 位存储数值，其中 0</description>
     </item>
     

@@ -2,75 +2,71 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>html5 on Tech Blog</title>
-    <link>https://blog.cankiss.ml/tags/html5/</link>
+    <link>https://blog.19921024.xyz/tags/html5/</link>
     <description>Recent content in html5 on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.cankiss.ml/tags/html5/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/tags/html5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>H5唤起native app</title>
-      <link>https://blog.cankiss.ml/post/web-developer/call-app/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/call-app/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/call-app/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/call-app/</guid>
       <description>前言 这是一个大坑做好准备，因为各端差异性，没有一个统一方案，需要各端兼容。 URLScheme 协议打开 APP URLScheme 协议： 1 newsapp:// iOS 端还支持smart app banner打开 ap</description>
     </item>
     
     <item>
       <title>h5页面嵌套iOS中的坑点</title>
-      <link>https://blog.cankiss.ml/post/web-developer/ios-webview-bug/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/ios-webview-bug/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/ios-webview-bug/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/ios-webview-bug/</guid>
       <description>原生 iOS 键盘收起对 h5 页面的影响 问题描述 iOS 开启 WebView 或者浏览器中嵌入 h5 如果当前 h5 页面底部有position:fixed，当 iOS 键盘弹出再落回的时候会造</description>
     </item>
     
     <item>
       <title>你所不知的CSS</title>
-      <link>https://blog.cankiss.ml/post/web-developer/unknown-css/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/unknown-css/</link>
       <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/unknown-css/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/unknown-css/</guid>
       <description>前言 收录一下 CSS 技巧吧 单行多行截取文本 1 2 3 4 5 6 /* 单行截取 */ { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } 1 2 3 4 5 6 7 8 /* 多行移动端适用 */ { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; //属性规定</description>
     </item>
     
     <item>
       <title>什么是BFC</title>
-      <link>https://blog.cankiss.ml/post/web-developer/bfc-layout/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/bfc-layout/</link>
       <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/bfc-layout/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/bfc-layout/</guid>
       <description>盒模型 &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document</description>
     </item>
     
     <item>
       <title>利用html伪类设置表单效验样式</title>
-      <link>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/input-css-vaild/</link>
       <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/input-css-vaild/</guid>
       <description>兼容性 效果展示 参考文章 表单数据校验 使用 HTML 和 CSS 技巧对表单进行约束验证</description>
     </item>
     
     <item>
       <title>html5中的httpClient</title>
-      <link>https://blog.cankiss.ml/post/web-developer/httpclient/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/httpclient/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/httpclient/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/httpclient/</guid>
       <description>html5 中的 httpClient 目前只有两种：ajax、fetch。兼容性如下： ajax AJAX 即“Asynchronous JavaScript and XML”（异步的 JavaScript 与 XML 技术），指的是一套综合了多</description>
     </item>
     
     <item>
       <title>移动端适配</title>
-      <link>https://blog.cankiss.ml/post/web-developer/mobile-layout/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/mobile-layout/</link>
       <pubDate>Fri, 31 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/mobile-layout/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/mobile-layout/</guid>
       <description>探究 web 移动端适配，到底是 rem 还是 px？ 这个问题也困扰笔者很多年，最开始一味地使用 rem，但是到现在觉得 rem 不再合适。 为什么有 rem 来实现适应的方案，</description>
     </item>
     

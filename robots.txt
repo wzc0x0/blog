@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://blog.cankiss.ml/sitemap.xml
+Sitemap: https://blog.19921024.xyz/sitemap.xml

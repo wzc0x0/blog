@@ -7,7 +7,7 @@
   
 
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
 
 <meta name="MobileOptimized" content="width"/>
 <meta name="HandheldFriendly" content="true"/>
@@ -32,10 +32,10 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.82.0" />
 
 
-<link rel="canonical" href="https://blog.cankiss.ml/post/web-developer/bfc-layout/" />
+<link rel="canonical" href="https://blog.19921024.xyz/post/web-developer/bfc-layout/" />
 
 
 
@@ -62,21 +62,15 @@
 <meta property="og:title" content="什么是BFC" />
 <meta property="og:description" content="盒模型 &lt;div&gt;&lt;/div&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.cankiss.ml/post/web-developer/bfc-layout/" />
-<meta property="article:published_time" content="2019-07-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-07-11T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.19921024.xyz/post/web-developer/bfc-layout/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-07-10T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-07-11T00:00:00&#43;00:00" />
+
 <meta itemprop="name" content="什么是BFC">
-<meta itemprop="description" content="盒模型 &lt;div&gt;&lt;/div&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document">
-
-
-<meta itemprop="datePublished" content="2019-07-10T00:00:00&#43;00:00" />
+<meta itemprop="description" content="盒模型 &lt;div&gt;&lt;/div&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document"><meta itemprop="datePublished" content="2019-07-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1240">
-
-
-
-<meta itemprop="keywords" content="html5,CSS3," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="1044">
+<meta itemprop="keywords" content="html5,CSS3," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="什么是BFC"/>
 <meta name="twitter:description" content="盒模型 &lt;div&gt;&lt;/div&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document"/>
 
@@ -110,35 +104,35 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/">首页</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/">首页</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/post/">归档</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/post/">归档</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/tags/">标签</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/tags/">标签</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/categories/">分类</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/search/">搜索</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/search/">搜索</a>
           
         
       </li>
@@ -230,7 +224,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/">首页</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/">首页</a>
           
 
         
@@ -241,7 +235,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/post/">归档</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/post/">归档</a>
           
 
         
@@ -252,7 +246,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/tags/">标签</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/tags/">标签</a>
           
 
         
@@ -263,7 +257,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/categories/">分类</a>
           
 
         
@@ -274,7 +268,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/search/">搜索</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/search/">搜索</a>
           
 
         
@@ -305,11 +299,11 @@
           2019-07-10
         </time>
         <div class="post-category">
-            <a href="https://blog.cankiss.ml/categories/html5/"> html5 </a>
-            <a href="https://blog.cankiss.ml/categories/css3/"> CSS3 </a>
+            <a href="https://blog.19921024.xyz/categories/html5/"> html5 </a>
+            <a href="https://blog.19921024.xyz/categories/css3/"> CSS3 </a>
             
           </div>
-        <span class="more-meta"> 约 1240 字 </span>
+        <span class="more-meta"> 约 1044 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -326,30 +320,28 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#盒模型">盒模型</a>
-<ul>
-<li><a href="#ie-盒模型-怪异盒模型">IE 盒模型（怪异盒模型）</a></li>
-<li><a href="#标准盒模型">标准盒模型</a></li>
-</ul></li>
-<li><a href="#bfc">BFC</a>
-<ul>
-<li><a href="#触发-bfc">触发 BFC</a></li>
-<li><a href="#应用">应用</a>
-<ul>
-<li><a href="#双-div-外边距发生折叠">双 div 外边距发生折叠</a></li>
-<li><a href="#清除浮动">清除浮动</a></li>
-<li><a href="#两列自适应布局">两列自适应布局</a></li>
-<li><a href="#行内元素">行内元素</a></li>
-</ul></li>
-<li><a href="#应用-1">应用</a>
-<ul>
-<li><a href="#水平居中">水平居中</a></li>
-<li><a href="#垂直居中">垂直居中</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#参考文档">参考文档</a></li>
-</ul>
+  <ul>
+    <li><a href="#ie-盒模型怪异盒模型">IE 盒模型（怪异盒模型）</a></li>
+    <li><a href="#标准盒模型">标准盒模型</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#触发-bfc">触发 BFC</a></li>
+    <li><a href="#应用">应用</a>
+      <ul>
+        <li><a href="#双-div-外边距发生折叠">双 div 外边距发生折叠</a></li>
+        <li><a href="#清除浮动">清除浮动</a></li>
+        <li><a href="#两列自适应布局">两列自适应布局</a></li>
+        <li><a href="#行内元素">行内元素</a></li>
+      </ul>
+    </li>
+    <li><a href="#应用-1">应用</a>
+      <ul>
+        <li><a href="#水平居中">水平居中</a></li>
+        <li><a href="#垂直居中">垂直居中</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
@@ -357,11 +349,18 @@
     
     <div class="post-content">
       
-
-<p><img src="/images/3d-box-model.png"></p>
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="box">
+<figure  itemprop="associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject" >
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/3d-box-model.png" />
+    </div>
+    <a href="/images/3d-box-model.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
 
 <h1 id="盒模型">盒模型</h1>
-
 
 
 
@@ -411,13 +410,21 @@
 
 
 <blockquote>
-  <p><code>&lt;div&gt;&lt;/div&gt;</code>标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document tree 生成的 render tree，而盒子模型就是 render tree 的节点。</p>
-
+  <p><p><code>&lt;div&gt;&lt;/div&gt;</code>标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document tree 生成的 render tree，而盒子模型就是 render tree 的节点。</p>
 <ul>
 <li>注意:</li>
-<li>1. CSS 作用的是盒子(Box), 而不是元素(Element);</li>
-<li>2. JS 无法直接操作盒子。</li>
-</ul></p>
+<li>
+<ol>
+<li>CSS 作用的是盒子(Box), 而不是元素(Element);</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>JS 无法直接操作盒子。</li>
+</ol>
+</li>
+</ul>
+</p>
   <footer>
     <strong></strong>
     
@@ -430,43 +437,34 @@
   </footer>
 </blockquote>
 
-
-<h2 id="ie-盒模型-怪异盒模型">IE 盒模型（怪异盒模型）</h2>
+<h2 id="ie-盒模型怪异盒模型">IE 盒模型（怪异盒模型）</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span></pre></td>
+</span><span class="lnt">3
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">width = content-width + padding-width + border-width
-height = content-height + padding-height + border-height</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">width = content-width + padding-width + border-width
+height = content-height + padding-height + border-height
+
+</code></pre></td></tr></table>
 </div>
-</div>
-<h2 id="标准盒模型">标准盒模型</h2>
+</div><h2 id="标准盒模型">标准盒模型</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span></pre></td>
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma">width = content-width
-height = content-height</pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">width = content-width
+height = content-height
+</code></pre></td></tr></table>
 </div>
-</div>
-<div class="shortcode-notice note">
-  <div class="shortcode-notice-title note">
-    
-      注意
-    
-  </div>
-  
-
-<p>默认大多数浏览器盒模型处理方式是<strong>标准盒模型</strong>。但是为了符合人们大多数的布局习惯，可以通过设置<code>box-sizing:border-box</code>转换成 IE 盒模型，这也是大多数 UI 框架样式的首选方式。</p>
-
-<p></div></p>
+</div><!-- raw HTML omitted -->
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-css" data-lang="css"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -507,11 +505,10 @@ height = content-height</pre></td></tr></table>
   <span class="kp">-webkit-</span><span class="k">box-sizing</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
   <span class="kp">-moz-</span><span class="k">box-sizing</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
   <span class="k">box-sizing</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span>
-<span class="p">}</span></code></pre></td></tr></table>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<h1 id="bfc">BFC</h1>
-
+</div><h1 id="bfc">BFC</h1>
 
 
 
@@ -537,11 +534,8 @@ height = content-height</pre></td></tr></table>
 
 <blockquote>
   <p><p>那么 BFC 是什么呢？</p>
-
 <p>BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述定位方案的普通流。</p>
-
 <p>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</p>
-
 <p>通俗一点来讲，可以把 BFC 理解为一个封闭的大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。</p>
 </p>
   <footer>
@@ -556,9 +550,7 @@ height = content-height</pre></td></tr></table>
   </footer>
 </blockquote>
 
-
 <h2 id="触发-bfc">触发 BFC</h2>
-
 <ul>
 <li>根元素(html)</li>
 <li>浮动元素（元素的 float 不是 none）</li>
@@ -570,23 +562,16 @@ height = content-height</pre></td></tr></table>
 <li>弹性元素（display 为 flex 或 inline-flex 元素的直接子元素）</li>
 <li>网格元素（display 为 grid 或 inline-grid 元素的直接子元素）</li>
 </ul>
-
-<p><em>以上内容来自<sup class="footnote-ref" id="fnref:footnote1"><a href="#fn:footnote1">1</a></sup></em></p>
-
+<p><em>以上内容来自<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></em></p>
 <h2 id="应用">应用</h2>
-
 <h3 id="双-div-外边距发生折叠">双 div 外边距发生折叠</h3>
-
 <p>通过设置<code>overflow: hidden</code>触发 BFC，即可变成正常<code>margin</code>边距</p>
-
 <h3 id="清除浮动">清除浮动</h3>
-
 <p>内部元素设置浮动脱离普通文档流造成高度坍陷，父元素设置<code>overflow: hidden</code>，即可正常包裹内部元素。</p>
-
 <h3 id="两列自适应布局">两列自适应布局</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -601,60 +586,38 @@ height = content-height</pre></td></tr></table>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 200px; height: 200px;background: #eee&#34;</span><span class="p">&gt;</span>
   我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px;
   background: #eee;
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></td></tr></table>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>此时左边元素会覆盖右边元素，通过设置右边元素<code>overflow: hidden</code>，就会正常两列排版。</p>
-
+</div><p>此时左边元素会覆盖右边元素，通过设置右边元素<code>overflow: hidden</code>，就会正常两列排版。</p>
 <h3 id="行内元素">行内元素</h3>
-
-<p>常见的 <code>span,img,button,input,label</code> 等。更多行内元素请查看<sup class="footnote-ref" id="fnref:footnote2"><a href="#fn:footnote2">2</a></sup>
-<br></p>
-
-<div class="shortcode-notice note">
-  <div class="shortcode-notice-title note">
-    
-      注意
-    
-  </div>
-  
-
-<p>1、行内元素除了 img 外均<strong>忽略宽高</strong><br />
-2、高度依靠<code>font-size line-height</code>, <code>padding margin</code> 只在水平方向实现，垂直方向无效<br />
-3、<code>display:line,line-block</code> 会有空白间隙，通过设置父元素<code>font-size:0</code>解决</p>
-
-<p></div></p>
-
+<p>常见的 <code>span,img,button,input,label</code> 等。更多行内元素请查看<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<!-- raw HTML omitted -->
 <h2 id="应用-1">应用</h2>
-
 <h3 id="水平居中">水平居中</h3>
-
 <p>当前元素设置<code>inline-block</code>，通过设置父容器 <code>text-align:center</code> 则可以使其水平居中。</p>
-
 <h3 id="垂直居中">垂直居中</h3>
-
-<p>当前元素设置<code>inline-block</code>，其中一个子元素撑开父元素高度，然后设置其 <code>vertical-align:middle</code>，则其他行内元素在此父元素下垂直居中。<br />
+<p>当前元素设置<code>inline-block</code>，其中一个子元素撑开父元素高度，然后设置其 <code>vertical-align:middle</code>，则其他行内元素在此父元素下垂直居中。<br>
 常见的图标和字体上下对齐，设置 img <code>vertical-align:middle</code></p>
-
 <h1 id="参考文档">参考文档</h1>
-
 <ul>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context">块格式化上下文</a></li>
 <li><a href="https://juejin.im/entry/5938daf7a0bb9f006b2295db">小科普：到底什么是 BFC、IFC、GFC 和 FFC</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/25321647">10 分钟理解 BFC 原理</a></li>
 <li><a href="https://www.liayal.com/article/5a4b645276b2f863f44722cf">IFC、BFC、GFC 与 FFC 知多少</a></li>
 </ul>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:footnote1"><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</a>
- <a class="footnote-return" href="#fnref:footnote1"><sup>[return]</sup></a></li>
-<li id="fn:footnote2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements</a>
- <a class="footnote-return" href="#fnref:footnote2"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements</a>
+<!-- raw HTML omitted --> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
     </div>
 
@@ -685,8 +648,8 @@ height = content-height</pre></td></tr></table>
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.cankiss.ml/tags/html5/">html5</a>
-          <a href="https://blog.cankiss.ml/tags/css3/">CSS3</a>
+          <a href="https://blog.19921024.xyz/tags/html5/">html5</a>
+          <a href="https://blog.19921024.xyz/tags/css3/">CSS3</a>
           
         </div>
 
@@ -777,7 +740,7 @@ height = content-height</pre></td></tr></table>
     </a>
 
 
-<a href="https://blog.cankiss.ml/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="https://blog.19921024.xyz/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -800,7 +763,9 @@ height = content-height</pre></td></tr></table>
 
   <span class="copyright-year">
     &copy;
-    2019
+    
+      2019 -
+    2021
     <span class="heart">
       
       <i class="iconfont">
@@ -844,7 +809,7 @@ height = content-height</pre></td></tr></table>
 
 
 
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
 
 
 

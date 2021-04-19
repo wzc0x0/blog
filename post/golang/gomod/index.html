@@ -7,7 +7,7 @@
   
 
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
 
 <meta name="MobileOptimized" content="width"/>
 <meta name="HandheldFriendly" content="true"/>
@@ -32,10 +32,10 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.82.0" />
 
 
-<link rel="canonical" href="https://blog.cankiss.ml/post/golang/gomod/" />
+<link rel="canonical" href="https://blog.19921024.xyz/post/golang/gomod/" />
 
 
 
@@ -62,21 +62,15 @@
 <meta property="og:title" content="go mod使用" />
 <meta property="og:description" content="golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的node_mod" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.cankiss.ml/post/golang/gomod/" />
-<meta property="article:published_time" content="2019-06-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-06-28T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.19921024.xyz/post/golang/gomod/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-06-20T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-06-28T00:00:00&#43;00:00" />
+
 <meta itemprop="name" content="go mod使用">
-<meta itemprop="description" content="golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的node_mod">
-
-
-<meta itemprop="datePublished" content="2019-06-20T00:00:00&#43;00:00" />
+<meta itemprop="description" content="golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的node_mod"><meta itemprop="datePublished" content="2019-06-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-06-28T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="414">
-
-
-
-<meta itemprop="keywords" content="golang," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="438">
+<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="go mod使用"/>
 <meta name="twitter:description" content="golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的node_mod"/>
 
@@ -110,35 +104,35 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/">首页</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/">首页</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/post/">归档</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/post/">归档</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/tags/">标签</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/tags/">标签</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/categories/">分类</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/search/">搜索</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/search/">搜索</a>
           
         
       </li>
@@ -230,7 +224,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/">首页</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/">首页</a>
           
 
         
@@ -241,7 +235,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/post/">归档</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/post/">归档</a>
           
 
         
@@ -252,7 +246,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/tags/">标签</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/tags/">标签</a>
           
 
         
@@ -263,7 +257,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/categories/">分类</a>
           
 
         
@@ -274,7 +268,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/search/">搜索</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/search/">搜索</a>
           
 
         
@@ -305,10 +299,10 @@
           2019-06-20
         </time>
         <div class="post-category">
-            <a href="https://blog.cankiss.ml/categories/golang/"> golang </a>
+            <a href="https://blog.19921024.xyz/categories/golang/"> golang </a>
             
           </div>
-        <span class="more-meta"> 约 414 字 </span>
+        <span class="more-meta"> 约 438 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
 
         
@@ -325,41 +319,47 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#基础使用">基础使用</a></li>
-<li><a href="#go-get-设置代理">go get 设置代理</a>
-<ul>
-<li><a href="#macos">macOS:</a></li>
-<li><a href="#win">win:</a></li>
-<li><a href="#goland-ide-设置">goland IDE 设置</a></li>
-</ul></li>
-<li><a href="#import-引入方式">import 引入方式</a></li>
-<li><a href="#参考文章">参考文章</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#基础使用">基础使用</a></li>
+    <li><a href="#go-get-设置代理">go get 设置代理</a>
+      <ul>
+        <li><a href="#macos">macOS:</a></li>
+        <li><a href="#win">win:</a></li>
+        <li><a href="#goland-ide-设置">goland IDE 设置</a></li>
+      </ul>
+    </li>
+    <li><a href="#import-引入方式">import 引入方式</a></li>
+    <li><a href="#参考文章">参考文章</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<blockquote>
-<p>golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的<code>node_modules</code>。go version &gt;= 1.12 后内置的官方包管理器,不再需要配置 GOPATH 等环境变量。<br />
+      <blockquote>
+<p>golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的<code>node_modules</code>。go version &gt;= 1.12 后内置的官方包管理器,不再需要配置 GOPATH 等环境变量。<br>
 <a href="https://github.com/golang/go/wiki/Modules">https://github.com/golang/go/wiki/Modules</a></p>
 </blockquote>
 
-<p><img src="https://i.redd.it/fw31b02wfkez.png"></p>
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="box">
+<figure  itemprop="associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject" >
+    <div class="img">
+      <img itemprop="thumbnail" src="https://i.redd.it/fw31b02wfkez.png" />
+    </div>
+    <a href="https://i.redd.it/fw31b02wfkez.png" itemprop="contentUrl"></a>
+      <figcaption><h4>node_modules被人诟病冗余并体积巨大</h4>
+      </figcaption>
+  </figure>
+</div>
 
 <h2 id="基础使用">基础使用</h2>
-
 <p>项目不需要在<code>$GOPATH/src</code>目录内</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -382,19 +382,16 @@ go mod download <span class="c1"># 下载资源到本地cache</span>
 go get -u <span class="c1"># 拉取最新模块版本</span>
 go run xxx.go <span class="c1"># 下载资源生成go.sum文件 类型npm的package.lock</span>
 
-go <span class="nb">help</span> mod <span class="c1"># 查看更多命令</span></code></pre></td></tr></table>
+go <span class="nb">help</span> mod <span class="c1"># 查看更多命令</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>go mod 下载的包在 <code>$GOPATH/pkg/mod</code></p>
-
+</div><p>go mod 下载的包在 <code>$GOPATH/pkg/mod</code></p>
 <h2 id="go-get-设置代理">go get 设置代理</h2>
-
-<p>墙内小朋友的福音：<a href="https://goproxy.io/">https://goproxy.io/</a></p>
-
+<p>墙内小朋友的福音：https://goproxy.io/</p>
 <h3 id="macos">macOS:</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -407,11 +404,12 @@ go <span class="nb">help</span> mod <span class="c1"># 查看更多命令</span>
 <span class="c1"># Enable the go modules feature</span>
 <span class="nb">export</span> <span class="nv">GO111MODULE</span><span class="o">=</span>on
 <span class="c1"># Set the GOPROXY environment variable</span>
-<span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span>https://goproxy.io</code></pre></td></tr></table>
+<span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span>https://goproxy.io
+</code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -430,13 +428,13 @@ vi ~/.bash_profile
 <span class="c1"># Set the GOPROXY environment variable</span>
 <span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span>https://goproxy.io
 <span class="c1"># save</span>
-<span class="nb">source</span> ~/.bash_profile</code></pre></td></tr></table>
+<span class="nb">source</span> ~/.bash_profile
+</code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="win">win:</h3>
+</div><h3 id="win">win:</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -445,28 +443,27 @@ vi ~/.bash_profile
 <pre class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="c"># Enable the go modules feature</span>
 <span class="nv">$env:GO111MODULE</span><span class="p">=</span><span class="n">on</span>
 <span class="c"># Set the GOPROXY environment variable</span>
-<span class="nv">$env:GOPROXY</span><span class="p">=</span><span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">goproxy</span><span class="p">.</span><span class="n">io</span></code></pre></td></tr></table>
+<span class="nv">$env:GOPROXY</span><span class="p">=</span><span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">goproxy</span><span class="p">.</span><span class="n">io</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="goland-ide-设置">goland IDE 设置</h3>
-
+</div><h3 id="goland-ide-设置">goland IDE 设置</h3>
 <p>勾选 go modules 选项并且设置代理。</p>
-
 <h2 id="import-引入方式">import 引入方式</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="s">&#34;moduleName/folderName/fileName&#34;</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="参考文章">参考文章</h2>
+<span class="kn">import</span> <span class="s">&#34;moduleName/folderName/fileName&#34;</span>
 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考文章">参考文章</h2>
 <ul>
 <li><a href="https://juejin.im/post/5c8e503a6fb9a070d878184a">go mod 使用</a></li>
 <li><a href="https://colobu.com/2018/08/27/learn-go-module/">跳出 Go module 的泥潭</a></li>
@@ -501,7 +498,7 @@ vi ~/.bash_profile
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.cankiss.ml/tags/golang/">golang</a>
+          <a href="https://blog.19921024.xyz/tags/golang/">golang</a>
           
         </div>
 
@@ -592,7 +589,7 @@ vi ~/.bash_profile
     </a>
 
 
-<a href="https://blog.cankiss.ml/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="https://blog.19921024.xyz/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -615,7 +612,9 @@ vi ~/.bash_profile
 
   <span class="copyright-year">
     &copy;
-    2019
+    
+      2019 -
+    2021
     <span class="heart">
       
       <i class="iconfont">
@@ -659,7 +658,7 @@ vi ~/.bash_profile
 
 
 
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
 
 
 

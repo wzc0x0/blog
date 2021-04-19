@@ -2,21 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>society on Tech Blog</title>
-    <link>https://blog.cankiss.ml/tags/society/</link>
+    <link>https://blog.19921024.xyz/tags/society/</link>
     <description>Recent content in society on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.cankiss.ml/tags/society/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 12 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/tags/society/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About America Kill Huawei</title>
-      <link>https://blog.cankiss.ml/post/society/kill-huawei/</link>
+      <link>https://blog.19921024.xyz/post/society/kill-huawei/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/society/kill-huawei/</guid>
+      <guid>https://blog.19921024.xyz/post/society/kill-huawei/</guid>
       <description>备胎是准备了，但这备胎能不能用，好不好用，就要另说了。现在硬软件都是一个复杂系统，开发不是闷在黑屋，闭门造车就能折腾出来的。产品开发要经过长</description>
     </item>
     

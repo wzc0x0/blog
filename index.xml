@@ -2,124 +2,477 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tech Blog</title>
-    <link>https://blog.cankiss.ml/</link>
+    <link>https://blog.19921024.xyz/</link>
     <description>Recent content on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://blog.cankiss.ml/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://blog.19921024.xyz/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>在antd-pro中使用简易数据流替换dva的应用实践</title>
+      <link>https://blog.19921024.xyz/post/web-developer/react-dva-use-modal/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.19921024.xyz/post/web-developer/react-dva-use-modal/</guid>
+      
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;为什么要在 antd-pro v4+ 中用 useModel？就是因为原来的数据流管理 dva 太繁琐了！&lt;/p&gt;
+&lt;h1 id=&#34;什么是数据流为什么要用数据流管理&#34;&gt;什么是数据流？为什么要用数据流管理？&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;React 没有解决的问题&lt;/strong&gt;&lt;br&gt;
+如果开发大应用，还需要解决一个问题。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通信：组件之间如何通信？&lt;/li&gt;
+&lt;li&gt;数据流：数据如何和视图串联起来？路由和数据如何绑定？如何编写异步逻辑？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;通信问题&lt;/strong&gt;&lt;br&gt;
+组件会发生三种通信。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;向子组件发消息&lt;/li&gt;
+&lt;li&gt;向父组件发消息&lt;/li&gt;
+&lt;li&gt;向其他组件发消息
+React 只提供了一种通信手段：传参。对于大应用，很不方便。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;什么是-dva&#34;&gt;什么是 dva&lt;/h1&gt;
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+
+  
+
+
+&lt;blockquote&gt;
+  &lt;p&gt;dva 首先是一个基于 redux 和 redux-saga 的数据流方案，然后为了简化开发体验，dva 还额外内置了 react-router 和 fetch，所以也可以理解为一个轻量级的应用框架&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;strong&gt;&lt;/strong&gt;
+    
+      
+        &lt;cite&gt;
+          &lt;a href=&#34;https://dvajs.com/guide/&#34; title=&#34;https://dvajs.com/guide/&#34;&gt;DvaJS介绍&lt;/a&gt; 
+        &lt;/cite&gt;
+      
+    
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;dva-数据流图&#34;&gt;dva 数据流图&lt;/h2&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.19921024.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://zos.alipayobjects.com/rmsportal/hUFIivoOFjVmwNXjjfPE.png&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://zos.alipayobjects.com/rmsportal/hUFIivoOFjVmwNXjjfPE.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+      &lt;figcaption&gt;&lt;h4&gt;dva数据流&lt;/h4&gt;
+      &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;dva-核心概念&#34;&gt;dva 核心概念&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;State：一个对象，保存整个应用状态&lt;/li&gt;
+&lt;li&gt;View：React 组件构成的视图层&lt;/li&gt;
+&lt;li&gt;Action：一个对象，描述事件&lt;/li&gt;
+&lt;li&gt;connect 方法：一个函数，绑定 State 到 View&lt;/li&gt;
+&lt;li&gt;dispatch 方法：一个函数，发送 Action 到 State&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;antd-pro-中的解决方案&#34;&gt;antd-pro 中的解决方案&lt;/h1&gt;
+&lt;h2 id=&#34;简易数据流&#34;&gt;简易数据流&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+
+  
+
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;p&gt;一种基于 hooks 范式的简易数据管理方案（部分场景可以取代 dva），通常用于中台项目的全局共享数据。&lt;/p&gt;
+&lt;p&gt;我们都知道自定义 hooks 是逻辑复用的利器，但我们也知道它不能复用状态，就和 react 内置的 hooks 一样，每次调用产生的状态都是相互隔离、无关的。那么，在业务开发中，如果我们需要提取的逻辑和状态都希望能够在多个组件中『共享』，就像其他数据流管理工具（dva, mobx）一样，@umijs/plugin-model 就是一个不错的选择。&lt;/p&gt;
+&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;strong&gt;UmiJS&lt;/strong&gt;
+    
+      
+        &lt;cite&gt;
+          &lt;a href=&#34;https://umijs.org/zh-CN/plugins/plugin-model&#34; title=&#34;https://umijs.org/zh-CN/plugins/plugin-model&#34;&gt;@umijs/plugin-model&lt;/a&gt; 
+        &lt;/cite&gt;
+      
+    
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;启用方式&#34;&gt;启用方式&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;src/models&lt;/code&gt; 目录下有 &lt;code&gt;hooks model&lt;/code&gt; 时启用。&lt;/p&gt;
+&lt;h3 id=&#34;介绍&#34;&gt;介绍&lt;/h3&gt;
+&lt;p&gt;我们约定在 src/models 目录下的文件为项目定义的 model 文件。每个文件需要默认导出一个 function，该 function 定义了一个 Hook，不符合规范的文件我们会过滤掉。&lt;/p&gt;
+&lt;p&gt;文件名则对应最终 model 的 name，你可以通过插件&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;提供的 API 来消费 model 中的数据。&lt;/p&gt;
+&lt;p&gt;所谓 hooks model 文件，就是自定义 hooks 模块，没有任何需要使用者关注的黑魔法。请看示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; * @description global model
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; * @requires GlobalModel
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
+
+&lt;span class=&#34;kr&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useCallback&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useState&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;react&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kr&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GlobalState&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;collapsed?&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;showSide?&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;boolean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;pollingData?&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;kr&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GlobalModel&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GlobalState&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;setGlobalModel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;globalState&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;GlobalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;kr&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;default&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;GlobalModel&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;globalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setGlobalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;GlobalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;({&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;collapsed&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;showSide&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;pollingData&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+  &lt;span class=&#34;c1&#34;&gt;// useCallback缓存当前函数对象
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setGlobalModel&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useCallback&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;globalState&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;GlobalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;setGlobalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;state&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;GlobalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;state&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;globalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}));&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]);&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;globalState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;setGlobalModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;说明：使用者书写的就是一个普通的自定义 hooks，但 @umijs/plugin-model 把其中的状态变成了『全局状态』，多个组件中使用该 model 时，拿到的同一份状态。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;在组件中使用-model&#34;&gt;在组件中使用 model&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;useModel&lt;/code&gt;是一个 Hook，提供消费 Model 的能力，使用示例如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;collapsed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;showSide&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;pollingData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setGlobalModel&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;global&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// ...
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;setGlobalModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;collapsed&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;false&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;useModel 有两个参数，namespace 和 updater。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;namespace - 就是 hooks model 文件的文件名，如上面例子里的 useAuthModel&lt;/li&gt;
+&lt;li&gt;updater - 可选参数。在 hooks model 返回多个状态，但使用组件仅引用了其中部分状态，并且希望仅在这几个状态更新时 rerender 时使用（性能相关）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;全局初始数据&#34;&gt;全局初始数据&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+
+  
+
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;p&gt;几乎大部分中台项目都有一个需求，就是在整个应用加载前请求用户信息或者一些全局依赖的基础数据。这些信息通常会用于 Layout 上的基础信息（通常是用户信息），权限初始化，以及很多页面都可能会用到的基础数据。&lt;/p&gt;
+&lt;p&gt;在中台最佳实践中，我们提供了一个极简的方式来初始化这部分数据，并且和 Layout 以及权限打通。该方案基于 umi 插件 @umijs/plugin-initial-state。&lt;/p&gt;
+&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;strong&gt;Ant Design Pro&lt;/strong&gt;
+    
+      
+        &lt;cite&gt;
+          &lt;a href=&#34;https://beta-pro.ant.design/docs/initial-state-cn&#34; title=&#34;https://beta-pro.ant.design/docs/initial-state-cn&#34;&gt;全局初始数据&lt;/a&gt; 
+        &lt;/cite&gt;
+      
+    
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;启用方式-1&#34;&gt;启用方式&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;src/app.ts&lt;/code&gt; 并且导出 &lt;code&gt;getInitialState&lt;/code&gt; 方法时启用。&lt;/p&gt;
+&lt;h3 id=&#34;初始化数据&#34;&gt;初始化数据&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;src/app.ts&lt;/code&gt;示例如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span class=&#34;kr&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getInitialState() {&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;handleLogin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;//接口拿到数据
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;currentUser&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getUserInfo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;storeList&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getDrugStoreList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;channelList&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getChannelLists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;currentUser&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;c1&#34;&gt;// 渠道列表
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;nx&#34;&gt;channelList&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;channelList&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+      &lt;span class=&#34;nx&#34;&gt;storeList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;history&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`/introduction?pathname=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;encodeURIComponent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;location&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;pathname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;在组件中消费&#34;&gt;在组件中消费&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;useModel&lt;/code&gt; namespace 为 &lt;code&gt;@@initialState&lt;/code&gt; 拿到就是全局数据。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-tsx&#34; data-lang=&#34;tsx&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;initialState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;loading&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;refresh&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setInitialState&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;useModel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+  &lt;span class=&#34;s2&#34;&gt;&amp;#34;@@initialState&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;channelList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;storeList&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;initialState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;参考文档&#34;&gt;参考文档&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dvajs.com/guide/introduce-class.html&#34;&gt;DvaJS-入门课&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://beta-pro.ant.design/&#34;&gt;Ant Design Pro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://umijs.org/zh-CN/plugins/plugin-model#usemodel&#34;&gt;UmiJS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=litiany4.umijs-plugin-model&#34;&gt;vscode 插件&lt;/a&gt; &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Charles常用抓包方法</title>
-      <link>https://blog.cankiss.ml/post/web-developer/debugging-proxy/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/debugging-proxy/</link>
       <pubDate>Wed, 11 Dec 2019 00:00:00 +0800</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/debugging-proxy/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/debugging-proxy/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;前端 web 页面、app 页面抓包备忘。笔者采用&lt;a href=&#34;https://www.charlesproxy.com/&#34;&gt;charles&lt;/a&gt;抓包工具，在 MacOS 环境下使用。抓取 https，重定向域名，修改 request、response。&lt;/p&gt;
-
-&lt;h1 id=&#34;准备工作-安装证书抓取-https&#34;&gt;准备工作：安装证书抓取 https&lt;/h1&gt;
-
+&lt;h1 id=&#34;准备工作安装证书抓取-https&#34;&gt;准备工作：安装证书抓取 https&lt;/h1&gt;
 &lt;h2 id=&#34;macos-系统&#34;&gt;MacOS 系统&lt;/h2&gt;
-
 &lt;p&gt;打开 charles，help&amp;ndash;&amp;gt;SSL Proxying&amp;ndash;&amp;gt;Install Charles Root Certificate. 安装好证书之后，在钥匙串中打开证书，始终信任。&lt;/p&gt;
-
 &lt;p&gt;Proxy&amp;ndash;&amp;gt;MacOS Proxy 勾选后启动抓取本地 MacOS 数据包。&lt;/p&gt;
-
 &lt;h2 id=&#34;手机端&#34;&gt;手机端&lt;/h2&gt;
-
 &lt;h3 id=&#34;wifi-网络配置&#34;&gt;WIFI 网络配置&lt;/h3&gt;
-
-&lt;div class=&#34;shortcode-notice tip&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title tip&#34;&gt;
-    
-      注意
-    
-  &lt;/div&gt;
-  
-
+&lt;blockquote&gt;
 &lt;p&gt;当前手机必须和抓包工具同一网段&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;ios-以-13-2-3-版本为例&#34;&gt;iOS 以 13.2.3 版本为例：&lt;/h4&gt;
-
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;ios-以-1323-版本为例&#34;&gt;iOS 以 13.2.3 版本为例：&lt;/h4&gt;
 &lt;p&gt;设置&amp;ndash;&amp;gt;无线局域网&amp;ndash;&amp;gt;右边蓝色感叹号&amp;ndash;&amp;gt;选择 HTTP 代理&amp;ndash;&amp;gt;选择手动&amp;ndash;&amp;gt;填写下抓包工具所在 ip，端口默认 8888&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.cankiss.ml/images/charles/ios-wifi-config.jpg&#34; style=&#34;width:300px&#34; /&gt;&lt;/p&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.19921024.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/charles/ios-wifi-config.jpg&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/charles/ios-wifi-config.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&#34;华为-android-手机为例&#34;&gt;华为 Android 手机为例：&lt;/h4&gt;
-
 &lt;p&gt;设置&amp;ndash;&amp;gt;无线和网络&amp;ndash;&amp;gt;WLAN&amp;ndash;&amp;gt;选择 WIFI 长按点击修改网络&amp;ndash;&amp;gt;勾选显示高级选项&amp;ndash;&amp;gt;选择手动&amp;ndash;&amp;gt;填写下方抓包工具所在 ip，端口默认 8888&lt;/p&gt;
-
 &lt;h3 id=&#34;安装证书&#34;&gt;安装证书&lt;/h3&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;iOS or Android 设备安装证书：help&amp;ndash;&amp;gt;SSL Proxying&amp;ndash;&amp;gt;Install Charles Root Certificate on a Mobile Device Or Remote Browser.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iOS or Android 设备安装证书：help&amp;ndash;&amp;gt;SSL Proxying&amp;ndash;&amp;gt;Install Charles Root Certificate on a Mobile Device Or Remote Browser.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;img src=&#34;https://blog.cankiss.ml/images/charles/mobile-cert.png&#34;/&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;点击之后出现弹窗，在手机浏览器输入 &lt;code&gt;chls.pro/ssl&lt;/code&gt;下载证书安装。&lt;/p&gt;&lt;/li&gt;
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/charles/mobile-cert.png&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/charles/mobile-cert.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
-&lt;li&gt;&lt;p&gt;iOS 端：在设置&amp;ndash;&amp;gt;通用&amp;ndash;&amp;gt;关于本机&amp;ndash;&amp;gt;点击最下方的证书信任&amp;ndash;&amp;gt;把刚刚安装的证书信任&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Android（7.0 以下）：设置&amp;ndash;&amp;gt;高级设置&amp;ndash;&amp;gt;安全&amp;ndash;&amp;gt;从 SD 卡安装，找到刚才下载的证书点击安装&lt;/p&gt;&lt;/li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击之后出现弹窗，在手机浏览器输入 &lt;code&gt;chls.pro/ssl&lt;/code&gt;下载证书安装。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iOS 端：在设置&amp;ndash;&amp;gt;通用&amp;ndash;&amp;gt;关于本机&amp;ndash;&amp;gt;点击最下方的证书信任&amp;ndash;&amp;gt;把刚刚安装的证书信任&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Android（7.0 以下）：设置&amp;ndash;&amp;gt;高级设置&amp;ndash;&amp;gt;安全&amp;ndash;&amp;gt;从 SD 卡安装，找到刚才下载的证书点击安装&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;div class=&#34;shortcode-notice note&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title note&#34;&gt;
-    
-      Android7.0
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;由于 Google 对 Android 7.0 之后的机型更改了证书信任机制，普通的用户证书，在 APP 里面不再信任。&lt;br /&gt;
-官方解决方案指出：需要在 APP 开发的工程里面配置 XML 文件信任即可。&lt;br /&gt;
-&lt;a href=&#34;https://zhuanlan.zhihu.com/p/79277115&#34;&gt;知乎参考文档&lt;/a&gt;、&lt;a href=&#34;https://developer.android.com/training/articles/security-config.html&#34;&gt;Android 官方文档&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
+&lt;!-- raw HTML omitted --&gt;
 &lt;h1 id=&#34;开启-charles-ssl-proxy&#34;&gt;开启 Charles ssl proxy&lt;/h1&gt;
-
 &lt;p&gt;Proxy&amp;ndash;&amp;gt;SSL Proxying Settings 加入要抓取的 https 域名，支持正则表达式通配符。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.cankiss.ml/images/charles/proxy-ssl.png&#34;/&gt;&lt;/p&gt;
+
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/charles/proxy-ssl.png&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/charles/proxy-ssl.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;p&gt;如果证书安装完成，现在就可以愉快的抓包了~&lt;/p&gt;
-
 &lt;h1 id=&#34;远端域名映射&#34;&gt;远端域名映射&lt;/h1&gt;
-
 &lt;p&gt;Tools&amp;ndash;&amp;gt;Map Remote&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.cankiss.ml/images/charles/remote-map.png&#34;/&gt;&lt;/p&gt;
+
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/charles/remote-map.png&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/charles/remote-map.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;p&gt;将请求的域名地址映射到本地服务，常用在 app 嵌套 h5 页面，映射到本地开发。&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;注意 https 域名需要写明 443 端口&lt;/strong&gt;&lt;/p&gt;
-
 &lt;h1 id=&#34;修改请求-or-响应&#34;&gt;修改请求 or 响应&lt;/h1&gt;
-
 &lt;p&gt;右键点击需要修改的请求，选择&lt;code&gt;Breakpoints&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.cankiss.ml/images/charles/breakpoint.png&#34;/&gt;&lt;/p&gt;
+
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/charles/breakpoint.png&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/charles/breakpoint.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;p&gt;最终 Charles 会对选择的请求路径施加断点，在断点处修改 request 或 response 数据点击 execute 执行。常用于对后端返回数据修改。&lt;/p&gt;
-
 &lt;h1 id=&#34;弱网环境模拟&#34;&gt;弱网环境模拟&lt;/h1&gt;
-
 &lt;p&gt;Proxy&amp;ndash;&amp;gt;Throttle Settings&amp;ndash;&amp;gt;Enable Throttling&lt;/p&gt;
-
 &lt;p&gt;选择适合的网速进行弱网测试&lt;/p&gt;
-
-&lt;h1 id=&#34;android7-0-抓包&#34;&gt;Android7.0+ 抓包 😄&lt;/h1&gt;
-
+&lt;h1 id=&#34;android70-抓包-&#34;&gt;Android7.0+ 抓包 😄&lt;/h1&gt;
 
 
 
@@ -184,9 +537,7 @@
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
 &lt;p&gt;首先安装&lt;a href=&#34;https://github.com/android-hacker/VirtualXposed&#34;&gt;VirtualXposed&lt;/a&gt;，接着下载&lt;a href=&#34;https://github.com/Fuzion24/JustTrustMe&#34;&gt;JustTrustMe&lt;/a&gt;。将 JustTrustMe 安装在 VirtualXposed，VirtualXposed 打开选择 VirtualXposed 方式运行。&lt;/p&gt;
-
 &lt;p&gt;把需要抓包的 app 放入 VirtualXposed 运行，接下来就是常规的抓包方法，证书什么的安装好，设备连上。&lt;/p&gt;
 </description>
       
@@ -194,23 +545,18 @@
     
     <item>
       <title>JS中的节流与防抖函数</title>
-      <link>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/debounce-throttle/</link>
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/debounce-throttle/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/debounce-throttle/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 &lt;code&gt;keyup&lt;/code&gt; 事件等。&lt;/p&gt;
-
 &lt;h1 id=&#34;debounce&#34;&gt;debounce&lt;/h1&gt;
-
 &lt;h2 id=&#34;一个简单可用的实现代码&#34;&gt;一个简单可用的实现代码&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -252,9 +598,7 @@
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h2 id=&#34;debounce-codepen-在线体验&#34;&gt;debounce codepen 在线体验&lt;/h2&gt;
-
+&lt;/div&gt;&lt;h2 id=&#34;debounce-codepen-在线体验&#34;&gt;debounce codepen 在线体验&lt;/h2&gt;
  
 
 
@@ -274,30 +618,13 @@ data-slug-hash=&#34;YwNwgy&#34;
 data-preview=&#34;true&#34; 
 style=&#34;box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;&#34;&gt;&lt;/p&gt;
 &lt;script async src=&#34;https://static.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;
-
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-
 &lt;p&gt;Debounce（防抖）技术把多次顺序调用合成一次。在你指定的时间内，无论函数被调用多少次，都算做一次调用。也就是说&lt;strong&gt;相邻两次函数执行间隔必须大于等于指定的时间&lt;/strong&gt;。适合于键盘事件，缓冲事件回调。&lt;/p&gt;
-
-&lt;div class=&#34;shortcode-notice tip&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title tip&#34;&gt;
-    
-      lodash中的实现
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;&lt;a href=&#34;https://lodash.com/docs/4.17.15#debounce&#34;&gt;_.debounce&lt;/a&gt;中的第三个参数，&lt;code&gt;{leading: true,trailing:false}&lt;/code&gt;，指定当前函数首次触发时执行。&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
+&lt;!-- raw HTML omitted --&gt;
 &lt;h1 id=&#34;throttle&#34;&gt;throttle&lt;/h1&gt;
-
-&lt;p&gt;在 lodash 中的，throttle 就是设置第三个参数 &lt;code&gt;maxWait&lt;/code&gt; 的 debounce 函数。这样节流函数保证在指定的时间内执行一次函数。适合于滚动条事件，将多次事件按时间分割开延迟执行。&lt;br /&gt;
+&lt;p&gt;在 lodash 中的，throttle 就是设置第三个参数 &lt;code&gt;maxWait&lt;/code&gt; 的 debounce 函数。这样节流函数保证在指定的时间内执行一次函数。适合于滚动条事件，将多次事件按时间分割开延迟执行。&lt;br&gt;
 &lt;strong&gt;不同与 debounce 的是：debounce 的时间间隔结束后才会去执行函数，throttle 则是在时间间隔内检查函数。&lt;/strong&gt;&lt;/p&gt;
-
 &lt;h1 id=&#34;requestanimationframe&#34;&gt;requestAnimationFrame&lt;/h1&gt;
-
 
 
 &lt;p class=&#34;ciu_embed&#34; 
@@ -307,7 +634,7 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;script async src=&#34;https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js&#34;&gt;&lt;/script&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -319,11 +646,8 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 一般在js dom动画中使用，更加精确细腻操作
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;类似&lt;code&gt;_.throttle(callback,16)&lt;/code&gt;&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;类似&lt;code&gt;_.throttle(callback,16)&lt;/code&gt;&lt;/p&gt;
 &lt;h1 id=&#34;参考文章&#34;&gt;参考文章&lt;/h1&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://jinlong.github.io/2016/04/24/Debouncing-and-Throttling-Explained-Through-Examples/&#34;&gt;实例解析防抖动（Debouncing）和节流阀（Throttling）&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame&#34;&gt;window.requestAnimationFrame&lt;/a&gt;&lt;/li&gt;
@@ -334,54 +658,43 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
     
     <item>
       <title>H5唤起native app</title>
-      <link>https://blog.cankiss.ml/post/web-developer/call-app/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/call-app/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/call-app/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/call-app/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;这是一个大坑做好准备，因为各端差异性，没有一个统一方案，需要各端兼容。&lt;/p&gt;
-
 &lt;h1 id=&#34;urlscheme-协议打开-app&#34;&gt;URLScheme 协议打开 APP&lt;/h1&gt;
-
 &lt;p&gt;URLScheme 协议：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;newsapp://&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;newsapp://
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;iOS 端还支持&lt;code&gt;smart app banner&lt;/code&gt;打开 app，通过设置 meta 标签&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;iOS 端还支持&lt;code&gt;smart app banner&lt;/code&gt;打开 app，通过设置 meta 标签&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&amp;lt;meta name=&amp;#34;apple-itunes-app&amp;#34; content=&amp;#34;app-id=1023600494, app-argument=tigerbrokersusstock://com.tigerbrokers.usstock/post?postId=7125&amp;#34; /&amp;gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;meta name=&amp;#34;apple-itunes-app&amp;#34; content=&amp;#34;app-id=1023600494, app-argument=tigerbrokersusstock://com.tigerbrokers.usstock/post?postId=7125&amp;#34; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;这种协议 iOS Android 均支持，通过&lt;code&gt;location.href&lt;/code&gt;或者&lt;code&gt;iframe&lt;/code&gt;来实现唤起。然而在微信浏览器中除了合作伙伴白名单外是屏蔽的。&lt;br /&gt;
+&lt;/div&gt;&lt;p&gt;这种协议 iOS Android 均支持，通过&lt;code&gt;location.href&lt;/code&gt;或者&lt;code&gt;iframe&lt;/code&gt;来实现唤起。然而在微信浏览器中除了合作伙伴白名单外是屏蔽的。&lt;br&gt;
 另外在 iOS 中打开也会有弹窗，很难避免，所以推荐 iOS 使用&lt;code&gt;Universal Links&lt;/code&gt;唤醒。&lt;/p&gt;
-
 &lt;h1 id=&#34;universal-links&#34;&gt;Universal Links&lt;/h1&gt;
-
-&lt;p&gt;由 Apple 开发的一种唤醒方式，仅在&lt;strong&gt;iOS9+&lt;/strong&gt;系统支持。虽然微信也是跟上屏蔽了，但是在 iOS 端可以通过引导用户在微信端打开浏览器瞬间唤醒 App，体验也是很不错的。&lt;strong&gt;所以强烈推荐使用。&lt;/strong&gt;&lt;/p&gt;
-
+&lt;p&gt;由 Apple 开发的一种唤醒方式，仅在**iOS9+**系统支持。虽然微信也是跟上屏蔽了，但是在 iOS 端可以通过引导用户在微信端打开浏览器瞬间唤醒 App，体验也是很不错的。&lt;strong&gt;所以强烈推荐使用。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;ios-准备&#34;&gt;iOS 准备&lt;/h2&gt;
-
-&lt;p&gt;参考这一篇文章&lt;a href=&#34;https://www.jianshu.com/p/734c3eff8feb&#34;&gt;https://www.jianshu.com/p/734c3eff8feb&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;参考这一篇文章https://www.jianshu.com/p/734c3eff8feb&lt;/p&gt;
 &lt;h2 id=&#34;h5-准备&#34;&gt;H5 准备&lt;/h2&gt;
-
 &lt;p&gt;&lt;strong&gt;必须有域名，必须是 https&lt;/strong&gt;，接着创建&lt;code&gt;apple-app-site-association&lt;/code&gt;文件，并部署到当前域名根目录。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-apple-app-site-association&#34; data-lang=&#34;apple-app-site-association&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -398,7 +711,7 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-apple-app-site-association&#34; data-lang=&#34;apple-app-site-association&#34;&gt;{
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;{
     &amp;#34;applinks&amp;#34;: {
         &amp;#34;apps&amp;#34;: [],
         &amp;#34;details&amp;#34;: [
@@ -412,18 +725,16 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
             }
         ]
     }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;还有一点当前页面的域名要和打开的 iOS APP 域名不一致。&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;还有一点当前页面的域名要和打开的 iOS APP 域名不一致。&lt;/p&gt;
 &lt;h1 id=&#34;h5-如何判断-app-是否打开&#34;&gt;H5 如何判断 APP 是否打开&lt;/h1&gt;
-
 &lt;p&gt;很抱歉没有任何系统提供的回调。一般是等待 1s 后，当前页面没有被遮挡隐藏就算是 App 没有被打开。
 笔者原来项目代码实现，仅供参考。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -515,9 +826,7 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h2 id=&#34;android-浏览器不会跳转下载&#34;&gt;Android 浏览器不会跳转下载&lt;/h2&gt;
-
+&lt;/div&gt;&lt;h2 id=&#34;android-浏览器不会跳转下载&#34;&gt;Android 浏览器不会跳转下载&lt;/h2&gt;
 &lt;p&gt;比如 UC 浏览器，禁止用户没有点击事件触发下载。只能采取页面放 button 按钮，引导用户触发点击。&lt;/p&gt;
 </description>
       
@@ -525,22 +834,18 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
     
     <item>
       <title>git 常用命令行操作总结</title>
-      <link>https://blog.cankiss.ml/post/git-summary/</link>
+      <link>https://blog.19921024.xyz/post/git-summary/</link>
       <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/git-summary/</guid>
+      <guid>https://blog.19921024.xyz/post/git-summary/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;安装-git&#34;&gt;安装 git&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34;&gt;windows 客户端&lt;/a&gt;&lt;br /&gt;
+        <description>&lt;h1 id=&#34;安装-git&#34;&gt;安装 git&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34;&gt;windows 客户端&lt;/a&gt;&lt;br&gt;
 好用的&lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;vscode&lt;/a&gt;代码编辑器内置 git 管理。&lt;/p&gt;
-
 &lt;h1 id=&#34;cli&#34;&gt;Cli&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -677,15 +982,14 @@ git rebase -i HEAD~4
 &lt;span class=&#34;c1&#34;&gt;# 到commit-hash 这次的提交合并&lt;/span&gt;
 git rebase -i &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;commit-hash&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;# rebase完成&lt;/span&gt;
-git rebase --continue&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+git rebase --continue
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id=&#34;优化提交格式&#34;&gt;优化提交格式&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;优化提交格式&#34;&gt;优化提交格式&lt;/h1&gt;
 &lt;p&gt;推荐使用&lt;a href=&#34;https://gitmoji.carloscuesta.me/&#34;&gt;gitmoji&lt;/a&gt;优化提交信息格式。cli 工具使用（需要 nodejs 环境）：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -696,11 +1000,10 @@ git rebase --continue&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&g
 npm i -g gitmoji-cli
 &lt;span class=&#34;c1&#34;&gt;# 当前目录加入commit钩子&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;# git commit 时候选择提交内容&lt;/span&gt;
-gitmoji -i&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+gitmoji -i
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id=&#34;多人协作工作模式&#34;&gt;多人协作工作模式&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;多人协作工作模式&#34;&gt;多人协作工作模式&lt;/h1&gt;
 
 
 
@@ -754,7 +1057,6 @@ gitmoji -i&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;li&gt;如果合并有冲突，则解决冲突，并在本地提交；&lt;/li&gt;
 &lt;li&gt;没有冲突或者解决掉冲突后，再用 &lt;code&gt;git push origin &amp;lt;branch-name&amp;gt;&lt;/code&gt;推送就能成功！&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;如果 &lt;code&gt;git pull&lt;/code&gt; 提示 &lt;code&gt;no tracking information&lt;/code&gt;，则说明本地分支和远程分支的链接关系没有创建，用命令 &lt;code&gt;git branch --set-upstream-to &amp;lt;branch-name&amp;gt; origin/&amp;lt;branch-name&amp;gt;&lt;/code&gt;。&lt;/p&gt;
   &lt;footer&gt;
     &lt;strong&gt;廖雪峰&lt;/strong&gt;
@@ -768,13 +1070,11 @@ gitmoji -i&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
 &lt;h1 id=&#34;github-参与开源项目流程&#34;&gt;GitHub 参与开源项目流程&lt;/h1&gt;
-
 &lt;p&gt;fork 远程仓库&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -791,7 +1091,8 @@ git remote add upstream http://opensource.git
 &lt;span class=&#34;c1&#34;&gt;# 从远程开源项目更新&lt;/span&gt;
 git fecth upstream
 &lt;span class=&#34;c1&#34;&gt;# 合并远程主分支更新本地仓库代码&lt;/span&gt;
-git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+git merge upstream/master
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
       
@@ -799,36 +1100,28 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
     
     <item>
       <title>h5页面嵌套iOS中的坑点</title>
-      <link>https://blog.cankiss.ml/post/web-developer/ios-webview-bug/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/ios-webview-bug/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/ios-webview-bug/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/ios-webview-bug/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;原生-ios-键盘收起对-h5-页面的影响&#34;&gt;原生 iOS 键盘收起对 h5 页面的影响&lt;/h1&gt;
-
+        <description>&lt;h1 id=&#34;原生-ios-键盘收起对-h5-页面的影响&#34;&gt;原生 iOS 键盘收起对 h5 页面的影响&lt;/h1&gt;
 &lt;h2 id=&#34;问题描述&#34;&gt;问题描述&lt;/h2&gt;
-
 &lt;p&gt;iOS 开启 WebView 或者浏览器中嵌入 h5&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;如果当前 h5 页面底部有&lt;code&gt;position:fixed&lt;/code&gt;，当 iOS 键盘弹出再落回的时候会造成页面底部大量留白。&lt;/li&gt;
 &lt;li&gt;如果是&lt;code&gt;position:fixed&lt;/code&gt;弹窗，则当键盘收起时，弹窗位置会发生轻微偏移，造成弹窗上的点击失效。&lt;/li&gt;
 &lt;li&gt;甚至正常页面的点击也有这样的问题。&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;h2 id=&#34;解决方案&#34;&gt;解决方案&lt;/h2&gt;
-
 &lt;p&gt;归根结底，是 iOS 原生键盘收起时，页面整体没有正常回落，导致你看到的页面和实际的有稍许差距。这是 iOS11 以来的经典 bug。&lt;/p&gt;
-
 &lt;p&gt;当键盘收起时做以下操作（一般是 input 框 blur 时候）：&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;scrollIntoViewIfNeeded 在移动端兼容性非常好&lt;/p&gt;
+&lt;li&gt;scrollIntoViewIfNeeded 在移动端兼容性非常好&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -839,63 +1132,58 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;btn&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;querySelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.btn&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;querySelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.chunk&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;nx&#34;&gt;btn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;addEventListener&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;click&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;scrollIntoViewIfNeeded&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// 控制页面滚动到当前dom可视的居中位置
+  &lt;span class=&#34;nx&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;scrollIntoViewIfNeeded&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;c1&#34;&gt;// 控制页面滚动到当前dom可视的居中位置
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;采用 window.scroll 强制滚动到头部&lt;/p&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;采用 window.scroll 强制滚动到头部&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;setTimeout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;scroll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;scroll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;fastclick-对-textarea-等元素-focus-影响&#34;&gt;FastClick 对 textarea 等元素 focus 影响&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;fastclick-对-textarea-等元素-focus-影响&#34;&gt;FastClick 对 textarea 等元素 focus 影响&lt;/h1&gt;
 &lt;h2 id=&#34;问题描述-1&#34;&gt;问题描述&lt;/h2&gt;
-
-&lt;p&gt;FastClick 是对老的手机系统版本 js click 事件延迟 300ms 执行问题做处理的 js 库。如今在 iOS 9.3&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:footnote&#34;&gt;&lt;a href=&#34;#fn:footnote&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; 以上版本，可以通过简单的 meta 标签来回避这个问题。&lt;/p&gt;
+&lt;p&gt;FastClick 是对老的手机系统版本 js click 事件延迟 300ms 执行问题做处理的 js 库。如今在 iOS 9.3&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; 以上版本，可以通过简单的 meta 标签来回避这个问题。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;viewport&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;width=device-width&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;viewport&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;width=device-width&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;然而为了适配老的机型，在项目中存在有时候就是累赘，比如会造成表单元素聚焦&lt;strong&gt;非常迟钝&lt;/strong&gt;。&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;然而为了适配老的机型，在项目中存在有时候就是累赘，比如会造成表单元素聚焦&lt;strong&gt;非常迟钝&lt;/strong&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;解决方案-1&#34;&gt;解决方案&lt;/h2&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;needsclick&lt;/code&gt; className 忽略&lt;/p&gt;
+&lt;li&gt;&lt;code&gt;needsclick&lt;/code&gt; className 忽略&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;item needsclick&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;My El&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- className of needsclick will ignored by fastclick --&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- className of needsclick will ignored by fastclick --&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;一种 hack 写法&lt;/p&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;一种 hack 写法&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vue&#34; data-lang=&#34;vue&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -907,55 +1195,43 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vue&#34; data-lang=&#34;vue&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;textarea&lt;/span&gt;
-&lt;span class=&#34;na&#34;&gt;autocomplete&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;na&#34;&gt;spellcheck&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;na&#34;&gt;autocapitalize&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;na&#34;&gt;autocorrect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;na&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;-model&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;.trim&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;=&amp;#34;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;blur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;e =&amp;gt; e.target.scrollIntoViewIfNeeded()&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;click&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;e =&amp;gt; e.target.focus()&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;textarea&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+  &lt;span class=&#34;na&#34;&gt;autocomplete&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;na&#34;&gt;spellcheck&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;na&#34;&gt;autocapitalize&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;na&#34;&gt;autocorrect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;na&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;-model&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;.trim&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;=&amp;#34;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;blur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;e =&amp;gt; e.target.scrollIntoViewIfNeeded()&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;click&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;e =&amp;gt; e.target.focus()&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;textarea&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;ios-键盘拼音问题&#34;&gt;iOS 键盘拼音问题&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;ios-键盘拼音问题&#34;&gt;iOS 键盘拼音问题&lt;/h1&gt;
 &lt;h2 id=&#34;问题描述-2&#34;&gt;问题描述&lt;/h2&gt;
-
 &lt;p&gt;iOS 键盘在打拼音的时候，默认 input 事件是不执行的，所以 vue 当中的&lt;code&gt;v-model&lt;/code&gt;也是没有值的。&lt;/p&gt;
-
 &lt;h2 id=&#34;解决方案-2&#34;&gt;解决方案&lt;/h2&gt;
-
 &lt;p&gt;换成&lt;code&gt;keyup&lt;/code&gt;事件&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:footnote&#34;&gt;&lt;a href=&#34;https://juejin.im/post/5ce764a2f265da1b8c19645a&#34;&gt;2019 再聊移动端 300ms 延迟及 fastClick 原理解析&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:footnote&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://juejin.im/post/5ce764a2f265da1b8c19645a&#34;&gt;2019 再聊移动端 300ms 延迟及 fastClick 原理解析&lt;/a&gt; &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;
+&lt;/section&gt;
 </description>
       
     </item>
     
     <item>
       <title>面向现代浏览器部署代码</title>
-      <link>https://blog.cankiss.ml/post/web-developer/deploying-modern-code/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/deploying-modern-code/</link>
       <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/deploying-modern-code/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/deploying-modern-code/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;笔者最早在&lt;a href=&#34;https://cli.vuejs.org/zh/guide/browser-compatibility.html#%E7%8E%B0%E4%BB%A3%E6%A8%A1%E5%BC%8F&#34;&gt;vue-cli3（vue 的工具链）&lt;/a&gt;中看到的这种前端代码的部署方式，并在生产环境做了部署，但是各种原因并没有发现什么优势。不过这是一个很酷的技术，笔者尝试很多种方式也未能自己实现类似的在 vue 框架下的现代打包方式。&lt;/p&gt;
-
 &lt;h1 id=&#34;什么是现代打包方式&#34;&gt;什么是现代打包方式&lt;/h1&gt;
-
 
 
 
@@ -1004,13 +1280,10 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;p&gt;Deploying ES2015+ Code in Production Today&lt;/p&gt;
-
 &lt;p&gt;尽管目前所有的前沿浏览器都能运行 ES2015+ 代码（译注：ES2015 及俗称的 ES6），自然也能够支持我刚刚列举的新特性，，但是为了兼容占有小比例的低版本浏览器用户，大部分的开发者仍然使用 polyfills 将代码编译成 ES5 语法。&lt;/p&gt;
-
 &lt;p&gt;这种情况无疑糟透了，在理想的世界里，我们将无需输送不必要的代码！&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;该文的中文翻译:
-&lt;a href=&#34;https://jdc.jd.com/archives/4911&#34;&gt;https://jdc.jd.com/archives/4911&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;_该文的中文翻译:
+&lt;a href=&#34;https://jdc.jd.com/archives/4911_&#34;&gt;https://jdc.jd.com/archives/4911_&lt;/a&gt;&lt;/p&gt;
 &lt;/p&gt;
   &lt;footer&gt;
     &lt;strong&gt;Philip Walton&lt;/strong&gt;
@@ -1024,61 +1297,41 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
 &lt;p&gt;简单的来讲，&lt;code&gt;JavaScript&lt;/code&gt;新的版本语法特性、api 等无法和老版本浏览器兼容。但是开发者还想使用新的语法特性，怎么办呢？这个时候就该&lt;a href=&#34;https://babeljs.io/&#34;&gt;babeljs&lt;/a&gt;出场了。&lt;/p&gt;
-
 &lt;p&gt;配合&lt;code&gt;babeljs&lt;/code&gt;和各类的&lt;code&gt;polyfill&lt;/code&gt;(实现某个 api 的 JS 包，用来补齐 JS 运行环境 api 缺失)，前端开发者可以书写任意版本的 JS 语法和 JS 相关 api 而不用考虑浏览器兼容性问题。&lt;/p&gt;
-
 &lt;p&gt;然而随着浏览器版本的更新，老版本浏览器市场占比越来越低，而为了兼容那一小撮老版的浏览器，增加各类的&lt;code&gt;polyfill&lt;/code&gt;代码包、&lt;code&gt;babeljs&lt;/code&gt;转义代码，这也将不再合适。&lt;/p&gt;
-
 &lt;p&gt;然而毕竟有老版本浏览器在使用不能放弃他们，所以面向现代模式的 JS 打包方式应运而生。&lt;/p&gt;
-
-&lt;div class=&#34;shortcode-notice tip&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title tip&#34;&gt;
-    
-      babel一词的来历
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;&lt;strong&gt;babel&lt;/strong&gt; 一词来自《圣经·旧约》的记载巴别塔。当时的人们想要修筑直上云霄的巴别塔和上帝同在，被上帝惩罚所有人说不同的语言，最后大家因为语言不通各自离开，巴别塔也没有建成。这里 babeljs 借用这个寓意让不同的 js 语法都能转换成一种。&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
+&lt;!-- raw HTML omitted --&gt;
 &lt;h1 id=&#34;现代模式的实现方式&#34;&gt;现代模式的实现方式&lt;/h1&gt;
-
 &lt;p&gt;这里摘抄 vue-cli3 实现方式：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vue-cli-service build --modern&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;vue-cli-service build --modern
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;通过 &lt;code&gt;--modern&lt;/code&gt; npm 参数构建两种 JS 包，一个现代版的包，面向支持 ES modules 的现代浏览器，另一个旧版的包，面向不支持的旧浏览器。&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;通过 &lt;code&gt;--modern&lt;/code&gt; npm 参数构建两种 JS 包，一个现代版的包，面向支持 ES modules 的现代浏览器，另一个旧版的包，面向不支持的旧浏览器。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;现代版的包会通过 &lt;code&gt;&amp;lt;script type=&amp;quot;module&amp;quot;&amp;gt;&lt;/code&gt; 在被支持的浏览器中加载；它们还会使用&lt;code&gt;&amp;lt;link rel=&amp;quot;modulepreload&amp;quot;&amp;gt;&lt;/code&gt; 进行预加载。&lt;/li&gt;
 &lt;li&gt;旧版的包会通过 &lt;code&gt;&amp;lt;script nomodule&amp;gt;&lt;/code&gt; 加载，并会被支持 &lt;code&gt;ES modules&lt;/code&gt; 的浏览器忽略。&lt;/li&gt;
 &lt;li&gt;一个针对 Safari 10 中 &lt;code&gt;&amp;lt;script nomodule&amp;gt;&lt;/code&gt; 的修复会被自动注入。&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;非常酷的实现方式，这样新旧浏览器分别会走两个包，新版浏览器加载更小的现代版 JS 语法包，老版浏览器则保持不变。
 笔者经过打包的项目，新包比老包大概能缩减 100k 左右的大小，vue-cli3 文档指出可以缩减 16%。&lt;/p&gt;
-
-&lt;h1 id=&#34;尝试-diy-现代打包工具-目前还没成熟的项目&#34;&gt;尝试 diy 现代打包工具（目前还没成熟的项目）&lt;/h1&gt;
-
+&lt;h1 id=&#34;尝试-diy-现代打包工具目前还没成熟的项目&#34;&gt;尝试 diy 现代打包工具（目前还没成熟的项目）&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/prateekbh/babel-esm-plugin&#34;&gt;babel-esm-plugin&lt;/a&gt;&lt;br /&gt;
-可以操作 babel 输出两种 js 代码&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin&#34;&gt;webpack-babel-multi-target-plugin&lt;/a&gt;&lt;br /&gt;
-比较全面的实现方式，但是笔者在 vue 项目里打包 vendor 包巨大。不支持按需方式打包。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/prateekbh/babel-esm-plugin&#34;&gt;babel-esm-plugin&lt;/a&gt;&lt;br&gt;
+可以操作 babel 输出两种 js 代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin&#34;&gt;webpack-babel-multi-target-plugin&lt;/a&gt;&lt;br&gt;
+比较全面的实现方式，但是笔者在 vue 项目里打包 vendor 包巨大。不支持按需方式打包。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;h2 id=&#34;参考文档&#34;&gt;参考文档&lt;/h2&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://web.dev/serve-modern-code-to-modern-browsers&#34;&gt;Serve modern code to modern browsers for faster page loads&lt;/a&gt;&lt;/p&gt;
 </description>
       
@@ -1086,21 +1339,17 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
     
     <item>
       <title>你所不知的CSS</title>
-      <link>https://blog.cankiss.ml/post/web-developer/unknown-css/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/unknown-css/</link>
       <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/unknown-css/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/unknown-css/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;收录一下 CSS 技巧吧&lt;/p&gt;
-
 &lt;h1 id=&#34;单行多行截取文本&#34;&gt;单行多行截取文本&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -1113,11 +1362,12 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
   &lt;span class=&#34;k&#34;&gt;overflow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;hidden&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;text-overflow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;ellipsis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;white-space&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nowrap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -1134,15 +1384,14 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
   &lt;span class=&#34;k&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;-webkit-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;box&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;kp&#34;&gt;-webkit-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;box-orient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;vertical&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;//属性规定框的子元素应该被水平或垂直排列&lt;/span&gt;
   &lt;span class=&#34;kp&#34;&gt;-webkit-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;line-clamp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;//这个属性适合WebKit浏览器或移动端（绝大部分是WebKit内核的）浏览器&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id=&#34;操作伪元素-pseudo-element&#34;&gt;操作伪元素（pseudo-element）&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;操作伪元素pseudo-element&#34;&gt;操作伪元素（pseudo-element）&lt;/h1&gt;
 &lt;h2 id=&#34;获取伪元素的属性值&#34;&gt;获取伪元素的属性值&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -1156,11 +1405,10 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
   &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getPropertyValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;font-size&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h2 id=&#34;设置伪元素的属性值&#34;&gt;设置伪元素的属性值&lt;/h2&gt;
+&lt;/div&gt;&lt;h2 id=&#34;设置伪元素的属性值&#34;&gt;设置伪元素的属性值&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -1175,11 +1423,10 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
     &lt;span class=&#34;k&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;attr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- attr()支持多个连写，而且attr()内可以是DOM元素的任意属性 --&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- attr()支持多个连写，而且attr()内可以是DOM元素的任意属性 --&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id=&#34;参考文档&#34;&gt;参考文档&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;参考文档&#34;&gt;参考文档&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5c18fd82f265da614273d585&#34;&gt;你所不知道的 css&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1189,17 +1436,24 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
     
     <item>
       <title>什么是BFC</title>
-      <link>https://blog.cankiss.ml/post/web-developer/bfc-layout/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/bfc-layout/</link>
       <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/bfc-layout/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/bfc-layout/</guid>
       
         <description>
-
-&lt;p&gt;&lt;img src=&#34;https://blog.cankiss.ml/images/3d-box-model.png&#34;&gt;&lt;/p&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.19921024.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/3d-box-model.png&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/3d-box-model.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;h1 id=&#34;盒模型&#34;&gt;盒模型&lt;/h1&gt;
-
 
 
 
@@ -1249,13 +1503,21 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
 
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document tree 生成的 render tree，而盒子模型就是 render tree 的节点。&lt;/p&gt;
-
+  &lt;p&gt;&lt;p&gt;&lt;code&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document tree 生成的 render tree，而盒子模型就是 render tree 的节点。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;注意:&lt;/li&gt;
-&lt;li&gt;1. CSS 作用的是盒子(Box), 而不是元素(Element);&lt;/li&gt;
-&lt;li&gt;2. JS 无法直接操作盒子。&lt;/li&gt;
-&lt;/ul&gt;&lt;/p&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;CSS 作用的是盒子(Box), 而不是元素(Element);&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;JS 无法直接操作盒子。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
   &lt;footer&gt;
     &lt;strong&gt;&lt;/strong&gt;
     
@@ -1268,43 +1530,34 @@ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tab
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
-&lt;h2 id=&#34;ie-盒模型-怪异盒模型&#34;&gt;IE 盒模型（怪异盒模型）&lt;/h2&gt;
+&lt;h2 id=&#34;ie-盒模型怪异盒模型&#34;&gt;IE 盒模型（怪异盒模型）&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;width = content-width + padding-width + border-width
-height = content-height + padding-height + border-height&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;width = content-width + padding-width + border-width
+height = content-height + padding-height + border-height
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h2 id=&#34;标准盒模型&#34;&gt;标准盒模型&lt;/h2&gt;
+&lt;/div&gt;&lt;h2 id=&#34;标准盒模型&#34;&gt;标准盒模型&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;width = content-width
-height = content-height&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;width = content-width
+height = content-height
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;shortcode-notice note&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title note&#34;&gt;
-    
-      注意
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;默认大多数浏览器盒模型处理方式是&lt;strong&gt;标准盒模型&lt;/strong&gt;。但是为了符合人们大多数的布局习惯，可以通过设置&lt;code&gt;box-sizing:border-box&lt;/code&gt;转换成 IE 盒模型，这也是大多数 UI 框架样式的首选方式。&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -1345,11 +1598,10 @@ height = content-height&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
   &lt;span class=&#34;kp&#34;&gt;-webkit-&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;box-sizing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;inherit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;kp&#34;&gt;-moz-&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;box-sizing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;inherit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;box-sizing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;inherit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id=&#34;bfc&#34;&gt;BFC&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;bfc&#34;&gt;BFC&lt;/h1&gt;
 
 
 
@@ -1375,11 +1627,8 @@ height = content-height&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;p&gt;那么 BFC 是什么呢？&lt;/p&gt;
-
 &lt;p&gt;BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述定位方案的普通流。&lt;/p&gt;
-
 &lt;p&gt;具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。&lt;/p&gt;
-
 &lt;p&gt;通俗一点来讲，可以把 BFC 理解为一个封闭的大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。&lt;/p&gt;
 &lt;/p&gt;
   &lt;footer&gt;
@@ -1394,9 +1643,7 @@ height = content-height&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
 &lt;h2 id=&#34;触发-bfc&#34;&gt;触发 BFC&lt;/h2&gt;
-
 &lt;ul&gt;
 &lt;li&gt;根元素(html)&lt;/li&gt;
 &lt;li&gt;浮动元素（元素的 float 不是 none）&lt;/li&gt;
@@ -1408,23 +1655,16 @@ height = content-height&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;li&gt;弹性元素（display 为 flex 或 inline-flex 元素的直接子元素）&lt;/li&gt;
 &lt;li&gt;网格元素（display 为 grid 或 inline-grid 元素的直接子元素）&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;以上内容来自&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:footnote1&#34;&gt;&lt;a href=&#34;#fn:footnote1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;em&gt;以上内容来自&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;应用&#34;&gt;应用&lt;/h2&gt;
-
 &lt;h3 id=&#34;双-div-外边距发生折叠&#34;&gt;双 div 外边距发生折叠&lt;/h3&gt;
-
 &lt;p&gt;通过设置&lt;code&gt;overflow: hidden&lt;/code&gt;触发 BFC，即可变成正常&lt;code&gt;margin&lt;/code&gt;边距&lt;/p&gt;
-
 &lt;h3 id=&#34;清除浮动&#34;&gt;清除浮动&lt;/h3&gt;
-
 &lt;p&gt;内部元素设置浮动脱离普通文档流造成高度坍陷，父元素设置&lt;code&gt;overflow: hidden&lt;/code&gt;，即可正常包裹内部元素。&lt;/p&gt;
-
 &lt;h3 id=&#34;两列自适应布局&#34;&gt;两列自适应布局&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -1439,75 +1679,50 @@ height = content-height&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;width: 200px; height: 200px;background: #eee&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
   我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px;
   background: #eee;
-&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;此时左边元素会覆盖右边元素，通过设置右边元素&lt;code&gt;overflow: hidden&lt;/code&gt;，就会正常两列排版。&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;此时左边元素会覆盖右边元素，通过设置右边元素&lt;code&gt;overflow: hidden&lt;/code&gt;，就会正常两列排版。&lt;/p&gt;
 &lt;h3 id=&#34;行内元素&#34;&gt;行内元素&lt;/h3&gt;
-
-&lt;p&gt;常见的 &lt;code&gt;span,img,button,input,label&lt;/code&gt; 等。更多行内元素请查看&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:footnote2&#34;&gt;&lt;a href=&#34;#fn:footnote2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
-&lt;br&gt;&lt;/p&gt;
-
-&lt;div class=&#34;shortcode-notice note&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title note&#34;&gt;
-    
-      注意
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;1、行内元素除了 img 外均&lt;strong&gt;忽略宽高&lt;/strong&gt;&lt;br /&gt;
-2、高度依靠&lt;code&gt;font-size line-height&lt;/code&gt;, &lt;code&gt;padding margin&lt;/code&gt; 只在水平方向实现，垂直方向无效&lt;br /&gt;
-3、&lt;code&gt;display:line,line-block&lt;/code&gt; 会有空白间隙，通过设置父元素&lt;code&gt;font-size:0&lt;/code&gt;解决&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
+&lt;p&gt;常见的 &lt;code&gt;span,img,button,input,label&lt;/code&gt; 等。更多行内元素请查看&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;应用-1&#34;&gt;应用&lt;/h2&gt;
-
 &lt;h3 id=&#34;水平居中&#34;&gt;水平居中&lt;/h3&gt;
-
 &lt;p&gt;当前元素设置&lt;code&gt;inline-block&lt;/code&gt;，通过设置父容器 &lt;code&gt;text-align:center&lt;/code&gt; 则可以使其水平居中。&lt;/p&gt;
-
 &lt;h3 id=&#34;垂直居中&#34;&gt;垂直居中&lt;/h3&gt;
-
-&lt;p&gt;当前元素设置&lt;code&gt;inline-block&lt;/code&gt;，其中一个子元素撑开父元素高度，然后设置其 &lt;code&gt;vertical-align:middle&lt;/code&gt;，则其他行内元素在此父元素下垂直居中。&lt;br /&gt;
+&lt;p&gt;当前元素设置&lt;code&gt;inline-block&lt;/code&gt;，其中一个子元素撑开父元素高度，然后设置其 &lt;code&gt;vertical-align:middle&lt;/code&gt;，则其他行内元素在此父元素下垂直居中。&lt;br&gt;
 常见的图标和字体上下对齐，设置 img &lt;code&gt;vertical-align:middle&lt;/code&gt;&lt;/p&gt;
-
 &lt;h1 id=&#34;参考文档&#34;&gt;参考文档&lt;/h1&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context&#34;&gt;块格式化上下文&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://juejin.im/entry/5938daf7a0bb9f006b2295db&#34;&gt;小科普：到底什么是 BFC、IFC、GFC 和 FFC&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/25321647&#34;&gt;10 分钟理解 BFC 原理&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.liayal.com/article/5a4b645276b2f863f44722cf&#34;&gt;IFC、BFC、GFC 与 FFC 知多少&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:footnote1&#34;&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:footnote1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:footnote2&#34;&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:footnote2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context&lt;/a&gt; &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements&lt;/a&gt;
+&lt;!-- raw HTML omitted --&gt; &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;
+&lt;/section&gt;
 </description>
       
     </item>
     
     <item>
       <title>利用html伪类设置表单效验样式</title>
-      <link>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/input-css-vaild/</link>
       <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/input-css-vaild/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;兼容性&#34;&gt;兼容性&lt;/h1&gt;
-
+        <description>&lt;h1 id=&#34;兼容性&#34;&gt;兼容性&lt;/h1&gt;
 
 
 &lt;p class=&#34;ciu_embed&#34; 
@@ -1517,15 +1732,12 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;script async src=&#34;https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js&#34;&gt;&lt;/script&gt;
 
 
-
 &lt;p class=&#34;ciu_embed&#34; 
 data-feature=&#34;input-pattern&#34; 
 data-periods=&#34;future_3,future_1,current,past_1,past_2&#34; 
 data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;script async src=&#34;https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js&#34;&gt;&lt;/script&gt;
-
 &lt;h1 id=&#34;效果展示&#34;&gt;效果展示&lt;/h1&gt;
-
  
 
 
@@ -1545,9 +1757,7 @@ data-slug-hash=&#34;RzJWeR&#34;
 data-preview=&#34;ture&#34; 
 style=&#34;box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;&#34;&gt;&lt;/p&gt;
 &lt;script async src=&#34;https://static.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;
-
 &lt;h1 id=&#34;参考文章&#34;&gt;参考文章&lt;/h1&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/Data_form_validation&#34;&gt;表单数据校验&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.w3cplus.com/css/form-validation-part-1-constraint-validation-html.html&#34;&gt;使用 HTML 和 CSS 技巧对表单进行约束验证&lt;/a&gt;&lt;/li&gt;
@@ -1558,26 +1768,34 @@ style=&#34;box-sizing: border-box; display: flex; align-items: center; justify-c
     
     <item>
       <title>go mod使用</title>
-      <link>https://blog.cankiss.ml/post/golang/gomod/</link>
+      <link>https://blog.19921024.xyz/post/golang/gomod/</link>
       <pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/golang/gomod/</guid>
+      <guid>https://blog.19921024.xyz/post/golang/gomod/</guid>
       
-        <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的&lt;code&gt;node_modules&lt;/code&gt;。go version &amp;gt;= 1.12 后内置的官方包管理器,不再需要配置 GOPATH 等环境变量。&lt;br /&gt;
+        <description>&lt;blockquote&gt;
+&lt;p&gt;golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的&lt;code&gt;node_modules&lt;/code&gt;。go version &amp;gt;= 1.12 后内置的官方包管理器,不再需要配置 GOPATH 等环境变量。&lt;br&gt;
 &lt;a href=&#34;https://github.com/golang/go/wiki/Modules&#34;&gt;https://github.com/golang/go/wiki/Modules&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://i.redd.it/fw31b02wfkez.png&#34;&gt;&lt;/p&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.19921024.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://i.redd.it/fw31b02wfkez.png&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://i.redd.it/fw31b02wfkez.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+      &lt;figcaption&gt;&lt;h4&gt;node_modules被人诟病冗余并体积巨大&lt;/h4&gt;
+      &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&#34;基础使用&#34;&gt;基础使用&lt;/h2&gt;
-
 &lt;p&gt;项目不需要在&lt;code&gt;$GOPATH/src&lt;/code&gt;目录内&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -1600,19 +1818,16 @@ go mod download &lt;span class=&#34;c1&#34;&gt;# 下载资源到本地cache&lt;/
 go get -u &lt;span class=&#34;c1&#34;&gt;# 拉取最新模块版本&lt;/span&gt;
 go run xxx.go &lt;span class=&#34;c1&#34;&gt;# 下载资源生成go.sum文件 类型npm的package.lock&lt;/span&gt;
 
-go &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; mod &lt;span class=&#34;c1&#34;&gt;# 查看更多命令&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+go &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; mod &lt;span class=&#34;c1&#34;&gt;# 查看更多命令&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;go mod 下载的包在 &lt;code&gt;$GOPATH/pkg/mod&lt;/code&gt;&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;go mod 下载的包在 &lt;code&gt;$GOPATH/pkg/mod&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;go-get-设置代理&#34;&gt;go get 设置代理&lt;/h2&gt;
-
-&lt;p&gt;墙内小朋友的福音：&lt;a href=&#34;https://goproxy.io/&#34;&gt;https://goproxy.io/&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;墙内小朋友的福音：https://goproxy.io/&lt;/p&gt;
 &lt;h3 id=&#34;macos&#34;&gt;macOS:&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -1625,11 +1840,12 @@ go &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; mod &lt;span class=&#34;c1&#
 &lt;span class=&#34;c1&#34;&gt;# Enable the go modules feature&lt;/span&gt;
 &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;GO111MODULE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;on
 &lt;span class=&#34;c1&#34;&gt;# Set the GOPROXY environment variable&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;GOPROXY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://goproxy.io&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;GOPROXY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://goproxy.io
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -1648,13 +1864,13 @@ vi ~/.bash_profile
 &lt;span class=&#34;c1&#34;&gt;# Set the GOPROXY environment variable&lt;/span&gt;
 &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;GOPROXY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;https://goproxy.io
 &lt;span class=&#34;c1&#34;&gt;# save&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.bash_profile&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h3 id=&#34;win&#34;&gt;win:&lt;/h3&gt;
+&lt;/div&gt;&lt;h3 id=&#34;win&#34;&gt;win:&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-PowerShell&#34; data-lang=&#34;PowerShell&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -1663,28 +1879,27 @@ vi ~/.bash_profile
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-PowerShell&#34; data-lang=&#34;PowerShell&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Enable the go modules feature&lt;/span&gt;
 &lt;span class=&#34;nv&#34;&gt;$env:GO111MODULE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;on&lt;/span&gt;
 &lt;span class=&#34;c&#34;&gt;# Set the GOPROXY environment variable&lt;/span&gt;
-&lt;span class=&#34;nv&#34;&gt;$env:GOPROXY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;goproxy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;nv&#34;&gt;$env:GOPROXY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;goproxy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h3 id=&#34;goland-ide-设置&#34;&gt;goland IDE 设置&lt;/h3&gt;
-
+&lt;/div&gt;&lt;h3 id=&#34;goland-ide-设置&#34;&gt;goland IDE 设置&lt;/h3&gt;
 &lt;p&gt;勾选 go modules 选项并且设置代理。&lt;/p&gt;
-
 &lt;h2 id=&#34;import-引入方式&#34;&gt;import 引入方式&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;kn&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;main&lt;/span&gt;
 
-&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;moduleName/folderName/fileName&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;h2 id=&#34;参考文章&#34;&gt;参考文章&lt;/h2&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;moduleName/folderName/fileName&amp;#34;&lt;/span&gt;
 
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;参考文章&#34;&gt;参考文章&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5c8e503a6fb9a070d878184a&#34;&gt;go mod 使用&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://colobu.com/2018/08/27/learn-go-module/&#34;&gt;跳出 Go module 的泥潭&lt;/a&gt;&lt;/li&gt;
@@ -1695,16 +1910,15 @@ vi ~/.bash_profile
     
     <item>
       <title>macOS下mysql使用</title>
-      <link>https://blog.cankiss.ml/post/mysql/macos/</link>
+      <link>https://blog.19921024.xyz/post/mysql/macos/</link>
       <pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/mysql/macos/</guid>
+      <guid>https://blog.19921024.xyz/post/mysql/macos/</guid>
       
         <description>&lt;blockquote&gt;
 &lt;p&gt;不要使用 brew 安装 mysql，至少笔者是没有成功过的，系统是最新的 10.14.5。&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;直接去&lt;a href=&#34;https://dev.mysql.com/downloads/mysql/&#34;&gt;官方地址下载&lt;/a&gt;，可以需要注册 Oracle 帐号&lt;br /&gt;
+&lt;p&gt;直接去&lt;a href=&#34;https://dev.mysql.com/downloads/mysql/&#34;&gt;官方地址下载&lt;/a&gt;，可以需要注册 Oracle 帐号&lt;br&gt;
 客户端推荐使用：&lt;a href=&#34;https://www.navicat.com/en/products/navicat-for-mysql&#34;&gt;Navicat for mySQL&lt;/a&gt;，同时也有破解版仅供个人学习。&lt;/p&gt;
 </description>
       
@@ -1712,17 +1926,14 @@ vi ~/.bash_profile
     
     <item>
       <title>html5中的httpClient</title>
-      <link>https://blog.cankiss.ml/post/web-developer/httpclient/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/httpclient/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/httpclient/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/httpclient/</guid>
       
-        <description>
-
-&lt;blockquote&gt;
+        <description>&lt;blockquote&gt;
 &lt;p&gt;html5 中的 httpClient 目前只有两种：&lt;code&gt;ajax&lt;/code&gt;、&lt;code&gt;fetch&lt;/code&gt;。兼容性如下：&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;
 
 &lt;p class=&#34;ciu_embed&#34; 
@@ -1737,9 +1948,7 @@ data-feature=&#34;fetch&#34;
 data-periods=&#34;future_3,future_1,current,past_1,past_2&#34; 
 data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;script async src=&#34;https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
 &lt;h2 id=&#34;ajax&#34;&gt;ajax&lt;/h2&gt;
-
 
 
 
@@ -1790,7 +1999,7 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -1870,7 +2079,7 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -1913,15 +2122,14 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
     request.send(formData);
 
     console.log(request.response);
-  }&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;原生 xhr 用起来不方便，常见的封装使用：&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;原生 xhr 用起来不方便，常见的封装使用：&lt;/p&gt;
 &lt;h3 id=&#34;jquery-ajax&#34;&gt;jquery ajax&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -2005,11 +2213,10 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h3 id=&#34;axios&#34;&gt;axios&lt;/h3&gt;
+&lt;/div&gt;&lt;h3 id=&#34;axios&#34;&gt;axios&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -2103,8 +2310,7 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;instance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;111&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;这里推荐使用&lt;a href=&#34;https://www.npmjs.com/package/qs&#34;&gt;qs&lt;/a&gt;库反序列化（解析）和序列化数据，因为浏览器端的&lt;code&gt;URLSearchParams&lt;/code&gt;兼容性不佳：
+&lt;/div&gt;&lt;p&gt;这里推荐使用&lt;a href=&#34;https://www.npmjs.com/package/qs&#34;&gt;qs&lt;/a&gt;库反序列化（解析）和序列化数据，因为浏览器端的&lt;code&gt;URLSearchParams&lt;/code&gt;兼容性不佳：
 
 
 &lt;p class=&#34;ciu_embed&#34; 
@@ -2112,13 +2318,11 @@ data-feature=&#34;urlsearchparams&#34;
 data-periods=&#34;future_3,future_1,current,past_1,past_2&#34; 
 data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;script async src=&#34;https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
 &lt;h2 id=&#34;fetch&#34;&gt;fetch&lt;/h2&gt;
-
 &lt;p&gt;可谓下一代的 xhr 代替品，自带 Promise 封装。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -2132,22 +2336,19 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
   &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;更多请查看：&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;更多请查看：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch&lt;/p&gt;
 </description>
       
     </item>
     
     <item>
       <title>谈谈JavaScript中的Number</title>
-      <link>https://blog.cankiss.ml/post/web-developer/numberinjs/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/numberinjs/</link>
       <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/numberinjs/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/numberinjs/</guid>
       
         <description>
-
-
 
 
 
@@ -2208,17 +2409,24 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;https://blog.cankiss.ml/images/IEEE_754_Double_Floating_Point_Format.svg&#34;&gt;&lt;/p&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.19921024.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/IEEE_754_Double_Floating_Point_Format.svg&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/IEEE_754_Double_Floating_Point_Format.svg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
-&lt;p&gt;64 位存储数值，其中 0 到 51 存储数字（片段），52 到 62 存储指数，63 位存储符号：&lt;br /&gt;
+&lt;p&gt;64 位存储数值，其中 0 到 51 存储数字（片段），52 到 62 存储指数，63 位存储符号：&lt;br&gt;
 其中 IEEE 754 规定，有效数字第一位默认总是 1，不在 64 位浮点数之中，有效数字都是&lt;code&gt;1.xxxxxx....xxx&lt;/code&gt;形式，小数点后面数最长 52 位。（其实是：科学记数法的二进制表示形式）&lt;/p&gt;
-
 &lt;h2 id=&#34;最大最小整数的取值范围&#34;&gt;最大最小整数的取值范围&lt;/h2&gt;
-
 &lt;p&gt;&lt;code&gt;[-9007199254740991,9007199254740991]&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -2230,31 +2438,23 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// -9007199254740991
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;js 中的整数超过这两个值的任意计算都将失去精度。任意的 js 操作都不会正常显示，例如后端传回超过这两个值的 id 数字末尾都被截取以 0 代替。&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;js 中的整数超过这两个值的任意计算都将失去精度。任意的 js 操作都不会正常显示，例如后端传回超过这两个值的 id 数字末尾都被截取以 0 代替。&lt;/p&gt;
 &lt;p&gt;解决方案：&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;转换成字符串&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/dcodeIO/long.js&#34;&gt;Long.js&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h2 id=&#34;0-1-0-2-问题&#34;&gt;0.1+0.2 问题&lt;/h2&gt;
-
+&lt;h2 id=&#34;0102-问题&#34;&gt;0.1+0.2 问题&lt;/h2&gt;
 &lt;p&gt;因为二进制小数位只有 52 位，后面都将被截断（零舍一入），所以相加必然会出现精度丢失问题。&lt;/p&gt;
-
 &lt;p&gt;解决方案：&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://mathjs.org/&#34;&gt;math.js&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/MikeMcl/bignumber.js/&#34;&gt;bignumber.js&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;简单实用的高精度计算：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -2402,11 +2602,10 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h2 id=&#34;tofixed-四舍五入问题&#34;&gt;toFixed 四舍五入问题&lt;/h2&gt;
+&lt;/div&gt;&lt;h2 id=&#34;tofixed-四舍五入问题&#34;&gt;toFixed 四舍五入问题&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
@@ -2414,12 +2613,11 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.65&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;toFixed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// &amp;#34;1.6&amp;#34;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;解决方案：&lt;br /&gt;
+&lt;/div&gt;&lt;p&gt;解决方案：&lt;br&gt;
 &lt;a href=&#34;https://github.com/nefe/number-precision&#34;&gt;number-precision&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -2443,10 +2641,10 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
     
     <item>
       <title>About America Kill Huawei</title>
-      <link>https://blog.cankiss.ml/post/society/kill-huawei/</link>
+      <link>https://blog.19921024.xyz/post/society/kill-huawei/</link>
       <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/society/kill-huawei/</guid>
+      <guid>https://blog.19921024.xyz/post/society/kill-huawei/</guid>
       
         <description>
 
@@ -2473,7 +2671,6 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;p&gt;&lt;strong&gt;备胎是准备了，但这备胎能不能用，好不好用，就要另说了。现在硬软件都是一个复杂系统，开发不是闷在黑屋，闭门造车就能折腾出来的。产品开发要经过长期的试错。首先你得需要一个环境，就是我们常说的生态系统。有上下游产品支持，有成千成万的用户。否则你的产品都是 Bug，没有用户会有耐心花钱陪你玩。&lt;/strong&gt;&lt;/p&gt;
-
 &lt;p&gt;反正中国人工便宜，搞个人海战术，广泛撒网，没准就捞着一条大鱼了&lt;/p&gt;
 &lt;/p&gt;
   &lt;footer&gt;
@@ -2488,49 +2685,37 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
 &lt;p&gt;ccp 在国内土地上以来，无论战争还是科技生产，从来都是人海战术，这就是对&lt;strong&gt;个人人权的藐视&lt;/strong&gt;。就拿华为例子来说，当今的操作系统是需要广大用户和开发人员长期磨合造就出大家都用的惯的系统，这就是生态的重要性，而不是一蹴而就的制作出来。软硬件环节依赖世界各大厂商供应，不再是几个集团或者国家能完成的。&lt;/p&gt;
-
 &lt;p&gt;华为的成功在我看来就两点：&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;国家军工背景支撑&lt;/li&gt;
 &lt;li&gt;性价比超高的产品方案&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;不要说华为有多少专利，技术。大部分也是靠买、偷获得的&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:footnote&#34;&gt;&lt;a href=&#34;#fn:footnote&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
+&lt;p&gt;不要说华为有多少专利，技术。大部分也是靠买、偷获得的&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 &lt;p&gt;中国人思想还大都停留在大一统的环境内，唯我独尊天朝上国的荒诞思想还在蔓延。当今的时代，是合作的时代，不是闭门造车的时代。所以我们的应该是开放怀抱，运用我们独有的能力参与世界发展的一环。回想过去 40 年所谓开放国门的改革，也只是拿我们的廉价人口劳动力和世界交换，为其他国家提供便宜的商品。边边角角，投机钻营，倒买倒卖，山寨模仿等倒是很拿手，真正拿出手的硬货少之又少。&lt;/p&gt;
-
 &lt;p&gt;如今来到历史节点，改变国人命运时刻来了！&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;开放怀抱融入世界，不再有所谓的仇视和焦虑。遵守规则，尊重人权，保障每个人权利。人人都能发光发热，人人都可以拿出自身的优势。&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:footnote&#34;&gt;&lt;a href=&#34;https://cn.wsj.com/articles/华为崛起之路伴随着剽窃与不正当竞争指控-11558950613&#34;&gt;https://cn.wsj.com/articles/华为崛起之路伴随着剽窃与不正当竞争指控-11558950613&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:footnote&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://cn.wsj.com/articles/&#34;&gt;https://cn.wsj.com/articles/&lt;/a&gt;华为崛起之路伴随着剽窃与不正当竞争指控-11558950613 &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;
+&lt;/section&gt;
 </description>
       
     </item>
     
     <item>
       <title>移动端适配</title>
-      <link>https://blog.cankiss.ml/post/web-developer/mobile-layout/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/mobile-layout/</link>
       <pubDate>Fri, 31 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/mobile-layout/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/mobile-layout/</guid>
       
-        <description>
-
-&lt;h1 id=&#34;探究-web-移动端适配-到底是-rem-还是-px&#34;&gt;探究 web 移动端适配，到底是 rem 还是 px？&lt;/h1&gt;
-
+        <description>&lt;h1 id=&#34;探究-web-移动端适配到底是-rem-还是-px&#34;&gt;探究 web 移动端适配，到底是 rem 还是 px？&lt;/h1&gt;
 &lt;p&gt;这个问题也困扰笔者很多年，最开始一味地使用 rem，但是到现在觉得 rem 不再合适。&lt;/p&gt;
-
 
 
 
@@ -2567,11 +2752,8 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;p&gt;为什么有 rem 来实现适应的方案，因为当年 viewport 在低版本安卓设备上还有兼容问题，而 vw，vh 还没能跑遍所有浏览器，所以 flexible 方案用 rem 来模拟 vmin 来实现在不同设备等比缩放的“一竹竿”方案&lt;/p&gt;
-
 &lt;p&gt;为什么说等比缩放是一竹竿，你想想在 ipad 这么大的设备跟和 iphone5 这么小的设备用同一套设计图，你就知道问题所在&lt;/p&gt;
-
 &lt;p&gt;逻辑像素是用来调和不同设备，不同 dpr，不同屏幕，不同分辨率，不同观看距离之间的如何解决显示问题的方案&lt;/p&gt;
-
 &lt;p&gt;要清楚，是调和，不是解决，解决仍需要人去解决，因为不同设备，&lt;strong&gt;在同样观赏距离看到的内容多少肯定是不一样的&lt;/strong&gt;&lt;/p&gt;
 &lt;/p&gt;
   &lt;footer&gt;
@@ -2586,21 +2768,19 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
 &lt;h2 id=&#34;px-适配&#34;&gt;px 适配&lt;/h2&gt;
-
 &lt;p&gt;首先设置 meta 标签&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;viewport&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- ios10+ 之后禁止缩放meta标签已经控制不了 --&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- ios10+ 之后禁止缩放meta标签已经控制不了 --&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 
 
 
@@ -2635,11 +2815,10 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;p&gt;都 9102 了&lt;br /&gt;
-都不知道 px 是 viewport 像素，&lt;br /&gt;
-而 viewport 像素又是什么，其实是浏览器内部对逻辑像素进行再处理的结果，简单来理解就是调整逻辑像素的缩放来达到适应设备的一个中间层&lt;br /&gt;
+  &lt;p&gt;&lt;p&gt;都 9102 了&lt;br&gt;
+都不知道 px 是 viewport 像素，&lt;br&gt;
+而 viewport 像素又是什么，其实是浏览器内部对逻辑像素进行再处理的结果，简单来理解就是调整逻辑像素的缩放来达到适应设备的一个中间层&lt;br&gt;
 那么 viewport width=device-width 是什么意思，&lt;strong&gt;其实就是让 viewport 的尺寸等于逻辑像素的尺寸&lt;/strong&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;逻辑像素（device point）&lt;/strong&gt;，是为了调和距离不一样导致的差异，将所有设备根据距离，透视缩放到一个相等水平的观看距离之后得到的尺寸，是一个抽象的概念&lt;/p&gt;
 &lt;/p&gt;
   &lt;footer&gt;
@@ -2653,7 +2832,6 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
     
   &lt;/footer&gt;
 &lt;/blockquote&gt;
-
 
 
 
@@ -2703,11 +2881,8 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;p&gt;为了在移动端让页面获得更好的显示效果，我们必须让布局视口、视觉视口都尽可能等于理想视口。&lt;/p&gt;
-
 &lt;p&gt;&lt;code&gt;device-width&lt;/code&gt;就等于理想视口的宽度，所以设置 &lt;code&gt;width=device-width&lt;/code&gt;就相当于让布局视口等于理想视口。&lt;/p&gt;
-
 &lt;p&gt;由于 initial-scale=理想视口宽度/视觉视口宽度，所以我们设置 &lt;code&gt;initial-scale=1&lt;/code&gt;;就相当于让视觉视口等于理想视口。&lt;/p&gt;
-
 &lt;p&gt;这时，1 个 CSS 像素就等于 1 个设备独立像素，而且我们也是基于理想视口来进行布局的，所以呈现出来的页面布局在各种设备上都能大致相似。&lt;/p&gt;
 &lt;/p&gt;
   &lt;footer&gt;
@@ -2722,10 +2897,8 @@ data-accessible-colours=&#34;false&#34;&gt;&lt;/p&gt;
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
-&lt;p&gt;上面引用其他人的解释，这样我们就可以按照 &lt;strong&gt;iPhone6（宽 375px）&lt;/strong&gt;布局了。&lt;br /&gt;
+&lt;p&gt;上面引用其他人的解释，这样我们就可以按照 **iPhone6（宽 375px）**布局了。&lt;br&gt;
 px 布局总结几点：&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;banner 图这些的，用 vw 做缩放，在不同机型上合理展示。&lt;/li&gt;
 &lt;li&gt;多用 flex 布局，加上浏览器厂商前缀兼容性已经近乎 100%。&lt;/li&gt;
@@ -2735,18 +2908,17 @@ px 布局总结几点：&lt;/p&gt;
 
 
 
-
 &lt;div class=&#34;gallery caption-position-bottom caption-effect-none hover-effect-zoom hover-transition&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
     
 
-
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.19921024.xyz/css/hugo-easy-gallery.css&#34; /&gt;
 &lt;div class=&#34;box&#34;&gt;
 &lt;figure  itemprop=&#34;associatedMedia&#34;
   itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
     &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;/images/px-preview.png&#39;);&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.cankiss.ml/images/px-preview.png&#34; /&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/px-preview.png&#34; /&gt;
     &lt;/div&gt;
-    &lt;a href=&#34;https://blog.cankiss.ml/images/px-preview.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/px-preview.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
       &lt;figcaption&gt;&lt;h4&gt;px 布局在iPhone6p下的截图&lt;/h4&gt;
       &lt;/figcaption&gt;
   &lt;/figure&gt;
@@ -2758,9 +2930,9 @@ px 布局总结几点：&lt;/p&gt;
 &lt;figure  itemprop=&#34;associatedMedia&#34;
   itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
     &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;/images/rem-preview.png&#39;);&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.cankiss.ml/images/rem-preview.png&#34; /&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://blog.19921024.xyz/images/rem-preview.png&#34; /&gt;
     &lt;/div&gt;
-    &lt;a href=&#34;https://blog.cankiss.ml/images/rem-preview.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+    &lt;a href=&#34;https://blog.19921024.xyz/images/rem-preview.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
       &lt;figcaption&gt;&lt;h4&gt;rem 布局在iPhone6p下的截图&lt;/h4&gt;
       &lt;/figcaption&gt;
   &lt;/figure&gt;
@@ -2769,31 +2941,15 @@ px 布局总结几点：&lt;/p&gt;
 
 &lt;/div&gt;
 
-
 &lt;p&gt;从截图可以看出，在同样的 iPhone6p（宽 414px）机型上，rem 布局明显放大了。因为 rem 是以 iPhone6 作为基础宽度布局，在不同的机型放大缩小来呈现一致的布局。&lt;/p&gt;
-
-&lt;p&gt;这就回到一个问题上来了，那就是：&lt;strong&gt;大屏手机是为了一屏看到更多还是看的更大？&lt;/strong&gt;我觉得大部分人不是去买老人机，大屏应该是看的更多，阅读效率更高！&lt;/p&gt;
-
-&lt;div class=&#34;shortcode-notice tip&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title tip&#34;&gt;
-    
-      题外话
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;写到这里，突然想起来 iOS 同事告诉我他们的布局方式是相对于屏幕边距的精确 pt 布局，没有缩放可以简单适配到 iPad。这和我这个 px 布局如出一辙。又感叹到 iOS 不愧是移动端之王！（iOS 在业界各类的解决方早已做到了最好，如虚拟列表等。）&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
+&lt;p&gt;这就回到一个问题上来了，那就是：**大屏手机是为了一屏看到更多还是看的更大？**我觉得大部分人不是去买老人机，大屏应该是看的更多，阅读效率更高！&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;自适应和响应式&#34;&gt;自适应和响应式&lt;/h2&gt;
-
 &lt;p&gt;这是两种布局方式，自适应是一种简单适配不同机型的解决方案，比如 rem，px 流式布局等。而配合媒体查询，在屏幕尺寸差距很大的设备上实现多种布局样式，就是所谓的响应式布局方案，列如经典的&lt;a href=&#34;https://getbootstrap.com/&#34;&gt;bootstrap&lt;/a&gt;等。&lt;/p&gt;
-
 &lt;p&gt;常见屏幕的媒体查询，&lt;a href=&#34;http://stephen.io/mediaqueries/&#34;&gt;更多请查看&lt;/a&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -2824,20 +2980,17 @@ px 布局总结几点：&lt;/p&gt;
 
 &lt;span class=&#34;p&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;media&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;min-device-width&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;768px&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
   &lt;span class=&#34;c&#34;&gt;/* iPad */&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h2 id=&#34;1px-问题&#34;&gt;1px 问题&lt;/h2&gt;
-
+&lt;/div&gt;&lt;h2 id=&#34;1px-问题&#34;&gt;1px 问题&lt;/h2&gt;
 &lt;p&gt;众所周知在 dpr&amp;gt;=2 机型 1px border 线并不是真正的 1px 会加粗。常见的解决方案：&lt;/p&gt;
-
 &lt;h3 id=&#34;postcss-write-svg&#34;&gt;&lt;code&gt;postcss-write-svg&lt;/code&gt;&lt;/h3&gt;
-
-&lt;p&gt;postcss 插件&lt;a href=&#34;https://www.npmjs.com/package/postcss-write-svg&#34;&gt;postcss-write-svg&lt;/a&gt;绘制 1px svg border-image。&lt;br /&gt;
+&lt;p&gt;postcss 插件&lt;a href=&#34;https://www.npmjs.com/package/postcss-write-svg&#34;&gt;postcss-write-svg&lt;/a&gt;绘制 1px svg border-image。&lt;br&gt;
 配合 webpack、parcel 等构建工具在根目录创建&lt;code&gt;.postcssrc.js&lt;/code&gt;文件：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -2851,11 +3004,10 @@ px 布局总结几点：&lt;/p&gt;
 &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;css 变量引入，webpack 全局引入需要&lt;code&gt;style-resources-loader&lt;/code&gt;插件&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;css 变量引入，webpack 全局引入需要&lt;code&gt;style-resources-loader&lt;/code&gt;插件&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -2912,15 +3064,14 @@ px 布局总结几点：&lt;/p&gt;
   &lt;span class=&#34;k&#34;&gt;border&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;border-left&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;solid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;border-image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;svg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;border&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;param&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;color&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;yellow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;stretch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;缺点：不能实现圆角&lt;/p&gt;
-
+&lt;/div&gt;&lt;p&gt;缺点：不能实现圆角&lt;/p&gt;
 &lt;h3 id=&#34;html-伪类实现&#34;&gt;html 伪类实现&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -2989,17 +3140,13 @@ px 布局总结几点：&lt;/p&gt;
   &lt;span class=&#34;k&#34;&gt;border-right&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;solid&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;black&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;transform-origin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;transform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;特点：可以兼容圆角，简单实用，代码量多。&lt;/p&gt;
-
-&lt;h3 id=&#34;ios8-独有-0-5px&#34;&gt;iOS8+ 独有 0.5px&lt;/h3&gt;
-
+&lt;/div&gt;&lt;p&gt;特点：可以兼容圆角，简单实用，代码量多。&lt;/p&gt;
+&lt;h3 id=&#34;ios8-独有-05px&#34;&gt;iOS8+ 独有 0.5px&lt;/h3&gt;
 &lt;p&gt;只有 iOS 平台有 0.5px，其他平台均不能正常显示，不推荐&lt;/p&gt;
-
-&lt;hr /&gt;
-
+&lt;hr&gt;
 &lt;p&gt;效果如下：
  
 
@@ -3026,16 +3173,24 @@ style=&#34;box-sizing: border-box; display: flex; align-items: center; justify-c
     
     <item>
       <title>折腾树莓派3B&#43;</title>
-      <link>https://blog.cankiss.ml/post/raspberry-pi/3bplus/</link>
+      <link>https://blog.19921024.xyz/post/raspberry-pi/3bplus/</link>
       <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/raspberry-pi/3bplus/</guid>
+      <guid>https://blog.19921024.xyz/post/raspberry-pi/3bplus/</guid>
       
-        <description>
+        <description>&lt;!-- raw HTML omitted --&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi&#34;&gt;
-&lt;img src=&#34;https://www.raspberrypi.org/app/uploads/2018/07/42558525-6dd32c62-84e9-11e8-99d2-0281ffe300c3.gif&#34;&gt;
-&lt;/a&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://blog.19921024.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://www.raspberrypi.org/app/uploads/2018/07/42558525-6dd32c62-84e9-11e8-99d2-0281ffe300c3.gif&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://www.raspberrypi.org/app/uploads/2018/07/42558525-6dd32c62-84e9-11e8-99d2-0281ffe300c3.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
 
 
 
@@ -3060,14 +3215,14 @@ style=&#34;box-sizing: border-box; display: flex; align-items: center; justify-c
 
 
 &lt;blockquote&gt;
-  &lt;p&gt;Raspberry Pi 3 Model B+ is the latest product in the Raspberry Pi 3 range&lt;/p&gt;
-
+  &lt;p&gt;&lt;p&gt;Raspberry Pi 3 Model B+ is the latest product in the Raspberry Pi 3 range&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Broadcom BCM2837B0, Cortex-A53 (ARMv8) 64-bit SoC @ 1.4GHz&lt;/li&gt;
 &lt;li&gt;1GB LPDDR2 SDRAM&lt;/li&gt;
 &lt;li&gt;2.4GHz and 5GHz IEEE 802.11.b/g/n/ac wireless LAN, Bluetooth 4.2, BLE
 Gigabit Ethernet over USB 2.0 (maximum throughput 300 Mbps)&lt;/li&gt;
-&lt;/ul&gt;&lt;/p&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
   &lt;footer&gt;
     &lt;strong&gt;&lt;/strong&gt;
     
@@ -3079,30 +3234,21 @@ Gigabit Ethernet over USB 2.0 (maximum throughput 300 Mbps)&lt;/li&gt;
     
   &lt;/footer&gt;
 &lt;/blockquote&gt;
-&lt;/p&gt;
 
 &lt;h1 id=&#34;下载系统&#34;&gt;下载系统&lt;/h1&gt;
-
 &lt;h2 id=&#34;官方系统&#34;&gt;官方系统&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;https://www.raspberrypi.org/downloads/raspbian/&lt;/a&gt;&lt;br&gt;
 分为：桌面版、无桌面版&lt;/p&gt;
-
 &lt;h2 id=&#34;centos-系统&#34;&gt;centos 系统&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://mirror.centos.org/altarch/7/isos/armhfp/&#34;&gt;http://mirror.centos.org/altarch/7/isos/armhfp/&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&lt;a href=&#34;http://mirror.centos.org/altarch/7/isos/armhfp/&#34;&gt;http://mirror.centos.org/altarch/7/isos/armhfp/&lt;/a&gt;&lt;br&gt;
 用 &lt;a href=&#34;https://sourceforge.net/projects/win32diskimager/&#34;&gt;Win32DiskImager&lt;/a&gt; 烧录到 SD 卡中&lt;/p&gt;
-
 &lt;h1 id=&#34;系统烧录&#34;&gt;系统烧录&lt;/h1&gt;
-
 &lt;h2 id=&#34;windows&#34;&gt;Windows&lt;/h2&gt;
-
 &lt;p&gt;推荐使用&lt;a href=&#34;https://sourceforge.net/projects/win32diskimager/&#34;&gt;Win32DiskImager&lt;/a&gt;&lt;/p&gt;
-
 &lt;h2 id=&#34;macos&#34;&gt;MacOS&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -3112,31 +3258,29 @@ Gigabit Ethernet over USB 2.0 (maximum throughput 300 Mbps)&lt;/li&gt;
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;df -h
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+df -h
 &lt;span class=&#34;c1&#34;&gt;# 查看sd卡设备文件&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;# 假设 /dev/disk3&lt;/span&gt;
 sudo diskutil unmount /dev/disk3s1
 &lt;span class=&#34;c1&#34;&gt;# 卸载&lt;/span&gt;
-sudo dd &lt;span class=&#34;nv&#34;&gt;bs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1m &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2018&lt;/span&gt;-11-13-raspbian-stretch.img &lt;span class=&#34;nv&#34;&gt;of&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/dev/rdisk3 &lt;span class=&#34;nv&#34;&gt;conv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;sync
+sudo dd &lt;span class=&#34;nv&#34;&gt;bs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1m &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;2018-11-13-raspbian-stretch.img &lt;span class=&#34;nv&#34;&gt;of&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/dev/rdisk3 &lt;span class=&#34;nv&#34;&gt;conv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;sync
 &lt;span class=&#34;c1&#34;&gt;# 烧录&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;# if dd: bs: illegal numeric value change the block size bs=1m to bs=1M&lt;/span&gt;
 sudo diskutil eject /dev/rdisk3
-&lt;span class=&#34;c1&#34;&gt;# 重新挂载&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;c1&#34;&gt;# 重新挂载&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id=&#34;headless-无显示器鼠标-系统设置&#34;&gt;headless(无显示器鼠标) 系统设置&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;headless无显示器鼠标-系统设置&#34;&gt;headless(无显示器鼠标) 系统设置&lt;/h1&gt;
 &lt;h2 id=&#34;开启-ssh&#34;&gt;开启 SSH&lt;/h2&gt;
-
 &lt;blockquote&gt;
-&lt;p&gt;在 SD 卡分区里面创建一个名为 &lt;code&gt;ssh&lt;/code&gt; 空文件即可&lt;br /&gt;
+&lt;p&gt;在 SD 卡分区里面创建一个名为 &lt;code&gt;ssh&lt;/code&gt; 空文件即可&lt;br&gt;
 默认用户名 pi，密码是 raspberry&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;h2 id=&#34;开机连接-wifi&#34;&gt;开机连接 WiFi&lt;/h2&gt;
-
 
 
 
@@ -3203,7 +3347,7 @@ sudo diskutil eject /dev/rdisk3
 
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -3231,9 +3375,10 @@ sudo diskutil eject /dev/rdisk3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;country=CN
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;country=CN
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
@@ -3260,46 +3405,20 @@ network={
 ssid=&amp;#34;你的无线网络名称（ssid）&amp;#34;
 key_mgmt=WPA-PSK
 psk=&amp;#34;你的wifi密码&amp;#34;
-}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;shortcode-notice note&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title note&#34;&gt;
-    
-      注意
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;如果树莓派通过 WiFi 连接进入路由器（DHCP 协议），并通过动态的 ip 地址调试 SSH 通道，那么建议在当前路由通过树莓派的 Mac 地址绑定一个静态 ip 这样更方便调试。&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
+&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;ssh-环境下调试&#34;&gt;SSH 环境下调试&lt;/h2&gt;
-
 &lt;h3 id=&#34;sudo-raspi-config&#34;&gt;&lt;code&gt;sudo raspi-config&lt;/code&gt;&lt;/h3&gt;
-
 &lt;p&gt;官方 raspbian 系统提供的简单的图形配置界面，建议配置修改 pi 用户密码、中文字库(ZH-CN UTF-8)、时区(Asia/Shanghai)、高级设置里面扩展文件系统空间等。&lt;/p&gt;
-
 &lt;h3 id=&#34;切换国内软件源&#34;&gt;切换国内软件源&lt;/h3&gt;
-
-&lt;div class=&#34;shortcode-notice info&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title info&#34;&gt;
-    
-      清华大学开源镜像站
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;&lt;a href=&#34;https://mirrors.tuna.tsinghua.edu.cn/&#34;&gt;https://mirrors.tuna.tsinghua.edu.cn/&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&#34;https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/&#34;&gt;https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -3314,24 +3433,23 @@ psk=&amp;#34;你的wifi密码&amp;#34;
 &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt;
 sudo apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt -y upgrade
 &lt;span class=&#34;c1&#34;&gt;# sudo apt-get dist-upgrade ; sudo rpi-update&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;# 更新软件&amp;amp;内核&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;c1&#34;&gt;# 更新软件&amp;amp;内核&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h3 id=&#34;安装-screen&#34;&gt;安装 Screen&lt;/h3&gt;
+&lt;/div&gt;&lt;h3 id=&#34;安装-screen&#34;&gt;安装 Screen&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install -y screen
-screen -S 终端名&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+screen -S 终端名
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;blockquote&gt;
+&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;常用的 screen 命令&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -3339,18 +3457,15 @@ screen -S 终端名&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;th&gt;说明&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
-
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;screen -S 终端名&lt;/td&gt;
 &lt;td&gt;新建一个新的后台虚拟终端&lt;/td&gt;
 &lt;/tr&gt;
-
 &lt;tr&gt;
 &lt;td&gt;screen -ls&lt;/td&gt;
 &lt;td&gt;查看已创建的后台虚拟终端&lt;/td&gt;
 &lt;/tr&gt;
-
 &lt;tr&gt;
 &lt;td&gt;screen -r 终端名&lt;/td&gt;
 &lt;td&gt;进入该终端&lt;/td&gt;
@@ -3363,59 +3478,40 @@ screen -S 终端名&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
     
     <item>
       <title>树莓派3B&#43;链接蓝牙音箱</title>
-      <link>https://blog.cankiss.ml/post/raspberry-pi/python3/</link>
+      <link>https://blog.19921024.xyz/post/raspberry-pi/python3/</link>
       <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/raspberry-pi/python3/</guid>
+      <guid>https://blog.19921024.xyz/post/raspberry-pi/python3/</guid>
       
-        <description>
-
-&lt;p&gt;Debain 安装与卸载&lt;/p&gt;
+        <description>&lt;p&gt;Debain 安装与卸载&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install -y xxx
 sudo apt-get remove xxx
-sudo apt-get autoremove xxx &lt;span class=&#34;c1&#34;&gt;# 慎用!&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+sudo apt-get autoremove xxx &lt;span class=&#34;c1&#34;&gt;# 慎用!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;pip3 安装&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;pip3 安装&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo python3 get-pip.py&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+sudo python3 get-pip.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;shortcode-notice tip&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title tip&#34;&gt;
-    
-      pip清华镜像使用
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;临时使用&lt;br /&gt;
-pip install -i &lt;a href=&#34;https://pypi.tuna.tsinghua.edu.cn/simple&#34;&gt;https://pypi.tuna.tsinghua.edu.cn/simple&lt;/a&gt; some-package
-设为默认&lt;/p&gt;
-
-&lt;p&gt;升级 pip 到最新的版本 (&amp;gt;=10.0.0) 后进行配置：&lt;br /&gt;
-pip install pip -U
-pip config set global.index-url &lt;a href=&#34;https://pypi.tuna.tsinghua.edu.cn/simple&#34;&gt;https://pypi.tuna.tsinghua.edu.cn/simple&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
+&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/darknessomi/musicbox&#34;&gt;网易云音乐 Linux 版本&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -3423,14 +3519,14 @@ pip config set global.index-url &lt;a href=&#34;https://pypi.tuna.tsinghua.edu.c
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone https://github.com/darknessomi/musicbox.git &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; musicbox
 $ &lt;span class=&#34;c1&#34;&gt;## or (sudo) pip(3) install NetEase-MusicBox&lt;/span&gt;
-$ python&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; setup.py install
-$ &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;sudo&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; apt-get install mpg123&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+$ python&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;3&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; setup.py install
+$ &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;sudo&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; apt-get install mpg123
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h2 id=&#34;树莓派连接蓝牙音箱&#34;&gt;树莓派连接蓝牙音箱&lt;/h2&gt;
+&lt;/div&gt;&lt;h2 id=&#34;树莓派连接蓝牙音箱&#34;&gt;树莓派连接蓝牙音箱&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -3527,20 +3623,20 @@ pacmd set-default-sink bluez_sink.XX:XX:XX:XX:XX:XX
 
 &lt;span class=&#34;c1&#34;&gt;#测试&lt;/span&gt;
 wget http://youness.net/wp-content/uploads/2016/08/h2g2.ogg
-paplay h2g2.ogg&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+paplay h2g2.ogg
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;表示连接一次蓝牙好难，不好玩！&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;表示连接一次蓝牙好难，不好玩！&lt;/p&gt;
 </description>
       
     </item>
     
     <item>
       <title>v2ray recommend server config</title>
-      <link>https://blog.cankiss.ml/post/breakwall/v2ray/</link>
+      <link>https://blog.19921024.xyz/post/breakwall/v2ray/</link>
       <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/breakwall/v2ray/</guid>
+      <guid>https://blog.19921024.xyz/post/breakwall/v2ray/</guid>
       
         <description>
 
@@ -3590,11 +3686,10 @@ paplay h2g2.ogg&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
   &lt;/footer&gt;
 &lt;/blockquote&gt;
 
-
 &lt;p&gt;shadowsocks + v2ray + ws + tls:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -3675,13 +3770,13 @@ paplay h2g2.ogg&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
     &lt;span class=&#34;nt&#34;&gt;&amp;#34;protocol&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;freedom&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
     &lt;span class=&#34;nt&#34;&gt;&amp;#34;settings&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;You can use &lt;code&gt;caddy&lt;/code&gt; or &lt;code&gt;nginx&lt;/code&gt; relay the websocket steam :&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;You can use &lt;code&gt;caddy&lt;/code&gt; or &lt;code&gt;nginx&lt;/code&gt; relay the websocket steam :&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Caddyfile&#34; data-lang=&#34;Caddyfile&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -3695,22 +3790,23 @@ paplay h2g2.ogg&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Caddyfile&#34; data-lang=&#34;Caddyfile&#34;&gt;$domain:443 {
-    root /var/www
-    gzip
-    index index.html
-    tls  $certPath $keyPath
-    header / -Server
-    header / Strict-Transport-Security &amp;#34;max-age=31536000;&amp;#34;
-    proxy /ray localhost:10000 {
-            websocket
-            header_upstream -Origin
-    }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Caddyfile&#34; data-lang=&#34;Caddyfile&#34;&gt;&lt;span class=&#34;gh&#34;&gt;$domain:443&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;nd&#34;&gt;/var/www&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;gzip&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.html&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;tls&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;certPath&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;keyPath&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;-Server&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;Strict-Transport-Security&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;max-age=31536000;&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;proxy&lt;/span&gt; &lt;span class=&#34;nd&#34;&gt;/ray&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;localhost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10000&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;websocket&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;header_upstream&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;-Origin&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx.conf&#34; data-lang=&#34;nginx.conf&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
@@ -3739,58 +3835,54 @@ paplay h2g2.ogg&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
       &lt;span class=&#34;kn&#34;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;Connection&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;upgrade&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
       &lt;span class=&#34;kn&#34;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;Host&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$http_host&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
     &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;You can use the cert to achieve tls.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;You can use the cert to achieve tls.&lt;/p&gt;
 </description>
       
     </item>
     
     <item>
       <title>acme.sh 生成let&#39;s encrypt免费证书</title>
-      <link>https://blog.cankiss.ml/post/breakwall/letsencrypt/</link>
+      <link>https://blog.19921024.xyz/post/breakwall/letsencrypt/</link>
       <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/breakwall/letsencrypt/</guid>
+      <guid>https://blog.19921024.xyz/post/breakwall/letsencrypt/</guid>
       
-        <description>
-
-&lt;blockquote&gt;
+        <description>&lt;blockquote&gt;
 &lt;p&gt;acme.sh 实现了 acme 协议，默认从 let&amp;rsquo;s encrypt 生成 3 个月的免费证书，
 更多请查看 &lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;acme.sh wiki&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;h1 id=&#34;安装-acme-sh&#34;&gt;安装 acme.sh&lt;/h1&gt;
+&lt;h1 id=&#34;安装-acmesh&#34;&gt;安装 acme.sh&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl  https://get.acme.sh &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sh
 &lt;span class=&#34;c1&#34;&gt;# 设置alias 用的普通账户&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; acme.sh&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~/.acme.sh/acme.sh&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; acme.sh&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~/.acme.sh/acme.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;h1 id=&#34;生成证书&#34;&gt;生成证书&lt;/h1&gt;
-
+&lt;/div&gt;&lt;h1 id=&#34;生成证书&#34;&gt;生成证书&lt;/h1&gt;
 &lt;h2 id=&#34;dnsapi-导出&#34;&gt;dnsapi 导出&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CF_Key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sdfsdfsdfljlbjkljlkjsdfoiwje&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CF_Email&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;xxxx@sss.com&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CF_Email&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;xxxx@sss.com&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;ok, let&amp;rsquo;s issue a cert now:&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;ok, let&amp;rsquo;s issue a cert now:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
@@ -3799,138 +3891,62 @@ paplay h2g2.ogg&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;acme.sh --issue --dns dns_cf -d example.com -d www.example.com
 
 &lt;span class=&#34;c1&#34;&gt;# 如果申请泛域名：&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;# acme.sh --issue -d example.com -d &amp;#39;*.example.com&amp;#39; --dns dns_cf&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span class=&#34;c1&#34;&gt;# acme.sh --issue -d example.com -d &amp;#39;*.example.com&amp;#39; --dns dns_cf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;shortcode-notice note&#34;&gt;
-  &lt;div class=&#34;shortcode-notice-title note&#34;&gt;
-    
-      注意
-    
-  &lt;/div&gt;
-  
-
-&lt;p&gt;上述操作是以域名托管在 CloudFlare DNS 为例子
-&lt;a href=&#34;https://dash.cloudflare.com/profile&#34;&gt;CloudFlare API keys&lt;/a&gt;
-&lt;br&gt;
-更多请参考: &lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/dnsapi&#34;&gt;https://github.com/Neilpang/acme.sh/wiki/dnsapi&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
+&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;The CF_Key and CF_Email will be saved in ~/.acme.sh/account.conf and will be reused when needed.&lt;/p&gt;
-
 &lt;h1 id=&#34;证书使用&#34;&gt;证书使用&lt;/h1&gt;
-
 &lt;h2 id=&#34;nginx-使用&#34;&gt;nginx 使用&lt;/h2&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;ssl_dhparam 生成&lt;/p&gt;
+&lt;li&gt;ssl_dhparam 生成&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mkdir /etc/nginx/ssl
-sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem &lt;span class=&#34;m&#34;&gt;2048&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem &lt;span class=&#34;m&#34;&gt;2048&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;ssl_certificate 和 ssl_trusted_certificate 字段要使用&lt;code&gt;fullchain.cer&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ssl_certificate 和 ssl_trusted_certificate 字段要使用&lt;code&gt;fullchain.cer&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;之后 nginx reload 即可，可以通过浏览器查看最新证书&lt;/p&gt;
-
-&lt;h1 id=&#34;更新-acme-sh&#34;&gt;更新 acme.sh&lt;/h1&gt;
-
+&lt;h1 id=&#34;更新-acmesh&#34;&gt;更新 acme.sh&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;目前由于 acme 协议和 letsencrypt CA 都在频繁的更新, 因此 acme.sh 也经常更新以保持同步.&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;升级 acme.sh 到最新版：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;acme.sh --upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;acme.sh --upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;自动更新：&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;自动更新：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;acme.sh  --upgrade  --auto-upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;acme.sh  --upgrade  --auto-upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;取消自动更新：&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;取消自动更新：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;acme.sh  --upgrade  --auto-upgrade &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;acme.sh  --upgrade  --auto-upgrade &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>搜索</title>
-      <link>https://blog.cankiss.ml/search/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.cankiss.ml/search/</guid>
-      
-        <description>
-
-&lt;p&gt;This file exists solely to respond to /search URL with the related &lt;code&gt;search&lt;/code&gt; layout template.&lt;/p&gt;
-
-&lt;p&gt;No content shown here is rendered, all content is based in the template layouts/page/search.html&lt;/p&gt;
-
-&lt;p&gt;Setting a very low sitemap priority will tell search engines this is not important content.&lt;/p&gt;
-
-&lt;p&gt;This implementation uses Fusejs, jquery and mark.js&lt;/p&gt;
-
-&lt;h2 id=&#34;initial-setup&#34;&gt;Initial setup&lt;/h2&gt;
-
-&lt;p&gt;Search depends on additional output content type of JSON in config.toml
-`&lt;code&gt;
-[outputs]
-home = [&amp;quot;HTML&amp;quot;, &amp;quot;JSON&amp;quot;]
-\&lt;/code&gt;`&lt;/p&gt;
-
-&lt;h2 id=&#34;searching-additional-fileds&#34;&gt;Searching additional fileds&lt;/h2&gt;
-
-&lt;p&gt;To search additional fields defined in front matter, you must add it in 2 places.&lt;/p&gt;
-
-&lt;h3 id=&#34;edit-layouts-default-index-json&#34;&gt;Edit layouts/_default/index.JSON&lt;/h3&gt;
-
-&lt;p&gt;This exposes the values in /index.json
-i.e. add &lt;code&gt;category&lt;/code&gt;
-`&lt;code&gt;
-...
-&amp;quot;contents&amp;quot;:{{ .Content | plainify | jsonify }}
-{{ if .Params.tags }},
-&amp;quot;tags&amp;quot;:{{ .Params.tags | jsonify }}{{end}},
-&amp;quot;categories&amp;quot; : {{ .Params.categories | jsonify }},
-...
-\&lt;/code&gt;`&lt;/p&gt;
-
-&lt;h3 id=&#34;edit-fuse-js-options-to-search&#34;&gt;Edit fuse.js options to Search&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;static/js/search.js&lt;/code&gt;
-`&lt;code&gt;
-keys: [
-&amp;quot;title&amp;quot;,
-&amp;quot;contents&amp;quot;,
-&amp;quot;tags&amp;quot;,
-&amp;quot;categories&amp;quot;
-]
-\&lt;/code&gt;`&lt;/p&gt;
-</description>
       
     </item>
     

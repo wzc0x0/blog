@@ -7,7 +7,7 @@
   
 
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
 
 <meta name="MobileOptimized" content="width"/>
 <meta name="HandheldFriendly" content="true"/>
@@ -32,10 +32,10 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.82.0" />
 
 
-<link rel="canonical" href="https://blog.cankiss.ml/post/web-developer/debounce-throttle/" />
+<link rel="canonical" href="https://blog.19921024.xyz/post/web-developer/debounce-throttle/" />
 
 
 
@@ -62,21 +62,15 @@
 <meta property="og:title" content="JS中的节流与防抖函数" />
 <meta property="og:description" content="前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.cankiss.ml/post/web-developer/debounce-throttle/" />
-<meta property="article:published_time" content="2019-08-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-08-12T00:00:00+00:00" />
+<meta property="og:url" content="https://blog.19921024.xyz/post/web-developer/debounce-throttle/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-08-12T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-08-12T00:00:00&#43;00:00" />
+
 <meta itemprop="name" content="JS中的节流与防抖函数">
-<meta itemprop="description" content="前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce">
-
-
-<meta itemprop="datePublished" content="2019-08-12T00:00:00&#43;00:00" />
+<meta itemprop="description" content="前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce"><meta itemprop="datePublished" content="2019-08-12T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-08-12T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="656">
-
-
-
-<meta itemprop="keywords" content="JavaScript," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="584">
+<meta itemprop="keywords" content="JavaScript," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="JS中的节流与防抖函数"/>
 <meta name="twitter:description" content="前言 抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 keyup 事件等。 debounce"/>
 
@@ -110,35 +104,35 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/">首页</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/">首页</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/post/">归档</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/post/">归档</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/tags/">标签</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/tags/">标签</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/categories/">分类</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/search/">搜索</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/search/">搜索</a>
           
         
       </li>
@@ -230,7 +224,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/">首页</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/">首页</a>
           
 
         
@@ -241,7 +235,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/post/">归档</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/post/">归档</a>
           
 
         
@@ -252,7 +246,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/tags/">标签</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/tags/">标签</a>
           
 
         
@@ -263,7 +257,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/categories/">分类</a>
           
 
         
@@ -274,7 +268,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/search/">搜索</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/search/">搜索</a>
           
 
         
@@ -305,10 +299,10 @@
           2019-08-12
         </time>
         <div class="post-category">
-            <a href="https://blog.cankiss.ml/categories/javascript/"> JavaScript </a>
+            <a href="https://blog.19921024.xyz/categories/javascript/"> JavaScript </a>
             
           </div>
-        <span class="more-meta"> 约 656 字 </span>
+        <span class="more-meta"> 约 584 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
@@ -325,36 +319,24 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#debounce">debounce</a>
-<ul>
-<li><a href="#一个简单可用的实现代码">一个简单可用的实现代码</a></li>
-<li><a href="#debounce-codepen-在线体验">debounce codepen 在线体验</a></li>
-<li><a href="#总结">总结</a></li>
-</ul></li>
-<li><a href="#throttle">throttle</a></li>
-<li><a href="#requestanimationframe">requestAnimationFrame</a></li>
-<li><a href="#参考文章">参考文章</a></li>
-</ul>
+  <ul>
+    <li><a href="#一个简单可用的实现代码">一个简单可用的实现代码</a></li>
+    <li><a href="#debounce-codepen-在线体验">debounce codepen 在线体验</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="前言">前言</h1>
-
+      <h1 id="前言">前言</h1>
 <p>抖动（Debouncing）和节流阀（Throttling）函数，在实际应用中有很多，比如滚动条，窗口频繁缩放，input 框 <code>keyup</code> 事件等。</p>
-
 <h1 id="debounce">debounce</h1>
-
 <h2 id="一个简单可用的实现代码">一个简单可用的实现代码</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -396,9 +378,7 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div>
-<h2 id="debounce-codepen-在线体验">debounce codepen 在线体验</h2>
-
+</div><h2 id="debounce-codepen-在线体验">debounce codepen 在线体验</h2>
  
 
 
@@ -418,30 +398,13 @@ data-slug-hash="YwNwgy"
 data-preview="true" 
 style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"></p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
 <h2 id="总结">总结</h2>
-
 <p>Debounce（防抖）技术把多次顺序调用合成一次。在你指定的时间内，无论函数被调用多少次，都算做一次调用。也就是说<strong>相邻两次函数执行间隔必须大于等于指定的时间</strong>。适合于键盘事件，缓冲事件回调。</p>
-
-<div class="shortcode-notice tip">
-  <div class="shortcode-notice-title tip">
-    
-      lodash中的实现
-    
-  </div>
-  
-
-<p><a href="https://lodash.com/docs/4.17.15#debounce">_.debounce</a>中的第三个参数，<code>{leading: true,trailing:false}</code>，指定当前函数首次触发时执行。</p>
-
-<p></div></p>
-
+<!-- raw HTML omitted -->
 <h1 id="throttle">throttle</h1>
-
-<p>在 lodash 中的，throttle 就是设置第三个参数 <code>maxWait</code> 的 debounce 函数。这样节流函数保证在指定的时间内执行一次函数。适合于滚动条事件，将多次事件按时间分割开延迟执行。<br />
+<p>在 lodash 中的，throttle 就是设置第三个参数 <code>maxWait</code> 的 debounce 函数。这样节流函数保证在指定的时间内执行一次函数。适合于滚动条事件，将多次事件按时间分割开延迟执行。<br>
 <strong>不同与 debounce 的是：debounce 的时间间隔结束后才会去执行函数，throttle 则是在时间间隔内检查函数。</strong></p>
-
 <h1 id="requestanimationframe">requestAnimationFrame</h1>
-
 
 
 <p class="ciu_embed" 
@@ -451,7 +414,7 @@ data-accessible-colours="false"></p>
 <script async src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js"></script>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -463,11 +426,8 @@ data-accessible-colours="false"></p>
 </span><span class="c1">// 一般在js dom动画中使用，更加精确细腻操作
 </span></code></pre></td></tr></table>
 </div>
-</div>
-<p>类似<code>_.throttle(callback,16)</code></p>
-
+</div><p>类似<code>_.throttle(callback,16)</code></p>
 <h1 id="参考文章">参考文章</h1>
-
 <ul>
 <li><a href="https://jinlong.github.io/2016/04/24/Debouncing-and-Throttling-Explained-Through-Examples/">实例解析防抖动（Debouncing）和节流阀（Throttling）</a></li>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame">window.requestAnimationFrame</a></li>
@@ -502,7 +462,7 @@ data-accessible-colours="false"></p>
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.cankiss.ml/tags/javascript/">JavaScript</a>
+          <a href="https://blog.19921024.xyz/tags/javascript/">JavaScript</a>
           
         </div>
 
@@ -593,7 +553,7 @@ data-accessible-colours="false"></p>
     </a>
 
 
-<a href="https://blog.cankiss.ml/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="https://blog.19921024.xyz/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -616,7 +576,9 @@ data-accessible-colours="false"></p>
 
   <span class="copyright-year">
     &copy;
-    2019
+    
+      2019 -
+    2021
     <span class="heart">
       
       <i class="iconfont">
@@ -660,7 +622,7 @@ data-accessible-colours="false"></p>
 
 
 
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
 
 
 

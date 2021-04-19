@@ -7,7 +7,7 @@
   
 
 <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
 
 <meta name="MobileOptimized" content="width"/>
 <meta name="HandheldFriendly" content="true"/>
@@ -32,10 +32,10 @@
 
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.82.0" />
 
 
-<link rel="canonical" href="https://blog.cankiss.ml/post/web-developer/debugging-proxy/" />
+<link rel="canonical" href="https://blog.19921024.xyz/post/web-developer/debugging-proxy/" />
 
 
 
@@ -62,21 +62,15 @@
 <meta property="og:title" content="Charles常用抓包方法" />
 <meta property="og:description" content="前言 前端 web 页面、app 页面抓包备忘。笔者采用charles抓包工具，在 MacOS 环境下使用。抓取 https，重定向域名，修改 request、resp" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.cankiss.ml/post/web-developer/debugging-proxy/" />
-<meta property="article:published_time" content="2019-12-11T00:00:00+08:00" />
-<meta property="article:modified_time" content="2019-12-11T00:00:00+08:00" />
+<meta property="og:url" content="https://blog.19921024.xyz/post/web-developer/debugging-proxy/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-12-11T00:00:00&#43;08:00" />
+<meta property="article:modified_time" content="2019-12-11T00:00:00&#43;08:00" />
+
 <meta itemprop="name" content="Charles常用抓包方法">
-<meta itemprop="description" content="前言 前端 web 页面、app 页面抓包备忘。笔者采用charles抓包工具，在 MacOS 环境下使用。抓取 https，重定向域名，修改 request、resp">
-
-
-<meta itemprop="datePublished" content="2019-12-11T00:00:00&#43;08:00" />
+<meta itemprop="description" content="前言 前端 web 页面、app 页面抓包备忘。笔者采用charles抓包工具，在 MacOS 环境下使用。抓取 https，重定向域名，修改 request、resp"><meta itemprop="datePublished" content="2019-12-11T00:00:00&#43;08:00" />
 <meta itemprop="dateModified" content="2019-12-11T00:00:00&#43;08:00" />
-<meta itemprop="wordCount" content="1067">
-
-
-
-<meta itemprop="keywords" content="web,proxy," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="wordCount" content="978">
+<meta itemprop="keywords" content="web,proxy," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Charles常用抓包方法"/>
 <meta name="twitter:description" content="前言 前端 web 页面、app 页面抓包备忘。笔者采用charles抓包工具，在 MacOS 环境下使用。抓取 https，重定向域名，修改 request、resp"/>
 
@@ -110,35 +104,35 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/">首页</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/">首页</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/post/">归档</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/post/">归档</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/tags/">标签</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/tags/">标签</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/categories/">分类</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/search/">搜索</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/search/">搜索</a>
           
         
       </li>
@@ -230,7 +224,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/">首页</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/">首页</a>
           
 
         
@@ -241,7 +235,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/post/">归档</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/post/">归档</a>
           
 
         
@@ -252,7 +246,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/tags/">标签</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/tags/">标签</a>
           
 
         
@@ -263,7 +257,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/categories/">分类</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/categories/">分类</a>
           
 
         
@@ -274,7 +268,7 @@
         
           
           
-            <a class="menu-item-link" href="https://blog.cankiss.ml/search/">搜索</a>
+            <a class="menu-item-link" href="https://blog.19921024.xyz/search/">搜索</a>
           
 
         
@@ -305,12 +299,12 @@
           2019-12-11
         </time>
         <div class="post-category">
-            <a href="https://blog.cankiss.ml/categories/web/"> web </a>
-            <a href="https://blog.cankiss.ml/categories/proxy/"> proxy </a>
+            <a href="https://blog.19921024.xyz/categories/web/"> web </a>
+            <a href="https://blog.19921024.xyz/categories/proxy/"> proxy </a>
             
           </div>
-        <span class="more-meta"> 约 1067 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 978 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
         
@@ -326,135 +320,128 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#前言">前言</a></li>
-<li><a href="#准备工作-安装证书抓取-https">准备工作：安装证书抓取 https</a>
-<ul>
-<li><a href="#macos-系统">MacOS 系统</a></li>
-<li><a href="#手机端">手机端</a>
-<ul>
-<li><a href="#wifi-网络配置">WIFI 网络配置</a>
-<ul>
-<li><a href="#ios-以-13-2-3-版本为例">iOS 以 13.2.3 版本为例：</a></li>
-<li><a href="#华为-android-手机为例">华为 Android 手机为例：</a></li>
-</ul></li>
-<li><a href="#安装证书">安装证书</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#开启-charles-ssl-proxy">开启 Charles ssl proxy</a></li>
-<li><a href="#远端域名映射">远端域名映射</a></li>
-<li><a href="#修改请求-or-响应">修改请求 or 响应</a></li>
-<li><a href="#弱网环境模拟">弱网环境模拟</a></li>
-<li><a href="#android7-0-抓包">Android7.0+ 抓包 😄</a></li>
-</ul>
+  <ul>
+    <li><a href="#macos-系统">MacOS 系统</a></li>
+    <li><a href="#手机端">手机端</a>
+      <ul>
+        <li><a href="#wifi-网络配置">WIFI 网络配置</a></li>
+        <li><a href="#安装证书">安装证书</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h1 id="前言">前言</h1>
-
+      <h1 id="前言">前言</h1>
 <p>前端 web 页面、app 页面抓包备忘。笔者采用<a href="https://www.charlesproxy.com/">charles</a>抓包工具，在 MacOS 环境下使用。抓取 https，重定向域名，修改 request、response。</p>
-
-<h1 id="准备工作-安装证书抓取-https">准备工作：安装证书抓取 https</h1>
-
+<h1 id="准备工作安装证书抓取-https">准备工作：安装证书抓取 https</h1>
 <h2 id="macos-系统">MacOS 系统</h2>
-
 <p>打开 charles，help&ndash;&gt;SSL Proxying&ndash;&gt;Install Charles Root Certificate. 安装好证书之后，在钥匙串中打开证书，始终信任。</p>
-
 <p>Proxy&ndash;&gt;MacOS Proxy 勾选后启动抓取本地 MacOS 数据包。</p>
-
 <h2 id="手机端">手机端</h2>
-
 <h3 id="wifi-网络配置">WIFI 网络配置</h3>
-
-<div class="shortcode-notice tip">
-  <div class="shortcode-notice-title tip">
-    
-      注意
-    
-  </div>
-  
-
+<blockquote>
 <p>当前手机必须和抓包工具同一网段</p>
-
-<p></div></p>
-
-<h4 id="ios-以-13-2-3-版本为例">iOS 以 13.2.3 版本为例：</h4>
-
+</blockquote>
+<h4 id="ios-以-1323-版本为例">iOS 以 13.2.3 版本为例：</h4>
 <p>设置&ndash;&gt;无线局域网&ndash;&gt;右边蓝色感叹号&ndash;&gt;选择 HTTP 代理&ndash;&gt;选择手动&ndash;&gt;填写下抓包工具所在 ip，端口默认 8888</p>
 
-<p><img src="/images/charles/ios-wifi-config.jpg" style="width:300px" /></p>
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="box">
+<figure  itemprop="associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject" >
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/charles/ios-wifi-config.jpg" />
+    </div>
+    <a href="/images/charles/ios-wifi-config.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
 
 <h4 id="华为-android-手机为例">华为 Android 手机为例：</h4>
-
 <p>设置&ndash;&gt;无线和网络&ndash;&gt;WLAN&ndash;&gt;选择 WIFI 长按点击修改网络&ndash;&gt;勾选显示高级选项&ndash;&gt;选择手动&ndash;&gt;填写下方抓包工具所在 ip，端口默认 8888</p>
-
 <h3 id="安装证书">安装证书</h3>
-
 <ul>
-<li><p>iOS or Android 设备安装证书：help&ndash;&gt;SSL Proxying&ndash;&gt;Install Charles Root Certificate on a Mobile Device Or Remote Browser.</p></li>
+<li>
+<p>iOS or Android 设备安装证书：help&ndash;&gt;SSL Proxying&ndash;&gt;Install Charles Root Certificate on a Mobile Device Or Remote Browser.</p>
+</li>
+<li>
 
-<li><p><img src="/images/charles/mobile-cert.png"/></p></li>
 
-<li><p>点击之后出现弹窗，在手机浏览器输入 <code>chls.pro/ssl</code>下载证书安装。</p></li>
+<div class="box">
+<figure  itemprop="associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject" >
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/charles/mobile-cert.png" />
+    </div>
+    <a href="/images/charles/mobile-cert.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
 
-<li><p>iOS 端：在设置&ndash;&gt;通用&ndash;&gt;关于本机&ndash;&gt;点击最下方的证书信任&ndash;&gt;把刚刚安装的证书信任</p></li>
-
-<li><p>Android（7.0 以下）：设置&ndash;&gt;高级设置&ndash;&gt;安全&ndash;&gt;从 SD 卡安装，找到刚才下载的证书点击安装</p></li>
+</li>
+<li>
+<p>点击之后出现弹窗，在手机浏览器输入 <code>chls.pro/ssl</code>下载证书安装。</p>
+</li>
+<li>
+<p>iOS 端：在设置&ndash;&gt;通用&ndash;&gt;关于本机&ndash;&gt;点击最下方的证书信任&ndash;&gt;把刚刚安装的证书信任</p>
+</li>
+<li>
+<p>Android（7.0 以下）：设置&ndash;&gt;高级设置&ndash;&gt;安全&ndash;&gt;从 SD 卡安装，找到刚才下载的证书点击安装</p>
+</li>
 </ul>
-
-<div class="shortcode-notice note">
-  <div class="shortcode-notice-title note">
-    
-      Android7.0
-    
-  </div>
-  
-
-<p>由于 Google 对 Android 7.0 之后的机型更改了证书信任机制，普通的用户证书，在 APP 里面不再信任。<br />
-官方解决方案指出：需要在 APP 开发的工程里面配置 XML 文件信任即可。<br />
-<a href="https://zhuanlan.zhihu.com/p/79277115">知乎参考文档</a>、<a href="https://developer.android.com/training/articles/security-config.html">Android 官方文档</a></p>
-
-<p></div></p>
-
+<!-- raw HTML omitted -->
 <h1 id="开启-charles-ssl-proxy">开启 Charles ssl proxy</h1>
-
 <p>Proxy&ndash;&gt;SSL Proxying Settings 加入要抓取的 https 域名，支持正则表达式通配符。</p>
 
-<p><img src="/images/charles/proxy-ssl.png"/></p>
+
+<div class="box">
+<figure  itemprop="associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject" >
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/charles/proxy-ssl.png" />
+    </div>
+    <a href="/images/charles/proxy-ssl.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
 
 <p>如果证书安装完成，现在就可以愉快的抓包了~</p>
-
 <h1 id="远端域名映射">远端域名映射</h1>
-
 <p>Tools&ndash;&gt;Map Remote</p>
 
-<p><img src="/images/charles/remote-map.png"/></p>
+
+<div class="box">
+<figure  itemprop="associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject" >
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/charles/remote-map.png" />
+    </div>
+    <a href="/images/charles/remote-map.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
 
 <p>将请求的域名地址映射到本地服务，常用在 app 嵌套 h5 页面，映射到本地开发。</p>
-
 <p><strong>注意 https 域名需要写明 443 端口</strong></p>
-
 <h1 id="修改请求-or-响应">修改请求 or 响应</h1>
-
 <p>右键点击需要修改的请求，选择<code>Breakpoints</code></p>
 
-<p><img src="/images/charles/breakpoint.png"/></p>
+
+<div class="box">
+<figure  itemprop="associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject" >
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/charles/breakpoint.png" />
+    </div>
+    <a href="/images/charles/breakpoint.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
 
 <p>最终 Charles 会对选择的请求路径施加断点，在断点处修改 request 或 response 数据点击 execute 执行。常用于对后端返回数据修改。</p>
-
 <h1 id="弱网环境模拟">弱网环境模拟</h1>
-
 <p>Proxy&ndash;&gt;Throttle Settings&ndash;&gt;Enable Throttling</p>
-
 <p>选择适合的网速进行弱网测试</p>
-
-<h1 id="android7-0-抓包">Android7.0+ 抓包 😄</h1>
-
+<h1 id="android70-抓包-">Android7.0+ 抓包 😄</h1>
 
 
 
@@ -519,9 +506,7 @@
   </footer>
 </blockquote>
 
-
 <p>首先安装<a href="https://github.com/android-hacker/VirtualXposed">VirtualXposed</a>，接着下载<a href="https://github.com/Fuzion24/JustTrustMe">JustTrustMe</a>。将 JustTrustMe 安装在 VirtualXposed，VirtualXposed 打开选择 VirtualXposed 方式运行。</p>
-
 <p>把需要抓包的 app 放入 VirtualXposed 运行，接下来就是常规的抓包方法，证书什么的安装好，设备连上。</p>
 
     </div>
@@ -553,14 +538,27 @@
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://blog.cankiss.ml/tags/web/">web</a>
-          <a href="https://blog.cankiss.ml/tags/proxy/">proxy</a>
+          <a href="https://blog.19921024.xyz/tags/web/">web</a>
+          <a href="https://blog.19921024.xyz/tags/proxy/">proxy</a>
           
         </div>
 
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/web-developer/react-dva-use-modal/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">在antd-pro中使用简易数据流替换dva的应用实践</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
           <a class="next" href="/post/web-developer/debounce-throttle/">
             <span class="next-text nav-default">JS中的节流与防抖函数</span>
@@ -632,7 +630,7 @@
     </a>
 
 
-<a href="https://blog.cankiss.ml/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="https://blog.19921024.xyz/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -655,7 +653,9 @@
 
   <span class="copyright-year">
     &copy;
-    2019
+    
+      2019 -
+    2021
     <span class="heart">
       
       <i class="iconfont">
@@ -699,7 +699,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
 
 
 

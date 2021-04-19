@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>react on Tech Blog</title>
+    <link>https://blog.19921024.xyz/tags/react/</link>
+    <description>Recent content in react on Tech Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在antd-pro中使用简易数据流替换dva的应用实践</title>
+      <link>https://blog.19921024.xyz/post/web-developer/react-dva-use-modal/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.19921024.xyz/post/web-developer/react-dva-use-modal/</guid>
+      <description>前言 为什么要在 antd-pro v4+ 中用 useModel？就是因为原来的数据流管理 dva 太繁琐了！ 什么是数据流？为什么要用数据流管理？ React 没有解决的问题 如果开发大应</description>
+    </item>
+    
+  </channel>
+</rss>

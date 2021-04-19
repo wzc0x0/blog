@@ -2,39 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CSS3 on Tech Blog</title>
-    <link>https://blog.cankiss.ml/categories/css3/</link>
+    <link>https://blog.19921024.xyz/categories/css3/</link>
     <description>Recent content in CSS3 on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 11 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.cankiss.ml/categories/css3/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 11 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/categories/css3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>你所不知的CSS</title>
-      <link>https://blog.cankiss.ml/post/web-developer/unknown-css/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/unknown-css/</link>
       <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/unknown-css/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/unknown-css/</guid>
       <description>前言 收录一下 CSS 技巧吧 单行多行截取文本 1 2 3 4 5 6 /* 单行截取 */ { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } 1 2 3 4 5 6 7 8 /* 多行移动端适用 */ { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; //属性规定</description>
     </item>
     
     <item>
       <title>什么是BFC</title>
-      <link>https://blog.cankiss.ml/post/web-developer/bfc-layout/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/bfc-layout/</link>
       <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/bfc-layout/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/bfc-layout/</guid>
       <description>盒模型 &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;标签被浏览器解析后会生成 div 元素并添加到 document tree 中，但 CSS 作用的对象并不是 document tree，而是根据 document</description>
     </item>
     
     <item>
       <title>利用html伪类设置表单效验样式</title>
-      <link>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</link>
+      <link>https://blog.19921024.xyz/post/web-developer/input-css-vaild/</link>
       <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/web-developer/input-css-vaild/</guid>
+      <guid>https://blog.19921024.xyz/post/web-developer/input-css-vaild/</guid>
       <description>兼容性 效果展示 参考文章 表单数据校验 使用 HTML 和 CSS 技巧对表单进行约束验证</description>
     </item>
     

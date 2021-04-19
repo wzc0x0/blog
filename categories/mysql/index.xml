@@ -2,21 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mysql on Tech Blog</title>
-    <link>https://blog.cankiss.ml/categories/mysql/</link>
+    <link>https://blog.19921024.xyz/categories/mysql/</link>
     <description>Recent content in mysql on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 20 Jun 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.cankiss.ml/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 20 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macOS下mysql使用</title>
-      <link>https://blog.cankiss.ml/post/mysql/macos/</link>
+      <link>https://blog.19921024.xyz/post/mysql/macos/</link>
       <pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.cankiss.ml/post/mysql/macos/</guid>
+      <guid>https://blog.19921024.xyz/post/mysql/macos/</guid>
       <description>不要使用 brew 安装 mysql，至少笔者是没有成功过的，系统是最新的 10.14.5。 直接去官方地址下载，可以需要注册 Oracle 帐号 客户端推荐使用：Navi</description>
     </item>
     
