@@ -22,15 +22,13 @@ Proxy-->MacOS Proxy 勾选后启动抓取本地 MacOS 数据包。
 
 ### WIFI 网络配置
 
-{{% notice tip  注意 %}}
-当前手机必须和抓包工具同一网段
-{{% /notice %}}
+> 当前手机必须和抓包工具同一网段
 
 #### iOS 以 13.2.3 版本为例：
 
 设置-->无线局域网-->右边蓝色感叹号-->选择 HTTP 代理-->选择手动-->填写下抓包工具所在 ip，端口默认 8888
 
-<img src="/images/charles/ios-wifi-config.jpg" style="width:300px" />
+{{< figure src="/images/charles/ios-wifi-config.jpg" >}}
 
 #### 华为 Android 手机为例：
 
@@ -40,7 +38,7 @@ Proxy-->MacOS Proxy 勾选后启动抓取本地 MacOS 数据包。
 
 - iOS or Android 设备安装证书：help-->SSL Proxying-->Install Charles Root Certificate on a Mobile Device Or Remote Browser.
 
-- <img src="/images/charles/mobile-cert.png"/>
+- {{< figure src="/images/charles/mobile-cert.png">}}
 
 - 点击之后出现弹窗，在手机浏览器输入 `chls.pro/ssl`下载证书安装。
 
@@ -58,7 +56,7 @@ Proxy-->MacOS Proxy 勾选后启动抓取本地 MacOS 数据包。
 
 Proxy-->SSL Proxying Settings 加入要抓取的 https 域名，支持正则表达式通配符。
 
-<img src="/images/charles/proxy-ssl.png"/>
+{{< figure src= "/images/charles/proxy-ssl.png" >}}
 
 如果证书安装完成，现在就可以愉快的抓包了~
 
@@ -66,7 +64,7 @@ Proxy-->SSL Proxying Settings 加入要抓取的 https 域名，支持正则表�
 
 Tools-->Map Remote
 
-<img src="/images/charles/remote-map.png"/>
+{{< figure src= "/images/charles/remote-map.png" >}}
 
 将请求的域名地址映射到本地服务，常用在 app 嵌套 h5 页面，映射到本地开发。
 
@@ -76,7 +74,7 @@ Tools-->Map Remote
 
 右键点击需要修改的请求，选择`Breakpoints`
 
-<img src="/images/charles/breakpoint.png"/>
+{{< figure src= "/images/charles/breakpoint.png" >}}
 
 最终 Charles 会对选择的请求路径施加断点，在断点处修改 request 或 response 数据点击 execute 执行。常用于对后端返回数据修改。
 

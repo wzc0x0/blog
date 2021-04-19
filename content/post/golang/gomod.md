@@ -10,7 +10,7 @@ categories: ["golang"]
 > golang 最受诟病的恐怕是没有成熟的包管理器，1.12 版本之前大都采用 vendor 的方式作为每个项目的包管理，造成巨大的资源重复浪费，类似 npm 的`node_modules`。go version >= 1.12 后内置的官方包管理器,不再需要配置 GOPATH 等环境变量。  
 > https://github.com/golang/go/wiki/Modules
 
-<img src="https://i.redd.it/fw31b02wfkez.png">
+{{< figure src="https://i.redd.it/fw31b02wfkez.png" title="node_modules被人诟病冗余并体积巨大" >}}
 
 ## 基础使用
 

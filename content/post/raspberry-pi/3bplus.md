@@ -7,8 +7,9 @@ categories: ["Linux", "Raspberry-Pi"]
 ---
 
 <a href="https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi">
-<img src="https://www.raspberrypi.org/app/uploads/2018/07/42558525-6dd32c62-84e9-11e8-99d2-0281ffe300c3.gif">
-</a>
+
+{{< figure src="https://www.raspberrypi.org/app/uploads/2018/07/42558525-6dd32c62-84e9-11e8-99d2-0281ffe300c3.gif" >}}
+
 {{< blockquote link="https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/" title="see more"  >}}
 Raspberry Pi 3 Model B+ is the latest product in the Raspberry Pi 3 range
 

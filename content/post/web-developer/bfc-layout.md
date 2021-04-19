@@ -7,7 +7,7 @@ tags: ["html5", "CSS3"]
 categories: ["html5", "CSS3"]
 ---
 
-<img src="/images/3d-box-model.png">
+{{< figure src="/images/3d-box-model.png" >}}
 
 # 盒模型
 

@@ -11,7 +11,7 @@ categories: ["JavaScript"]
 在 JavaScript 中, Number 是一种 定义为 64 位双精度浮点型（double-precision 64-bit floating point format） (IEEE 754)的数字数据类型。
 {{< /blockquote >}}
 
-<img src="/images/IEEE_754_Double_Floating_Point_Format.svg">
+{{< figure src="/images/IEEE_754_Double_Floating_Point_Format.svg" >}}
 
 64 位存储数值，其中 0 到 51 存储数字（片段），52 到 62 存储指数，63 位存储符号：  
 其中 IEEE 754 规定，有效数字第一位默认总是 1，不在 64 位浮点数之中，有效数字都是`1.xxxxxx....xxx`形式，小数点后面数最长 52 位。（其实是：科学记数法的二进制表示形式）
