@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>html5响应式图片的实现方式</title>
+      <link>https://blog.19921024.xyz/post/web-developer/response-image/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.19921024.xyz/post/web-developer/response-image/</guid>
+      <description>前言 利用 html5 原生标签属性实现不同的分辨率，不同窗口之间的图片适配 img 标签srcset属性分辨率响应 1 2 3 4 5 6 7 &amp;lt;!-- 2倍图 3倍图 --&amp;gt; &amp;lt;img src=&amp;#34;http://placehold.it/120&amp;#34; class=&amp;#34;response-image&amp;#34; srcset=&amp;#34;http://placehold.it/240 2x, http://placehold.it/360 3x&amp;#34; onerror=&amp;#34;this.src=&amp;#39;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//AK3/ALYH+5hX6FV5N4Y/5GHwx/vyf+iJa9ZrysPhoYVShDZu/potDmwWFhhIzhT2bv6aLQ//Z&amp;#39;&amp;#34;</description>
+    </item>
+    
     <item>
       <title>在antd-pro中使用简易数据流替换dva的应用实践</title>
       <link>https://blog.19921024.xyz/post/web-developer/react-dva-use-modal/</link>
@@ -178,15 +187,6 @@
       <description>v2ray has lots of tools to help you break firewall!
 v2ray.com shadowsocks + v2ray + ws + tls:
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40  { &amp;#34;log&amp;#34;: { &amp;#34;access&amp;#34;: &amp;#34;/var/log/v2ray/access.</description>
-    </item>
-    
-    <item>
-      <title>acme.sh 生成let&#39;s encrypt免费证书</title>
-      <link>https://blog.19921024.xyz/post/breakwall/letsencrypt/</link>
-      <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.19921024.xyz/post/breakwall/letsencrypt/</guid>
-      <description>acme.sh 实现了 acme 协议，默认从 let&amp;rsquo;s encrypt 生成 3 个月的免费证书， 更多请查看 acme.sh wiki 安装 acme.sh 1 2 3 curl https://get.acme.sh | sh # 设置alias 用的普通账户 alias acme.sh=~/.acme.sh/acme.sh 生成证书 dnsapi 导出 1 2 export CF_Key=&amp;#34;sdfsdfsdfljlbjkljlkjsdfoiwje&amp;#34; export CF_Email=&amp;#34;xxxx@sss.com&amp;#34;</description>
     </item>
     
   </channel>

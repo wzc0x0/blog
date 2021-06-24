@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.19921024.xyz/categories/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.19921024.xyz/tags/html5/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.19921024.xyz/categories/html5/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.19921024.xyz/post/web-developer/response-image/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.19921024.xyz/post/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.19921024.xyz/tags/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.19921024.xyz/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.19921024.xyz/my-v2ray-config/</loc>
     <lastmod>2021-04-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -23,20 +72,6 @@
   </url>
   
   <url>
-    <loc>https://blog.19921024.xyz/categories/</loc>
-    <lastmod>2021-04-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.19921024.xyz/post/</loc>
-    <lastmod>2021-04-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.19921024.xyz/tags/react/</loc>
     <lastmod>2021-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -45,20 +80,6 @@
   
   <url>
     <loc>https://blog.19921024.xyz/categories/react/</loc>
-    <lastmod>2021-04-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.19921024.xyz/tags/</loc>
-    <lastmod>2021-04-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.19921024.xyz/</loc>
     <lastmod>2021-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -129,20 +150,6 @@
   
   <url>
     <loc>https://blog.19921024.xyz/post/web-developer/call-app/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.19921024.xyz/tags/html5/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.19921024.xyz/categories/html5/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

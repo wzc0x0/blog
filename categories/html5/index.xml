@@ -6,7 +6,16 @@
     <description>Recent content in html5 on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/categories/html5/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/categories/html5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>html5响应式图片的实现方式</title>
+      <link>https://blog.19921024.xyz/post/web-developer/response-image/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.19921024.xyz/post/web-developer/response-image/</guid>
+      <description>前言 利用 html5 原生标签属性实现不同的分辨率，不同窗口之间的图片适配 img 标签srcset属性分辨率响应 1 2 3 4 5 6 7 &amp;lt;!-- 2倍图 3倍图 --&amp;gt; &amp;lt;img src=&amp;#34;http://placehold.it/120&amp;#34; class=&amp;#34;response-image&amp;#34; srcset=&amp;#34;http://placehold.it/240 2x, http://placehold.it/360 3x&amp;#34; onerror=&amp;#34;this.src=&amp;#39;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//AK3/ALYH+5hX6FV5N4Y/5GHwx/vyf+iJa9ZrysPhoYVShDZu/potDmwWFhhIzhT2bv6aLQ//Z&amp;#39;&amp;#34;</description>
+    </item>
+    
     <item>
       <title>H5唤起native app</title>
       <link>https://blog.19921024.xyz/post/web-developer/call-app/</link>

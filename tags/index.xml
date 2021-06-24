@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Tech Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.19921024.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>html5</title>
+      <link>https://blog.19921024.xyz/tags/html5/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.19921024.xyz/tags/html5/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>antd-pro</title>
       <link>https://blog.19921024.xyz/tags/antd-pro/</link>
@@ -49,15 +58,6 @@
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.19921024.xyz/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>html5</title>
-      <link>https://blog.19921024.xyz/tags/html5/</link>
-      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.19921024.xyz/tags/html5/</guid>
       <description></description>
     </item>
     
