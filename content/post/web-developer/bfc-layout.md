@@ -35,9 +35,9 @@ width = content-width
 height = content-height
 ```
 
-{{% notice note 注意 %}}
+{{< notice tip >}}
 默认大多数浏览器盒模型处理方式是**标准盒模型**。但是为了符合人们大多数的布局习惯，可以通过设置`box-sizing:border-box`转换成 IE 盒模型，这也是大多数 UI 框架样式的首选方式。
-{{% /notice %}}
+{{< /notice >}}
 
 ```css
 *,
@@ -120,11 +120,11 @@ _以上内容来自[^footnote1]_
 [^footnote2]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elements
 <br>
 
-{{% notice note 注意 %}}
+{{< notice note 注意 >}}
 1、行内元素除了 img 外均**忽略宽高**  
 2、高度依靠`font-size line-height`, `padding margin` 只在水平方向实现，垂直方向无效  
 3、`display:line,line-block` 会有空白间隙，通过设置父元素`font-size:0`解决
-{{% /notice %}}
+{{< /notice >}}
 
 ## 应用
 

@@ -99,9 +99,9 @@ psk="你的wifi密码"
 
 ```
 
-{{% notice note 注意 %}}
+{{< notice note 注意 >}}
 如果树莓派通过 WiFi 连接进入路由器（DHCP 协议），并通过动态的 ip 地址调试 SSH 通道，那么建议在当前路由通过树莓派的 Mac 地址绑定一个静态 ip 这样更方便调试。
-{{% /notice %}}
+{{< /notice >}}
 
 ---
 
@@ -113,10 +113,10 @@ psk="你的wifi密码"
 
 ### 切换国内软件源
 
-{{% notice info 清华大学开源镜像站 %}}
+{{< notice info 清华大学开源镜像站 >}}
 https://mirrors.tuna.tsinghua.edu.cn/  
 https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/
-{{% /notice %}}
+{{< /notice >}}
 
 ```bash
 sudo -s

@@ -46,11 +46,11 @@ Proxy-->MacOS Proxy 勾选后启动抓取本地 MacOS 数据包。
 
 - Android（7.0 以下）：设置-->高级设置-->安全-->从 SD 卡安装，找到刚才下载的证书点击安装
 
-{{% notice note Android7.0  %}}
+{{< notice note Android7.0  >}}
 由于 Google 对 Android 7.0 之后的机型更改了证书信任机制，普通的用户证书，在 APP 里面不再信任。  
 官方解决方案指出：需要在 APP 开发的工程里面配置 XML 文件信任即可。  
 [知乎参考文档](https://zhuanlan.zhihu.com/p/79277115)、[Android 官方文档](https://developer.android.com/training/articles/security-config.html)
-{{% /notice %}}
+{{< /notice >}}
 
 # 开启 Charles ssl proxy
 

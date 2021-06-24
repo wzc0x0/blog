@@ -66,9 +66,9 @@ px 布局总结几点：
 
 这就回到一个问题上来了，那就是：**大屏手机是为了一屏看到更多还是看的更大？**我觉得大部分人不是去买老人机，大屏应该是看的更多，阅读效率更高！
 
-{{% notice tip 题外话 %}}
+{{< notice tip 题外话 >}}
 写到这里，突然想起来 iOS 同事告诉我他们的布局方式是相对于屏幕边距的精确 pt 布局，没有缩放可以简单适配到 iPad。这和我这个 px 布局如出一辙。又感叹到 iOS 不愧是移动端之王！（iOS 在业界各类的解决方早已做到了最好，如虚拟列表等。）
-{{% /notice %}}
+{{< /notice >}}
 
 ## 自适应和响应式
 
@@ -106,8 +106,8 @@ postcss 插件[postcss-write-svg](https://www.npmjs.com/package/postcss-write-sv
 ```js
 module.exports = {
   plugins: {
-    "postcss-write-svg": {}
-  }
+    "postcss-write-svg": {},
+  },
 };
 ```
 

@@ -40,7 +40,7 @@ acme.sh --issue --dns dns_cf -d example.com -d www.example.com
 [CloudFlare API keys](https://dash.cloudflare.com/profile)
 <br>
 更多请参考: https://github.com/Neilpang/acme.sh/wiki/dnsapi
-{{% /notice %}}
+{{< /notice >}}
 
 The CF_Key and CF_Email will be saved in ~/.acme.sh/account.conf and will be reused when needed.
 

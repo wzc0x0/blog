@@ -21,7 +21,7 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo python3 get-pip.py
 ```
 
-{{% notice tip pip清华镜像使用 %}}
+{{< notice tip pip清华镜像使用 >}}
 临时使用  
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
 设为默认
@@ -29,7 +29,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
 升级 pip 到最新的版本 (>=10.0.0) 后进行配置：  
 pip install pip -U
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-{{% /notice %}}
+{{< /notice >}}
 
 [网易云音乐 Linux 版本](https://github.com/darknessomi/musicbox)
 

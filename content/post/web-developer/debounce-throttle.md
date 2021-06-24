@@ -21,10 +21,10 @@ categories: ["JavaScript"]
 // leading edge, instead of the trailing.
 function debounce(func, wait, immediate) {
   var timeout;
-  return function() {
+  return function () {
     var context = this,
       args = arguments;
-    var later = function() {
+    var later = function () {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };
@@ -44,10 +44,10 @@ function debounce(func, wait, immediate) {
 
 Debounce（防抖）技术把多次顺序调用合成一次。在你指定的时间内，无论函数被调用多少次，都算做一次调用。也就是说**相邻两次函数执行间隔必须大于等于指定的时间**。适合于键盘事件，缓冲事件回调。
 
-{{% notice tip  lodash中的实现 %}}
+{{< notice tip  lodash中的实现 >}}
 [\_.debounce](https://lodash.com/docs/4.17.15#debounce)中的第三个参数，`{leading: true,trailing:false}`，指定当前函数首次触发时执行。
 
-{{% /notice %}}
+{{< /notice >}}
 
 # throttle
 
