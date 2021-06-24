@@ -64,12 +64,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.19921024.xyz/post/web-developer/mobile-layout/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-05-31T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2019-06-10T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-24T18:50:03&#43;08:00" />
 
 <meta itemprop="name" content="移动端适配">
 <meta itemprop="description" content="探究 web 移动端适配，到底是 rem 还是 px？ 这个问题也困扰笔者很多年，最开始一味地使用 rem，但是到现在觉得 rem 不再合适。 为什么有 rem 来实现适应的方案，"><meta itemprop="datePublished" content="2019-05-31T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-06-10T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1738">
+<meta itemprop="dateModified" content="2021-06-24T18:50:03&#43;08:00" />
+<meta itemprop="wordCount" content="1866">
 <meta itemprop="keywords" content="html5," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="移动端适配"/>
 <meta name="twitter:description" content="探究 web 移动端适配，到底是 rem 还是 px？ 这个问题也困扰笔者很多年，最开始一味地使用 rem，但是到现在觉得 rem 不再合适。 为什么有 rem 来实现适应的方案，"/>
@@ -83,6 +83,17 @@
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
 
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-K10GR3P4SX', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
@@ -302,7 +313,7 @@
             <a href="https://blog.19921024.xyz/categories/html5/"> html5 </a>
             
           </div>
-        <span class="more-meta"> 约 1738 字 </span>
+        <span class="more-meta"> 约 1866 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
 
         
@@ -565,7 +576,10 @@ px 布局总结几点：</p>
 
 <p>从截图可以看出，在同样的 iPhone6p（宽 414px）机型上，rem 布局明显放大了。因为 rem 是以 iPhone6 作为基础宽度布局，在不同的机型放大缩小来呈现一致的布局。</p>
 <p>这就回到一个问题上来了，那就是：**大屏手机是为了一屏看到更多还是看的更大？**我觉得大部分人不是去买老人机，大屏应该是看的更多，阅读效率更高！</p>
-<!-- raw HTML omitted -->
+<style type="text/css">.notice{padding:18px;line-height:24px;margin-bottom:24px;border-radius:4px;color:#444;background:#e7f2fa}.notice p:last-child{margin-bottom:0}.notice-title{margin:-18px -18px 12px;padding:4px 18px;border-radius:4px 4px 0 0;font-weight:700;color:#fff;background:#6ab0de}.notice.warning .notice-title{background:rgba(217,83,79,.9)}.notice.warning{background:#fae2e2}.notice.info .notice-title{background:#f0b37e}.notice.info{background:#fff2db}.notice.note .notice-title{background:#6ab0de}.notice.note{background:#e7f2fA}.notice.tip .notice-title{background:rgba(92,184,92,.8)}.notice.tip{background:#e6f9e6}.icon-notice{display:inline-flex;align-self:center;margin-right:8px}.icon-notice img,.icon-notice svg{height:1em;width:1em;fill:currentColor}.icon-notice img,.icon-notice.baseline svg{top:0.125em;position:relative}</style>
+<svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg"><symbol id="tip-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></symbol><symbol id="note-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><path d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/></symbol><symbol id="warning-notice" viewBox="0 0 576 512" preserveAspectRatio="xMidYMid meet"><path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/></symbol><symbol id="info-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></symbol></svg><div class="notice tip"  id="题外话" >
+<p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#tip-notice"></use></svg></span>提示</p><p>写到这里，突然想起来 iOS 同事告诉我他们的布局方式是相对于屏幕边距的精确 pt 布局，没有缩放可以简单适配到 iPad。这和我这个 px 布局如出一辙。又感叹到 iOS 不愧是移动端之王！（iOS 在业界各类的解决方早已做到了最好，如虚拟列表等。）</p></div>
+
 <h2 id="自适应和响应式">自适应和响应式</h2>
 <p>这是两种布局方式，自适应是一种简单适配不同机型的解决方案，比如 rem，px 流式布局等。而配合媒体查询，在屏幕尺寸差距很大的设备上实现多种布局样式，就是所谓的响应式布局方案，列如经典的<a href="https://getbootstrap.com/">bootstrap</a>等。</p>
 <p>常见屏幕的媒体查询，<a href="http://stephen.io/mediaqueries/">更多请查看</a>。</p>
@@ -621,8 +635,8 @@ px 布局总结几点：</p>
 <td class="lntd">
 <pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">plugins</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&#34;postcss-write-svg&#34;</span><span class="o">:</span> <span class="p">{}</span>
-  <span class="p">}</span>
+    <span class="s2">&#34;postcss-write-svg&#34;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="p">},</span>
 <span class="p">};</span>
 </code></pre></td></tr></table>
 </div>
@@ -802,7 +816,10 @@ style="box-sizing: border-box; display: flex; align-items: center; justify-conte
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2019-06-10
+      2021-06-24
+      
+        
+        
       
     </span>
   </p>
