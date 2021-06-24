@@ -35,7 +35,7 @@ acme.sh --issue --dns dns_cf -d example.com -d www.example.com
 # acme.sh --issue -d example.com -d '*.example.com' --dns dns_cf
 ```
 
-{{% notice note 注意%}}
+{{< notice note 注意 >}}
 上述操作是以域名托管在 CloudFlare DNS 为例子
 [CloudFlare API keys](https://dash.cloudflare.com/profile)
 <br>
